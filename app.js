@@ -1,19 +1,21 @@
-import request  from 'request'
 import express from 'express';
 import { dirname } from "path";
-import cheerio from'cheerio'
+import { fileURLToPath } from "url";
 import fs  from'fs';
 import fetch from 'node-fetch';
-import { fileURLToPath } from "url";
-import { title } from 'process';
+import request  from 'request'
+import cheerio from'cheerio'
+
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
-const hostname = "http://127.0.0.1:3000";
-app.listen(3000, '127.0.0.1');
+
+const host = '127.0.0.1';
+const port = 3000;
+app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
 
 request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-partniorebs-qveknistvis-sanqtsiebis-datsesebisken-ar-movutsodebt',(error,response,html)=>{
@@ -21,7 +23,6 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
         const $ = cheerio.load(html);
 
         const siteHeading=$('.detail-wrap')
-
 
         const dataInfo=$('.dateandsource').children('span').first().text();
         const title = siteHeading.find('h1').text();
@@ -44,17 +45,18 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
 })
 
 
-async function asd() {
-    const res = await fetch(`${hostname}/assets/data/data.json`);
-    const som = await res.json();
+const fullHostName = "http://127.0.0.1:3000";
+async function fetchData() {
+    const response = await fetch(`${fullHostName}/assets/data/data.json`);
+    const result = await response.json();
 
-    console.log(som.imgUrl)    
+    console.log(result.imgUrl)    
     app.get("/", (req, res) => {
-        res.render(__dirname + "/views/index",{som});
+        res.render(__dirname + "/views/index",{result});
     })
 
 
 }
-asd();
+fetchData();
 
 
