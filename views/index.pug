@@ -19,6 +19,7 @@ head
   link(href='assets/vendor/swiper/swiper-bundle.min.css' rel='stylesheet')
   // Template Main CSS File
   link(href='assets/css/style.css' rel='stylesheet')
+  script(async='' defer='' crossorigin='anonymous' src='https://connect.facebook.net/en_US/sdk.js')
   //
     =======================================================
     * Template Name: Green - v4.3.0
@@ -110,12 +111,18 @@ body
     .container.news_container
       a.main-card(href='#')
         .card.mb-5.flex-column
-          img.card-img-top(src=som.imgUrl alt='Card image cap')
-          .card-body
-            h5.card-title=som.title
-            p.card-text=som.text
-            p.card-text
-              small.text-muted=som.dataInfo
+          each obj in params
+            img.card-img-top(src=obj.imgUrl alt='Card image cap')
+            .card-body
+              h5.card-title=obj.title
+              p.card-text=obj.article
+              p.card-text
+                small.text-muted=obj.articleDate
+              br
+              br
+              br
+      
+    
       a.main-card(href='#')
         .card.mb-3.flex-column
           h5.card-title &#x10D8;&#x10E1;&#x10E2;&#x10DD;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10D3;&#x10D0;&#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D0;
@@ -145,6 +152,7 @@ body
   // End Footer
   a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
     i.bi.bi-arrow-up-short
+
 // Vendor JS Files
 script(src='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
 script(src='assets/vendor/glightbox/js/glightbox.min.js')
@@ -154,3 +162,5 @@ script(src='assets/vendor/swiper/swiper-bundle.min.js')
 // Template Main JS File
 script(src='assets/js/main.js')
 script(src='assets/js/loader.js')
+script(src='assets/js/script.js')
+
