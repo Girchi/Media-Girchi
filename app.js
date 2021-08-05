@@ -71,6 +71,5 @@ async function fetchData() {
         }  
     });
 }
+
 fetchData();
-
-
