@@ -58,7 +58,7 @@ async function fetchData() {
             obj.imgUrl = $('.global-figure-image').attr('src');
             obj.article = $('.global-text-content').text();
             obj.articleDate = $('.onge-date').html();
-            console.log(obj);
+            
 
             app.get("/", (req, res) => {
                 res.render(__dirname + "/views/index", { 

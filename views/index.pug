@@ -53,8 +53,8 @@ body
   header#header.d-flex.align-items-center
     .container.d-flex.align-items-center
       h1.logo.me-auto
-        a(href='index.html')
-          img(src='./assets/img/download' alt='')
+        a(href='#')
+          img(src='./assets/img/download' alt='#')
       // Uncomment below if you prefer to use an image logo
       // <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       nav#navbar.navbar
@@ -109,29 +109,18 @@ body
   .main
     h3#main &#x10E1;&#x10D8;&#x10D0;&#x10EE;&#x10DA;&#x10D4;&#x10D4;&#x10D1;&#x10D8;
     .container.news_container
-      a.main-card(href='#')
-        .card.mb-5.flex-column
-          each obj in params
-            img.card-img-top(src=obj.imgUrl alt='Card image cap')
-            .card-body
-              h5.card-title=obj.title
-              p.card-text=obj.article
-              p.card-text
-                small.text-muted=obj.articleDate
-              br
-              br
-              br
+      each obj in params
+        a.main-card(href='#')
+          .card.mb-5.flex-column
+              img.card-img-top(src=obj.imgUrl alt='Card image cap')
+              .card-body
+                h5.card-title=obj.title
+                p.card-text=obj.article
+                p.card-text
+                  small.text-muted=obj.articleDate
       
     
-      a.main-card(href='#')
-        .card.mb-3.flex-column
-          h5.card-title &#x10D8;&#x10E1;&#x10E2;&#x10DD;&#x10E0;&#x10D8;&#x10D8;&#x10E1; &#x10D3;&#x10D0;&#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10E0;&#x10D4;&#x10D1;&#x10D0;
-          .card-body
-            img.card-img-top(src='./assets/img/news/2.jpg' alt='Card image cap')
-            p.card-text
-              | &#x10DB;&#x10D4;&#x10E0;&#x10D4; &#x10DB;&#x10DD;&#x10E2;&#x10E0;&#x10D8;&#x10D0;&#x10DA;&#x10D3;&#x10D4;&#x10D1;&#x10DD;&#x10D3;&#x10D0; &#x10E5;&#x10D0;&#x10E0;&#x10D7;&#x10E3;&#x10DA;&#x10D8; &#x10DD;&#x10EA;&#x10DC;&#x10D4;&#x10D1;&#x10D0; &#x10D3;&#x10D0; &#x10D8;&#x10E2;&#x10E7;&#x10DD;&#x10D3;&#x10D0;, &#x10E0;&#x10DD;&#x10DB; &#x10E9;&#x10D5;&#x10D4;&#x10DC; &#x10D9;&#x10D8; &#x10EA;&#x10E3;&#x10D3;&#x10D0;&#x10D3; &#x10DB;&#x10DD;&#x10D5;&#x10D8;&#x10E5;&#x10D4;&#x10EA;&#x10D8;&#x10D7;, &#x10DB;&#x10D0;&#x10D2;&#x10E0;&#x10D0;&#x10DB; &#x10E9;&#x10D0;&#x10DB;&#x10DD;&#x10D5;&#x10D0; &#x10E1;&#x10D0;&#x10D0;&#x10D9;&#x10D0;&#x10E8;&#x10D5;&#x10D8;&#x10DA;&#x10D8; &#x10D3;&#x10D0; &#x10E7;&#x10D5;&#x10D4;&#x10DA;&#x10D0;&#x10E1; &#x10D3;&#x10D0;&#x10D2;&#x10D8;&#x10ED;&#x10D4;&#x10E0;&#x10D7;, &#x10D3;&#x10D0; &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10E0;&#x10D3;&#x10D4;&#x10D1;&#x10D0; &#x10D8;&#x10E1;&#x10E2;&#x10DD;&#x10E0;&#x10D8;&#x10D0;. &#x10D0;&#x10DB; &#x10E9;&#x10D0;&#x10D9;&#x10D4;&#x10E2;&#x10D8;&#x10DA;&#x10D8; &#x10EC;&#x10E0;&#x10D8;&#x10D3;&#x10D0;&#x10DC; &#x10E0;&#x10D0;&#x10DB;&#x10D4;&#x10DC;&#x10D0;&#x10D8;&#x10E0;&#x10D0;&#x10D3; &#x10E3;&#x10DC;&#x10D3;&#x10D0; &#x10D2;&#x10D0;&#x10DB;&#x10DD;&#x10D5;&#x10D8;&#x10D3;&#x10D4;&#x10D7;. - Vakhtang Megrelishvili / &#x10D5;&#x10D0;&#x10EE;&#x10E2;&#x10D0;&#x10DC;&#x10D2; &#x10DB;&#x10D4;&#x10D2;&#x10E0;&#x10D4;&#x10DA;&#x10D8;&#x10E8;&#x10D5;&#x10D8;&#x10DA;&#x10D8;....
-            p.card-text
-              small.text-muted 11/28/90
+
   // ======= Footer =======
   footer#footer
     .container

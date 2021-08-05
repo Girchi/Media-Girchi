@@ -664,14 +664,15 @@ h1, h2, h3, h4, h5, h6 {
 .main-card{
   cursor: pointer;
 }
-.card:hover{
+/* .card:hover{
   transform: scale(1.01);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
+} */
 .card{
   z-index: 100;
   transition: 1s;
-  border: none;box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  /* border: none; */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 .card-body{
   align-items: center;
@@ -686,17 +687,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card-text{
   color: #414040;
+  font-size: 15px
 }
 .card-title{
+  font-size: 20px;
   color: #3f3f3f;
 }
 .card-img-top{
   margin-bottom: 1rem;
   z-index: 1;
-  width:60%;
   display: flex;
   align-items: center;
-  height: 400px;
+  width: 100%;
   background-size: cover;
 }
 .flex-column{
@@ -705,6 +707,7 @@ h1, h2, h3, h4, h5, h6 {
 .card-title{
   font-weight: 900;
 }
+
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
