@@ -47,8 +47,6 @@ body
           i.bi.bi-facebook
         a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
           i.bi.bi-instagram
-        //- a.linkedin(href='#')
-        //-   i.bi.bi-linkedin
   // ======= Header =======
   header#header.d-flex.align-items-center
     .container.d-flex.align-items-center
@@ -112,13 +110,25 @@ body
       each obj in params
         a.main-card(href='#')
           .card.mb-5.flex-column
-              button.btn.btn-success#important-button(type="button" value=`${obj.id}`) მნიშვნელოვანი
+              button.btn.btn-success#important-button(type="button") მნიშვნელოვანი
               img.card-img-top(src=obj.imgUrl alt='Card image cap')
               .card-body
                 h5.card-title=obj.title
                 p.card-text=obj.article
                 p.card-text
                   small.text-muted=obj.articleDate
+
+
+      each subObject in params.on_ge
+        a.main-card(href='#')
+          .card.mb-5.flex-column
+              button.btn.btn-success#important-button(type="button") მნიშვნელოვანი
+              img.card-img-top(src=subObject.imgUrl alt='Card image cap')
+              .card-body
+                h5.card-title=subObject.title
+                p.card-text=subObject.article
+                p.card-text
+                  small.text-muted=subObject.articleDate
       
 
   // ======= Footer =======
@@ -143,6 +153,7 @@ body
     i.bi.bi-arrow-up-short
 
 // Vendor JS Files
+//- script(src='//rss.bloople.net/?url=https%3A%2F%2Frss.app%2Ffeeds%2FE4cHtYWoUj4jesXG.xml&showtitle=false&type=js')
 script(src='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
 script(src='assets/vendor/glightbox/js/glightbox.min.js')
 script(src='assets/vendor/isotope-layout/isotope.pkgd.min.js')

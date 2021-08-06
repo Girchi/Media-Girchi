@@ -5,6 +5,7 @@ import fs  from'fs';
 import fetch from 'node-fetch';
 import request  from 'request';
 import cheerio from'cheerio';
+import Parser from 'rss-parser';
 
 
 const app = express();
@@ -65,29 +66,52 @@ async function fetchData() {
             obj.article = $('.global-text-content').text();
             obj.articleDate = $('.onge-date').html();
 
-            const dataToPass = JSON.stringify(obj);
-
-            // fs.appendFile('./assets/data/data.json', dataToPass, (err) => {
-            //     if(err) throw err;
-            //     console.log("Success");
-            //     indexCounter += 1;
-            // })
-            
-
-            app.get("/", (req, res) => {
-                res.render(__dirname + "/views/index", { 
-                    params: {
-                        result, 
-                        obj
-                    } 
-                })
-            });
+            fs.readFile("./assets/data/data.json", (err, data) => {
+                if(err) throw err;
+                const on_ge = JSON.parse(data).on;
+                console.log(on_ge);
+                app.get("/", (req, res) => {
+                    res.render(__dirname + "/views/index", { 
+                        params: {
+                            result, 
+                            obj,
+                            on_ge
+                        } 
+                    })
+                });
+            })
         }  
     });
 }
 
-app.get("/add_news", (req, res) => {
+app.get("/add-news", (req, res) => {
     res.render(__dirname + "/views/add_news")
 });
 
 fetchData();
+
+
+// let parser = new Parser();
+// (async () => {
+//     let feed = await parser.parseURL('https://rss.app/feeds/E4cHtYWoUj4jesXG.xml');
+//     // console.log(feed.title);
+  
+//     feed.items.forEach(item => {
+//     //   console.log(item.title + ':' + item.link)
+//     });
+// })();
+
+
+// request('https://rss.app/feeds/E4cHtYWoUj4jesXG.xml',(error,response,html)=>{
+//     if(!error && response.statusCode ==200){
+//         const $ = cheerio.load(html);
+
+
+//         const dataInfo = $('.dateandsource').children('span').first().text();
+//         // const title = siteHeading.find('h1').text();
+//         const text = find('h4.feed-item-title');
+//         // const imgUrl = siteHeading.find('img').attr("src");
+        
+//         console.log(text);
+//     }
+// });
