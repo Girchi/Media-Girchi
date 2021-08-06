@@ -35,18 +35,15 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
         fs.readFile('./assets/data/data.json', (err, data) => {
             if (err) throw err;
             let newsData = JSON.parse(data);
-            newsData.on = {...newsData.on};
-            
-            newsData.on = Object.assign(newsData.on, {
+            newsData.on = {...newsData.on,
                 title: title,
                 text: text,
                 articleDate: dataInfo,
                 imgUrl: imgUrl
-            });
-            
-            fs.writeFile("./assets/data/data.json", JSON.stringify(newsData), (err)=>{
-                if(err) throw err
-                console.log('JSON Successfully updated');
+            };
+            newsData = JSON.stringify(newsData)
+            fs.writeFile("./assets/data/data.json", newsData,(error)=>{
+                if(error) console.log(error)
             })
         });
     }
