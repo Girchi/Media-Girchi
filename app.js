@@ -30,18 +30,27 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
         const text = siteHeading.find('p').text();
         const imgUrl = siteHeading.find('img').attr("src");
 
-        let obj = JSON.stringify({
-            title: title,
-            text: text,
-            articleDate: dataInfo,
-            imgUrl: imgUrl
+        // let obj = JSON.stringify({
+        //     title: title,
+        //     text: text,
+        //     articleDate: dataInfo,
+        //     imgUrl: imgUrl
+        // });
+        fs.readFile('./assets/data/data.json', (err, data) => {
+            if (err) throw err;
+            let newsData = JSON.parse(data);
+            newsData.on={...newsData.on,
+                title: title,
+                text: text,
+                articleDate: dataInfo,
+                imgUrl: imgUrl
+            };
+            newsData=JSON.stringify(newsData)
+            fs.writeFile("./assets/data/data.json", newsData,(error)=>{
+                if(error) console.log(error)
+            })
         });
-
-        fs.writeFileSync('./assets/data/data.json', obj, (err) => {
-            if(err) throw err;
-            console.log("Success");
-        })
-    }    
+    }
 });
 
 const fullHostName = "http://127.0.0.1:3000";
@@ -72,5 +81,9 @@ async function fetchData() {
     });
 }
 fetchData();
+
+app.get("/add_news", (req, res) => {
+    res.render(__dirname + "/views/add_news")
+});
 
 
