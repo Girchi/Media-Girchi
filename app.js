@@ -80,10 +80,14 @@ async function fetchData() {
         }  
     });
 }
+<<<<<<< HEAD
 fetchData();
 
 app.get("/add_news", (req, res) => {
     res.render(__dirname + "/views/add_news")
 });
 
+=======
+>>>>>>> 4e8348d7e8d7effe0710226d7954da155bbac554
 
+fetchData();
