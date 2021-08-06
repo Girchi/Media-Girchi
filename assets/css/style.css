@@ -839,6 +839,10 @@ h1, h2, h3, h4, h5, h6 {
     height: 200px;
     background-size: cover;
   }
+  .formGroupExampleInput{
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
   .card{
     padding: 1rem;
   }
@@ -858,9 +862,42 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-
 #important-button {
   position: relative;
   top: -50px;
   left: calc(50% - 20px);
+}
+
+.formGroupExampleInput{
+  margin-bottom: 2rem;
+  font-size: 1rem;
+} 
+
+
+/* Add News */
+
+.news_add_container{
+  margin: 4rem auto;
+  height: 50vh;
+  padding: 3rem 3rem;
+  border: solid #3c3c3c48 1px;
+  border-radius: 1rem;
+  background: #2f8650;
+}
+.news-btn{
+  color: #222222;
+  outline: none;
+}
+.news-btn:hover{
+  color: #222222;
+}
+.form-group{
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+  outline: none;
+}
+.formGroupExampleInput{
+  margin-bottom: 2rem;
+  font-size: 2rem;
 }

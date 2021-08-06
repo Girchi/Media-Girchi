@@ -31,20 +31,25 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
         const text = siteHeading.find('p').text();
         const imgUrl = siteHeading.find('img').attr("src");
 
-        let obj = JSON.stringify({
-            title: title,
-            id: indexCounter,
-            text: text,
-            articleDate: dataInfo,
-            imgUrl: imgUrl
+  
+        fs.readFile('./assets/data/data.json', (err, data) => {
+            if (err) throw err;
+            let newsData = JSON.parse(data);
+            newsData.on = {...newsData.on};
+            
+            newsData.on = Object.assign(newsData.on, {
+                title: title,
+                text: text,
+                articleDate: dataInfo,
+                imgUrl: imgUrl
+            });
+            
+            fs.writeFile("./assets/data/data.json", JSON.stringify(newsData), (err)=>{
+                if(err) throw err
+                console.log('JSON Successfully updated');
+            })
         });
-
-        fs.writeFileSync('./assets/data/data.json', obj, (err) => {
-            if(err) throw err;
-            console.log("Success");
-            indexCounter += 1;
-        })
-    }    
+    }
 });
 
 const fullHostName = "http://127.0.0.1:3000";
@@ -65,11 +70,11 @@ async function fetchData() {
 
             const dataToPass = JSON.stringify(obj);
 
-            fs.appendFile('./assets/data/data.json', dataToPass, (err) => {
-                if(err) throw err;
-                console.log("Success");
-                indexCounter += 1;
-            })
+            // fs.appendFile('./assets/data/data.json', dataToPass, (err) => {
+            //     if(err) throw err;
+            //     console.log("Success");
+            //     indexCounter += 1;
+            // })
             
 
             app.get("/", (req, res) => {
@@ -83,5 +88,9 @@ async function fetchData() {
         }  
     });
 }
+
+app.get("/add_news", (req, res) => {
+    res.render(__dirname + "/views/add_news")
+});
 
 fetchData();
