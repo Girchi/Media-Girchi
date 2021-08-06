@@ -1,10 +1,10 @@
 import express from 'express';
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
 import fs  from'fs';
 import fetch from 'node-fetch';
-import request  from 'request'
-import cheerio from'cheerio'
+import request  from 'request';
+import cheerio from'cheerio';
 
 
 const app = express();
@@ -19,6 +19,7 @@ const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
 
+let indexCounter = 0;
 request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-partniorebs-qveknistvis-sanqtsiebis-datsesebisken-ar-movutsodebt',(error,response,html)=>{
     if(!error && response.statusCode ==200){
         const $ = cheerio.load(html);
@@ -32,6 +33,7 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
 
         let obj = JSON.stringify({
             title: title,
+            id: indexCounter,
             text: text,
             articleDate: dataInfo,
             imgUrl: imgUrl
@@ -40,6 +42,7 @@ request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-par
         fs.writeFileSync('./assets/data/data.json', obj, (err) => {
             if(err) throw err;
             console.log("Success");
+            indexCounter += 1;
         })
     }    
 });
@@ -55,9 +58,18 @@ async function fetchData() {
 
             let obj = {};
             obj.title = $('.article-title').html();
+            obj.id = indexCounter;
             obj.imgUrl = $('.global-figure-image').attr('src');
             obj.article = $('.global-text-content').text();
             obj.articleDate = $('.onge-date').html();
+
+            const dataToPass = JSON.stringify(obj);
+
+            fs.appendFile('./assets/data/data.json', dataToPass, (err) => {
+                if(err) throw err;
+                console.log("Success");
+                indexCounter += 1;
+            })
             
 
             app.get("/", (req, res) => {
