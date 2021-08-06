@@ -901,3 +901,20 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2rem;
   font-size: 2rem;
 }
+.close{
+  border: none;
+  background: #2f8650;
+  color: #ffffff;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+}
+.alert{
+  text-align: center;
+  background: #2f8650;
+  border-radius: 10px;
+  color: white;
+  margin-top: 2rem;
+}
+.hiddenAlert{
+  display: none;
+}

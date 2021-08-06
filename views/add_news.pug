@@ -66,24 +66,29 @@ head
       // .navbar
   // End Header
   // News Add
-  form.container.news_add_container
+  .alert.container.hiddenAlert.alert-warning.alert-dismissible.fade.show(role='alert')
+    strong წარმატებით აიტვირთა!
+      button.close(type='button' data-dismiss='alert' aria-label='Close')
+        span(aria-hidden='true') &times;
+
+  form.container.news_add_container(action='/add_news' method='POST')
     .form-group
       label.formGroupExampleInput(for='formGroupExampleInput') &#x10E8;&#x10D4;&#x10D8;&#x10E7;&#x10D5;&#x10D0;&#x10DC;&#x10D4;&#x10D7; &#x10E1;&#x10D8;&#x10D0;&#x10EE;&#x10DA;&#x10D8;&#x10E1; &#x10DA;&#x10D8;&#x10DC;&#x10D9;&#x10D8;
-      input#formGroupExampleInput.shadow-none.form-control.mt-2(type='text' placeholder='ლინკი')
+      input#formGroupExampleInput.shadow-none.form-control.mt-2(type='text' name='link' placeholder='ლინკი')
     .form-row.align-items-center
       .col-auto.my-1
-        label.mr-sm-4.text-white.mr-4(for='inlineFormCustomSelect') &#x10EC;&#x10E7;&#x10D0;&#x10E0;&#x10DD;
-        select#inlineFormCustomSelect.shadow-none.custom-select.mr-sm-2.mt-2
-          option.shadow-none(selected='') &#x10D0;&#x10D8;&#x10E0;&#x10E9;&#x10D8;&#x10D4;&#x10D7;
-          option(value='1') tabula
-          option(value='1') on
-          option(value='2') formula
-          option(value='3') palitranews
-          option(value='3') facebook
-          option(value='3') mtavari
-          option(value='3') tvpirveli
+        label.mr-sm-4.text-white.mr-4(for='inlineFormCustomSelect') წყარო
+        select#inlineFormCustomSelect.shadow-none.custom-select.mr-sm-2.mt-2(name="source")
+          option.shadow-none(selected='') აირჩიე
+          option(value='tabula') tabula
+          option(value='on') on
+          option(value='formula') formula
+          option(value='palitranews') palitranews
+          option(value='facebook') facebook
+          option(value='mtavari') mtavari
+          option(value='tvpirveli') tvpirveli
       .col-auto.my-1
-        button.news-btn.btn.btn-primary.bg-white.mt-4(type='submit') დასტური
+        button.closeBtn.news-btn.btn.btn-primary.bg-white.mt-4(type='submit') დასტური
   // End News Add
   // ======= Footer =======
   footer#footer

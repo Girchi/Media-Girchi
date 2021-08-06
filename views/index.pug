@@ -47,24 +47,20 @@ body
           i.bi.bi-facebook
         a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
           i.bi.bi-instagram
+        //- a.linkedin(href='#')
+        //-   i.bi.bi-linkedin
   // ======= Header =======
   header#header.d-flex.align-items-center
     .container.d-flex.align-items-center
       h1.logo.me-auto
         a(href='#')
           img(src='./assets/img/download' alt='#')
-      // Uncomment below if you prefer to use an image logo
-      // <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
       nav#navbar.navbar
         ul
           li
             a.nav-link.scrollto.active(href='#hero') მთავარი
           li
             a.nav-link.scrollto(href='#main') სიახლეები
-          //- li
-          //-   a.nav-link.scrollto(href='#team') &#x10D2;&#x10E3;&#x10DC;&#x10D3;&#x10D8;
-          //- li
-            //- a.nav-link.scrollto(href='#about') &#x10E9;&#x10D5;&#x10D4;&#x10DC;&#x10E1; &#x10E8;&#x10D4;&#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10D1;
           li
             a.nav-link.scrollto(href='#footer') კონტაქტი
         i.bi.bi-list.mobile-nav-toggle
@@ -110,7 +106,7 @@ body
       each obj in params
         a.main-card(href='#')
           .card.mb-5.flex-column
-              button.btn.btn-success#important-button(type="button") მნიშვნელოვანი
+              button.btn.btn-success#important-button(type="button" value=`${obj.id}`) მნიშვნელოვანი
               img.card-img-top(src=obj.imgUrl alt='Card image cap')
               .card-body
                 h5.card-title=obj.title
@@ -142,10 +138,6 @@ body
           i.bx.bxl-facebook
         a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
           i.bx.bxl-instagram
-        //- a.google-plus(href='#')
-        //-   i.bx.bxl-skype
-        //- a.linkedin(href='#')
-        //-   i.bx.bxl-linkedin
       .copyright
         p ყველა საავტორო უფლების თავზეც გავიარეთ. გირჩი
   // End Footer
@@ -153,7 +145,6 @@ body
     i.bi.bi-arrow-up-short
 
 // Vendor JS Files
-//- script(src='//rss.bloople.net/?url=https%3A%2F%2Frss.app%2Ffeeds%2FE4cHtYWoUj4jesXG.xml&showtitle=false&type=js')
 script(src='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
 script(src='assets/vendor/glightbox/js/glightbox.min.js')
 script(src='assets/vendor/isotope-layout/isotope.pkgd.min.js')

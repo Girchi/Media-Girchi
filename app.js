@@ -1,11 +1,11 @@
 import express from 'express';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 import fs  from'fs';
 import fetch from 'node-fetch';
-import request  from 'request';
-import cheerio from'cheerio';
-import Parser from 'rss-parser';
+import request  from 'request'
+import cheerio from'cheerio'
+import bodyParser from 'body-parser';
 
 
 const app = express();
@@ -20,12 +20,11 @@ const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
 
-let indexCounter = 0;
 request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-partniorebs-qveknistvis-sanqtsiebis-datsesebisken-ar-movutsodebt',(error,response,html)=>{
     if(!error && response.statusCode ==200){
         const $ = cheerio.load(html);
 
-        const siteHeading=$('.detail-wrap')
+        const siteHeading = $('.detail-wrap')
 
         const dataInfo = $('.dateandsource').children('span').first().text();
         const title = siteHeading.find('h1').text();
@@ -61,7 +60,6 @@ async function fetchData() {
 
             let obj = {};
             obj.title = $('.article-title').html();
-            obj.id = indexCounter;
             obj.imgUrl = $('.global-figure-image').attr('src');
             obj.article = $('.global-text-content').text();
             obj.articleDate = $('.onge-date').html();
@@ -83,12 +81,48 @@ async function fetchData() {
         }  
     });
 }
+fetchData();
 
-app.get("/add-news", (req, res) => {
+
+const urlencodedParser=bodyParser.urlencoded({extended:false})
+
+app.get("/add_news", (req, res) => {
     res.render(__dirname + "/views/add_news")
 });
 
-fetchData();
+app.post("/add_news",urlencodedParser, (req, res) => {
+    const url = req.body.link;
+    const source = req.body.source
+    request(url, (error,response,html)=>{
+        if(!error && response.statusCode ==200){
+            const $ = cheerio.load(html);
+
+            const siteHeading=$('.detail-wrap')
+            const dataInfo = $('.dateandsource').children('span').first().text();
+            const title = siteHeading.find('h1').text();
+            const text = siteHeading.find('p').text();
+            const imgUrl = siteHeading.find('img').attr("src");
+
+            fs.readFile('./assets/data/data.json', (err, data) => {
+                if (err) throw err;
+                let newsData = JSON.parse(data);
+                newsData[source]={...newsData[source],
+                    title: title,
+                    text: text,
+                    articleDate: dataInfo,
+                    imgUrl: imgUrl
+                };
+                newsData=JSON.stringify(newsData)
+                fs.writeFile("./assets/data/data.json", newsData,(error)=>{
+                    if(error) console.log(error)
+                })
+            });
+        }
+        res.render('add_news');
+    });
+});
+
+fetchData(); 
 
 
 // let parser = new Parser();
