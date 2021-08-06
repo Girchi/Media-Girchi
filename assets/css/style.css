@@ -860,11 +860,19 @@ h1, h2, h3, h4, h5, h6 {
   .main{
     margin: 1rem;
   }
-  .formGroupExampleInput{
-    margin-bottom: 2rem;
-    font-size: 1rem;
-  }
 }
+
+#important-button {
+  position: relative;
+  top: -50px;
+  left: calc(50% - 20px);
+}
+
+.formGroupExampleInput{
+  margin-bottom: 2rem;
+  font-size: 1rem;
+} 
+
 
 /* Add News */
 

@@ -112,6 +112,7 @@ body
       each obj in object
         a.main-card(href='#')
           .card.mb-5.flex-column
+              button.btn.btn-success#important-button(type="button" value=`${obj.id}`) მნიშვნელოვანი
               img.card-img-top(src=obj.imgUrl alt='Card image cap')
               .card-body
                 h5.card-title=obj.title
@@ -119,7 +120,6 @@ body
                 p.card-text
                   small.text-muted=obj.articleDate
       
-    
 
   // ======= Footer =======
   footer#footer
