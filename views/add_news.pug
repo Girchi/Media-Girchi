@@ -1,43 +1,7 @@
-
 include parts/head.pug
+include parts/navbar.pug 
 
-section#topbar.d-flex.align-items-center
-  .container.d-flex.justify-content-center.justify-content-md-between
-    .contact-info.d-flex.align-items-center
-      i.bi.bi-envelope-fill
-      a(href='mailto:contact@example.com') info@girchi.com
-    .social-links.d-none.d-md-block
-      a.twitter(href='#')
-        i.bi.bi-twitter
-      a.facebook(href='#')
-        i.bi.bi-facebook
-      a.instagram(href='#')
-        i.bi.bi-instagram
-      a.linkedin(href='#')
-        i.bi.bi-linkedin
-// ======= Header =======
-header#header.d-flex.align-items-center
-  .container.d-flex.align-items-center
-    h1.logo.me-auto
-      a(href='/index.pug')
-        img(src='./assets/img/download' alt='index')
-    // Uncomment below if you prefer to use an image logo
-    // <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>
-    nav#navbar.navbar
-      ul
-        li
-          a.nav-link.scrollto.active(href='#hero') &#x10DB;&#x10D7;&#x10D0;&#x10D5;&#x10D0;&#x10E0;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#main') &#x10E1;&#x10D8;&#x10D0;&#x10EE;&#x10DA;&#x10D4;&#x10D4;&#x10D1;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#team') &#x10D2;&#x10E3;&#x10DC;&#x10D3;&#x10D8;
-        li
-          a.nav-link.scrollto(href='#about') &#x10E9;&#x10D5;&#x10D4;&#x10DC;&#x10E1; &#x10E8;&#x10D4;&#x10E1;&#x10D0;&#x10EE;&#x10D4;&#x10D1;
-        li
-          a.nav-link.scrollto(href='#contact') &#x10D9;&#x10DD;&#x10DC;&#x10E2;&#x10D0;&#x10E5;&#x10E2;&#x10D8;
-      i.bi.bi-list.mobile-nav-toggle
-    // .navbar
-// End Header
+
 // News Add
 .alert.container.hiddenAlert.alert-warning.alert-dismissible.fade.show(role='alert')
   strong წარმატებით აიტვირთა!
@@ -57,7 +21,8 @@ form.container.news_add_container(action='/add_news' method='POST')
         option(value='on') On.ge
         option(value='formula') Formula
         option(value='palitranews') PalitraNews
-        option(value='mtavari') Mtavari Arkhi
+        option(value='mtavari') Mtavari
+        option(value='imedi') ImediNews
         option(value='tvpirveli') TV Pirveli
       
     .col-auto.my-1

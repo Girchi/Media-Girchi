@@ -20,6 +20,41 @@ const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
 
+async function scrapImedi(url) {
+    request(url, (error, response, html) => {
+        if(!error && response.statusCode === 200) {
+            const $ = cheerio.load(html);
+            const siteHeading = $('.details-wrap');
+            
+            const dataInfo = $('.dateandsource').children('span').first().text();
+            const title = siteHeading.find('h1').text();
+            const text = siteHeading.find('p').text();
+            const imgUrl = siteHeading.find('img').attr("src");
+
+            fs.readFile('./assets/data/data.json', (err, data) => {
+                if (err) throw err;
+                let newsData = JSON.parse(data);
+                Object.assign(newsData, {
+                    title: title,
+                    text: text,
+                    articleDate: dataInfo,
+                    imgUrl: imgUrl
+                });
+
+                console.log(newsData);
+                newsData = JSON.stringify(newsData);
+                fs.writeFile("./assets/data/data.json", newsData,(error)=>{
+                    if(error) console.log(error)
+                })
+            });
+
+        } 
+    });
+}
+
+scrapImedi('https://imedinews.ge/ge/theme/801/rodis-da-vin-gamoigona-pirveli-atsra-ra-daavadebebi-daamartskha-katsobriobam-vaqtsinis-meshvebit');
+
+
 request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-partniorebs-qveknistvis-sanqtsiebis-datsesebisken-ar-movutsodebt',(error,response,html)=>{
     if(!error && response.statusCode ==200){
         const $ = cheerio.load(html);
