@@ -67,7 +67,6 @@ async function fetchData() {
             fs.readFile("./assets/data/data.json", (err, data) => {
                 if(err) throw err;
                 const on_ge = JSON.parse(data).on;
-                console.log(on_ge);
                 app.get("/", (req, res) => {
                     res.render(__dirname + "/views/index", { 
                         params: {

@@ -1,156 +1,71 @@
-doctype html
-head
-  meta(charset='utf-8')
-  meta(content='width=device-width, initial-scale=1.0' name='viewport')
-  title მედია გირჩი
-  meta(content='' name='description')
-  meta(content='' name='keywords')
-  // Favicons
-  link(href='assets/img/download' rel='icon')
-  link(href='assets/img/apple-touch-icon.png' rel='apple-touch-icon')
-  // Google Fonts
-  link(href='https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' rel='stylesheet')
-  // Vendor CSS Files
-  link(href='assets/vendor/animate.css/animate.min.css' rel='stylesheet')
-  link(href='assets/vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet')
-  link(href='assets/vendor/bootstrap-icons/bootstrap-icons.css' rel='stylesheet')
-  link(href='assets/vendor/boxicons/css/boxicons.min.css' rel='stylesheet')
-  link(href='assets/vendor/glightbox/css/glightbox.min.css' rel='stylesheet')
-  link(href='assets/vendor/swiper/swiper-bundle.min.css' rel='stylesheet')
-  // Template Main CSS File
-  link(href='assets/css/style.css' rel='stylesheet')
-  script(async='' defer='' crossorigin='anonymous' src='https://connect.facebook.net/en_US/sdk.js')
-  //
-    =======================================================
-    * Template Name: Green - v4.3.0
-    * Template URL: https://bootstrapmade.com/green-free-one-page-bootstrap-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ========================================================
-// ======= Loader =======
-body
-  .outerContainer
-    .item
-      img(src='./assets/img/download')
-    .circle
-  // ======= Top Bar =======
-  section#topbar.d-flex.align-items-center
-    .container.d-flex.justify-content-center.justify-content-md-between
-      .contact-info.d-flex.align-items-center
-        i.bi.bi-envelope-fill
-        a(href='mailto:contact@example.com')
-          | info@girchi.com
-      .social-links.d-none.d-md-block
-        a.twitter(href='https://twitter.com/girchiparty' target='_blank')
-          i.bi.bi-twitter
-        a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
-          i.bi.bi-facebook
-        a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
-          i.bi.bi-instagram
-        //- a.linkedin(href='#')
-        //-   i.bi.bi-linkedin
-  // ======= Header =======
-  header#header.d-flex.align-items-center
-    .container.d-flex.align-items-center
-      h1.logo.me-auto
-        a(href='#')
-          img(src='./assets/img/download' alt='#')
-      nav#navbar.navbar
-        ul
-          li
-            a.nav-link.scrollto.active(href='#hero') მთავარი
-          li
-            a.nav-link.scrollto(href='#main') სიახლეები
-          li
-            a.nav-link.scrollto(href='#footer') კონტაქტი
-        i.bi.bi-list.mobile-nav-toggle
-      // .navbar
-  // End Header
-  // ======= Hero Section =======
-  section#hero
-    #heroCarousel.carousel.slide.carousel-fade(data-bs-interval='5000' data-bs-ride='carousel')
-      ol#hero-carousel-indicators.carousel-indicators
-      .carousel-inner(role='listbox')
-        // Slide 1
-        .carousel-item.active(style='background-image: url(assets/img/slide/slide-1.jpg)')
-          .carousel-container
-            .container
-              h2.animate__animated.animate__fadeInDown იდეა იმარჯვებს
-              p.animate__animated.animate__fadeInUp
-                | კომუნისტები დამოუკიდებლობის იდეამ დაამარცხა, შევარდნაძე არა კორუფციის იდეამ, სააკაშვილი არა ძალადობას იდეამ, დღეს ოპოზიციას არ გააჩნია ასეთი იდეა, რომ ხელისუფლება დაამარცხოს
-              a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(target='_blank' href='https://fb.watch/79nIC8jTYV/') ვრცლად
-        // Slide 2
-        .carousel-item(style='background-image: url(assets/img/slide/slide-2.jpg)')
-          .carousel-container
-            .container
-              h2.animate__animated.animate__fadeInDown ცხრა წლიანი თამაში
-              p.animate__animated.animate__fadeInUp
-                | მუდმივად ერთმანეთის დამხმარე რგოლის ფუნქციას ასრულებდა ქართული ოცნება და ნაციონალური მოძრაობა
-              a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
-        // Slide 3
-        .carousel-item(style='background-image: url(assets/img/slide/slide-3.jpg.jpg)')
-          .carousel-container
-            .container
-              h2.animate__animated.animate__fadeInDown დისკომფორტი ქოცებს
-              p.animate__animated.animate__fadeInUp
-                | ჩვენ ხომ პარლამენტში მხოლოდ შარლ მიშელის დოკუმენტის გამო არ ვართ, ზოგადად ნორმალურ საზოგადოებაში პარლამენტი ხომ უნდა ფუნქციონირებდეს, ამიტომ ჩვენ უნდა გამოვიყენოთ ის რესურსი რაც გვაქვს
-              a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
-      a.carousel-control-prev(href='#heroCarousel' role='button' data-bs-slide='prev')
-        span.carousel-control-prev-icon.bi.bi-chevron-left(aria-hidden='true')
-      a.carousel-control-next(href='#heroCarousel' role='button' data-bs-slide='next')
-        span.carousel-control-next-icon.bi.bi-chevron-right(aria-hidden='true')
-  // End Hero
-  .main
-    h3#main სიახლეები
-    .container.news_container
-      each obj in params
-        a.main-card(href='#')
-          .card.mb-5.flex-column
-              button.btn.btn-success#important-button(type="button" value=`${obj.id}`) მნიშვნელოვანი
-              img.card-img-top(src=obj.imgUrl alt='Card image cap')
-              .card-body
-                h5.card-title=obj.title
-                p.card-text=obj.article
-                p.card-text
-                  small.text-muted=obj.articleDate
+include parts/head.pug
+include parts/navbar.pug
+
+section#hero
+  #heroCarousel.carousel.slide.carousel-fade(data-bs-interval='5000' data-bs-ride='carousel')
+    ol#hero-carousel-indicators.carousel-indicators
+    .carousel-inner(role='listbox')
+      // Slide 1
+      .carousel-item.active(style='background-image: url(assets/img/slide/slide-1.jpg)')
+        .carousel-container
+          .container
+            h2.animate__animated.animate__fadeInDown იდეა იმარჯვებს
+            p.animate__animated.animate__fadeInUp
+              | კომუნისტები დამოუკიდებლობის იდეამ დაამარცხა, შევარდნაძე არა კორუფციის იდეამ, სააკაშვილი არა ძალადობას იდეამ, დღეს ოპოზიციას არ გააჩნია ასეთი იდეა, რომ ხელისუფლება დაამარცხოს
+            a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(target='_blank' href='https://fb.watch/79nIC8jTYV/') ვრცლად
+      // Slide 2
+      .carousel-item(style='background-image: url(assets/img/slide/slide-2.jpg)')
+        .carousel-container
+          .container
+            h2.animate__animated.animate__fadeInDown ცხრა წლიანი თამაში
+            p.animate__animated.animate__fadeInUp
+              | მუდმივად ერთმანეთის დამხმარე რგოლის ფუნქციას ასრულებდა ქართული ოცნება და ნაციონალური მოძრაობა
+            a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
+      // Slide 3
+      .carousel-item(style='background-image: url(assets/img/slide/slide-3.jpg.jpg)')
+        .carousel-container
+          .container
+            h2.animate__animated.animate__fadeInDown დისკომფორტი ქოცებს
+            p.animate__animated.animate__fadeInUp
+              | ჩვენ ხომ პარლამენტში მხოლოდ შარლ მიშელის დოკუმენტის გამო არ ვართ, ზოგადად ნორმალურ საზოგადოებაში პარლამენტი ხომ უნდა ფუნქციონირებდეს, ამიტომ ჩვენ უნდა გამოვიყენოთ ის რესურსი რაც გვაქვს
+            a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
+    a.carousel-control-prev(href='#heroCarousel' role='button' data-bs-slide='prev')
+      span.carousel-control-prev-icon.bi.bi-chevron-left(aria-hidden='true')
+    a.carousel-control-next(href='#heroCarousel' role='button' data-bs-slide='next')
+      span.carousel-control-next-icon.bi.bi-chevron-right(aria-hidden='true')
+// End Hero
+.main
+  a(href="http://127.0.0.1:3000/add_news") 
+    button.btn.btn-success სიახლის დამატება
+  h3#main სიახლეები
+  .container.news_container
+    each obj in params
+      a.main-card(href='#')
+        .card.mb-5.flex-column
+            button.btn.btn-success#important-button(type="button" value=`${obj.id}`) მნიშვნელოვანი
+            img.card-img-top(src=obj.imgUrl alt='Card image cap')
+            .card-body
+              h5.card-title=obj.title
+              p.card-text=obj.article
+              p.card-text
+                small.text-muted=obj.articleDate
 
 
-      each subObject in params.on_ge
-        a.main-card(href='#')
-          .card.mb-5.flex-column
-              button.btn.btn-success#important-button(type="button") მნიშვნელოვანი
-              img.card-img-top(src=subObject.imgUrl alt='Card image cap')
-              .card-body
-                h5.card-title=subObject.title
-                p.card-text=subObject.article
-                p.card-text
-                  small.text-muted=subObject.articleDate
-      
+    each subObject in params.on_ge
+      a.main-card(href='#')
+        .card.mb-5.flex-column
+            button.btn.btn-success#important-button(type="button") მნიშვნელოვანი
+            img.card-img-top(src=subObject.imgUrl alt='Card image cap')
+            .card-body
+              h5.card-title=subObject.title
+              p.card-text=subObject.article
+              p.card-text
+                small.text-muted=subObject.articleDate
+    
 
-  // ======= Footer =======
-  footer#footer
-    .container
-      h3 მედია გირჩი
-      .social-links
-        a.twitter(href='https://twitter.com/girchiparty' target='_blank')
-          i.bx.bxl-twitter
-        a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
-          i.bx.bxl-facebook
-        a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
-          i.bx.bxl-instagram
-      .copyright
-        p ყველა საავტორო უფლების თავზეც გავიარეთ. გირჩი
-  // End Footer
-  a.back-to-top.d-flex.align-items-center.justify-content-center(href='#')
-    i.bi.bi-arrow-up-short
+// ======= Footer =======
+include parts/footer.pug
+// End footer 
 
-// Vendor JS Files
-script(src='assets/vendor/bootstrap/js/bootstrap.bundle.min.js')
-script(src='assets/vendor/glightbox/js/glightbox.min.js')
-script(src='assets/vendor/isotope-layout/isotope.pkgd.min.js')
-script(src='assets/vendor/php-email-form/validate.js')
-script(src='assets/vendor/swiper/swiper-bundle.min.js')
-// Template Main JS File
-script(src='assets/js/main.js')
-script(src='assets/js/loader.js')
+include parts/scripts.pug
 

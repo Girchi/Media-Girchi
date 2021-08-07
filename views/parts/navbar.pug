@@ -1,0 +1,38 @@
+body
+  .outerContainer
+    .item
+      img(src='./assets/img/download')
+    .circle
+  // ======= Top Bar =======
+  section#topbar.d-flex.align-items-center
+    .container.d-flex.justify-content-center.justify-content-md-between
+      .contact-info.d-flex.align-items-center
+        i.bi.bi-envelope-fill
+        a(href='mailto:contact@example.com')
+          | info@girchi.com
+      .social-links.d-none.d-md-block
+        a.twitter(href='https://twitter.com/girchiparty' target='_blank')
+          i.bi.bi-twitter
+        a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
+          i.bi.bi-facebook
+        a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
+          i.bi.bi-instagram
+
+  // ======= Header =======
+  header#header.d-flex.align-items-center
+    .container.d-flex.align-items-center
+      h1.logo.me-auto
+        a(href='#')
+          img(src='./assets/img/download' alt='#')
+      nav#navbar.navbar
+        ul
+          li
+            a.nav-link.scrollto.active(href='#hero') მთავარი
+          li
+            a.nav-link.scrollto(href='#main') სიახლეები
+          li
+            a.nav-link.scrollto(href='#footer') კონტაქტი
+        i.bi.bi-list.mobile-nav-toggle
+      // .navbar
+  // End Header
+  // ======= Hero Section =======

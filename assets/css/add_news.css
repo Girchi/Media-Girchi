@@ -1,0 +1,49 @@
+.news_add_container {
+  margin: 4rem auto;
+  height: 50vh;
+  padding: 3rem 3rem;
+  border: solid #3c3c3c48 1px;
+  border-radius: 1rem;
+  background: #2f8650;
+}
+
+.news-btn {
+  color: #222222;
+  outline: none;
+}
+
+.news-btn:hover {
+  color: #222222;
+}
+
+.form-group {
+  text-align: center;
+  color: white;
+  margin-bottom: 2rem;
+  outline: none;
+}
+
+.formGroupExampleInput {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.close {
+  border: none;
+  background: #2f8650;
+  color: #ffffff;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+}
+
+.alert {
+  text-align: center;
+  background: #2f8650;
+  border-radius: 10px;
+  color: white;
+  margin-top: 2rem;
+}
+
+.hiddenAlert {
+  display: none;
+}
