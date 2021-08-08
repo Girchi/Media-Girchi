@@ -27,7 +27,7 @@ function readFileToDisplayNews(path) {
         if (err) throw err;
         const response = JSON.parse(data);
 
-        let obj = Object.assign(globalParams, response);
+        let object = Object.assign(globalParams, response);
         app.get("/", (req, res) => {
           res.render(__dirname + "/views/index", { object })
         });
