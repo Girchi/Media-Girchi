@@ -38,29 +38,17 @@ section#hero
   a(href="http://127.0.0.1:3000/add_news") 
     button.btn.btn-success სიახლის დამატება
   h3#main სიახლეები
+
   .container.news_container
-    each obj in params
-      a.main-card(href='#')
+    each subObject in object
+      a.main-card(href=subObject.link target='_blank')
         .card.mb-5.flex-column
-            button.btn.btn-success#important-button(type="button" value=`${obj.id}`) მნიშვნელოვანი
-            img.card-img-top(src=obj.imgUrl alt='Card image cap')
-            .card-body
-              h5.card-title=obj.title
-              p.card-text=obj.article
-              p.card-text
-                small.text-muted=obj.articleDate
-
-
-    each subObject in params.on_ge
-      a.main-card(href='#')
-        .card.mb-5.flex-column
-            button.btn.btn-success#important-button(type="button") მნიშვნელოვანი
-            img.card-img-top(src=subObject.imgUrl alt='Card image cap')
-            .card-body
-              h5.card-title=subObject.title
-              p.card-text=subObject.article
-              p.card-text
-                small.text-muted=subObject.articleDate
+          img.card-img-top(src=subObject.imgUrl alt='Card image cap')
+          .card-body
+            h5.card-title=subObject.title
+            p.card-text=subObject.article
+            p.card-text
+              small.text-muted=subObject.articleDate
     
 
 // ======= Footer =======
