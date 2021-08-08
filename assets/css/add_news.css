@@ -2,6 +2,10 @@
   font-family: "Raleway", sans-serif;
 }
 
+body {
+  background: #fff;
+}
+
 .news_add_container {
   margin: 4rem auto;
   height: auto;
