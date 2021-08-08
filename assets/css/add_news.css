@@ -1,6 +1,10 @@
+* {
+  font-family: "Raleway", sans-serif;
+}
+
 .news_add_container {
   margin: 4rem auto;
-  height: 50vh;
+  height: auto;
   padding: 3rem 3rem;
   border: solid #3c3c3c48 1px;
   border-radius: 1rem;
@@ -14,6 +18,10 @@
 
 .news-btn:hover {
   color: #222222;
+}
+
+.shadow-none {
+  margin-left: 1%;
 }
 
 .form-group {

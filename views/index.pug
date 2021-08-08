@@ -35,10 +35,7 @@ section#hero
       span.carousel-control-next-icon.bi.bi-chevron-right(aria-hidden='true')
 // End Hero
 .main
-  a(href="http://127.0.0.1:3000/add_news") 
-    button.btn.btn-success სიახლის დამატება
   h3#main სიახლეები
-
   .container.news_container
     each subObject in object
       a.main-card(href=subObject.link target='_blank')
@@ -46,7 +43,7 @@ section#hero
           img.card-img-top(src=subObject.imgUrl alt='Card image cap')
           .card-body
             h5.card-title=subObject.title
-            p.card-text=subObject.article
+            p.card-text=subObject.text
             p.card-text
               small.text-muted=subObject.articleDate
     
@@ -56,4 +53,5 @@ include parts/footer.pug
 // End footer 
 
 include parts/scripts.pug
+script(src="../assets/js/shortenArticle.js") 
 

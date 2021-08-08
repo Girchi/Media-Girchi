@@ -13,6 +13,10 @@ body {
   color: #444444;
 }
 
+.shorten {
+  color: red;
+}
+
 a {
   text-decoration: none;
   color: #5cb874;
@@ -138,7 +142,7 @@ h6 {
 # Top Bar
 --------------------------------------------------------------*/
 #topbar {
-  background: #fbfbfb;
+  background: #eceaea;
   font-size: 15px;
   height: 40px;
   padding: 0;
@@ -172,9 +176,6 @@ h6 {
   transition: 0.3s;
 }
 
-#topbar .social-links a:hover {
-  color: #5cb874;
-}
 
 /*--------------------------------------------------------------
 # Header
@@ -258,6 +259,22 @@ h6 {
 .navbar .active:focus,
 .navbar li:hover>a {
   color: #5cb874;
+}
+
+#topbar .social-links i{
+  transition: .4s;
+}
+
+#twitter:hover {
+  color: #1DA1F2;
+}
+
+#facebook:hover {
+  color: #4267B2;
+}
+
+#instagram:hover {
+  color: #bc2a8d;
 }
 
 .navbar .getstarted {
@@ -694,7 +711,7 @@ h6 {
 # main
 --------------------------------------------------------------*/
 .main {
-  margin: 10rem;
+  margin: 2rem;
 }
 
 .main-card {
@@ -708,16 +725,13 @@ h6 {
 .card {
   z-index: 100;
   transition: 1s;
-  /* border: none; */
+  padding: 3rem;
+  width: 95%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .card-body {
   align-items: center;
-}
-
-.card {
-  padding: 5rem;
 }
 
 .main h3 {
@@ -740,7 +754,8 @@ h6 {
   z-index: 1;
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  padding-top: 30px;
   background-size: cover;
 }
 
@@ -927,3 +942,5 @@ h6 {
   margin-bottom: 2rem;
   font-size: 1rem;
 }
+
+
