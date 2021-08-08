@@ -41,7 +41,6 @@ async function scrapImedi(url) {
                     imgUrl: imgUrl
                 });
 
-                console.log(newsData);
                 newsData = JSON.stringify(newsData);
                 fs.writeFile("./assets/data/data.json", newsData,(error)=>{
                     if(error) console.log(error)
@@ -55,34 +54,6 @@ async function scrapImedi(url) {
 scrapImedi('https://imedinews.ge/ge/theme/801/rodis-da-vin-gamoigona-pirveli-atsra-ra-daavadebebi-daamartskha-katsobriobam-vaqtsinis-meshvebit');
 
 
-request('https://imedinews.ge/ge/politika/212979/iago-khvichia-saertashoriso-partniorebs-qveknistvis-sanqtsiebis-datsesebisken-ar-movutsodebt',(error,response,html)=>{
-    if(!error && response.statusCode ==200){
-        const $ = cheerio.load(html);
-
-        const siteHeading = $('.detail-wrap')
-
-        const dataInfo = $('.dateandsource').children('span').first().text();
-        const title = siteHeading.find('h1').text();
-        const text = siteHeading.find('p').text();
-        const imgUrl = siteHeading.find('img').attr("src");
-
-  
-        fs.readFile('./assets/data/data.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData.on = {...newsData.on,
-                title: title,
-                text: text,
-                articleDate: dataInfo,
-                imgUrl: imgUrl
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFile("./assets/data/data.json", newsData,(error)=>{
-                if(error) console.log(error)
-            })
-        });
-    }
-});
 
 const fullHostName = "http://127.0.0.1:3000";
 async function fetchData() {
@@ -126,60 +97,209 @@ app.get("/add_news", (req, res) => {
 
 app.post("/add_news",urlencodedParser, (req, res) => {
     const url = req.body.link;
-    const source = req.body.source
-    request(url, (error,response,html)=>{
+    const source = req.body.source;
+
+
+    // ---------------------------TABULA--------------------------------
+    if(source==="tabula" && url){
+        request(url, (error,response,html)=>{
+            if(!error && response.statusCode ==200){
+                const $ = cheerio.load(html);
+    
+                const newsDiv=$('.om-main')
+                const title = newsDiv.find('h1').text();
+                const dataInfo = $('.ArticleHeaderDefault_metaItem__1OQi4').text();
+                const text = newsDiv.find('p').text();
+                const imgUrl = newsDiv.find('img').attr("src");
+
+                fs.readFile('./assets/data/tabula.json', (err, data) => {
+                    if (err) throw err;
+                    let newsData = JSON.parse(data);
+                    newsData[dataInfo]={...newsData[dataInfo],
+                        link: url,
+                        title: title,
+                        text: text,
+                        articleDate: dataInfo,
+                        imgUrl: imgUrl
+                    };
+                    newsData=JSON.stringify(newsData)
+                    fs.writeFileSync("./assets/data/tabula.json", newsData,(error)=>{
+                        if(error) console.log(error)
+                    })
+                });
+            }
+            res.render('add_news');
+        });
+    }
+
+    // ---------------------------ON--------------------------------
+    if(source==="on" && url){
+        request(url, (error,response,html)=>{
+            if(!error && response.statusCode ==200){
+                const $ = cheerio.load(html);
+    
+                const newsDiv=$('.col-article-content x-border-right')
+                const title = $('.article-title').text();
+                const dataInfo = $('.date').first().text();
+                const text = $('.article-body').text();
+                const imgUrl = `https:${$('.global-figure-image  ').attr("src")}`;
+                
+                fs.readFile('./assets/data/on.json', (err, data) => {
+                    if (err) throw err;
+                    let newsData = JSON.parse(data);
+                    newsData[dataInfo]={...newsData[dataInfo],
+                        link: url,
+                        title: title,
+                        text: text,
+                        articleDate: dataInfo,
+                        imgUrl: imgUrl
+                    };
+                    newsData=JSON.stringify(newsData)
+                    fs.writeFileSync("./assets/data/on.json", newsData,(error)=>{
+                        if(error) console.log(error)
+                    })
+                });
+            }
+            res.render('add_news');
+        });
+    }
+
+    // ---------------------------formula--------------------------------
+    if(source==="formula" && url){
+        request(url, (error,response,html)=>{
+            if(!error && response.statusCode ==200){
+                const $ = cheerio.load(html);
+    
+                const newsDiv=$('.arcticle')
+                const title = $('.news__inner__desc__title').text();
+                const dataInfo = $('.news__inner__images_created').text();
+                const text = $('.article-content').text();
+                const imgUrl = `https://formulanews.ge${$('.news__inner__main__image').find('img').attr("src")}`;
+                console.log(dataInfo)
+                
+                
+                
+                fs.readFile('./assets/data/formula.json', (err, data) => {
+                    if (err) throw err;
+                    let newsData = JSON.parse(data);
+                    newsData[dataInfo]={...newsData[dataInfo],
+                        link: url,
+                        title: title,
+                        text: text,
+                        articleDate: dataInfo,
+                        imgUrl: imgUrl
+                    };
+                    newsData=JSON.stringify(newsData)
+                    fs.writeFileSync("./assets/data/formula.json", newsData,(error)=>{
+                        if(error) console.log(error)
+                    })
+                });
+            }
+            res.render('add_news');
+        });
+    }
+    // ---------------------------PalitraNews--------------------------------
+    if(source==="palitranews" && url){
+        request(url, (error,response,html)=>{
+            if(!error && response.statusCode ==200){
+                const $ = cheerio.load(html);
+    
+                const newsDiv=$('.video_block')
+                const newText=$(".video_block_title_desc")
+                const title = $('.video_block_desc').text();
+                const dataInfo = $('.newsblockdate_video_page').text();
+                const text = newText.find('p').text();
+                const imgUrl = newsDiv.find('source').attr("src");
+                
+                
+                fs.readFile('./assets/data/palitra.json', (err, data) => {
+                    if (err) throw err;
+                    let newsData = JSON.parse(data);
+                    newsData[dataInfo]={...newsData[dataInfo],
+                        link: url,
+                        title: title,
+                        text: text,
+                        articleDate: dataInfo,
+                        imgUrl: imgUrl
+                    };
+                    newsData=JSON.stringify(newsData)
+                    fs.writeFileSync("./assets/data/palitra.json", newsData,(error)=>{
+                        if(error) console.log(error)
+                    })
+                });
+            }
+            res.render('add_news');
+        });
+    }
+    // ---------------------------Mtavari--------------------------------
+    if(source==="mtavari" && url){
+        console.log("yes- mtavari")
+        request(url, (error,response,html)=>{
+            if(!error && response.statusCode ==200){
+                const $ = cheerio.load(html);
+                
+                const newsDiv=$('.id__Content-bhuaj0-13')
+                const title = $('.id__Title-bhuaj0-10').text();
+                const dataInfo = $('.id__PublishedAndUpdated-bhuaj0-15').find('time').attr('title');
+                const text = $('.EditorContent__EditorContentWrapper-ygblm0-0').find('p').text();
+                const imgUrl = newsDiv.find('img').attr("src");
+                
+                
+                fs.readFile('./assets/data/mtavari.json', (err, data) => {
+                    if (err) throw err;
+                    let newsData = JSON.parse(data);
+                    newsData[dataInfo]={...newsData[dataInfo],
+                        link: url,
+                        title: title,
+                        text: text,
+                        articleDate: dataInfo,
+                        imgUrl: imgUrl
+                    };
+                    newsData=JSON.stringify(newsData)
+                    fs.writeFileSync("./assets/data/mtavari.json", newsData,(error)=>{
+                        if(error) console.log(error)
+                    })
+                });
+            }
+            res.render('add_news');
+        });
+    }
+    
+        // ---------------------------Imedi News--------------------------------
+    if(source==="imedi" && url){
+        console.log("imedi")
+        request(url,(error,response,html)=>{
         if(!error && response.statusCode ==200){
             const $ = cheerio.load(html);
 
-            const siteHeading=$('.detail-wrap')
+            const siteHeading = $('.detail-wrap')
+
             const dataInfo = $('.dateandsource').children('span').first().text();
             const title = siteHeading.find('h1').text();
             const text = siteHeading.find('p').text();
             const imgUrl = siteHeading.find('img').attr("src");
-
-            fs.readFile('./assets/data/data.json', (err, data) => {
+    
+            fs.readFile('./assets/data/imedinews.json', (err, data) => {
                 if (err) throw err;
                 let newsData = JSON.parse(data);
-                newsData[source]={...newsData[source],
+                newsData[dataInfo] = {...newsData[dataInfo],
                     title: title,
                     text: text,
                     articleDate: dataInfo,
                     imgUrl: imgUrl
                 };
-                newsData=JSON.stringify(newsData)
-                fs.writeFile("./assets/data/data.json", newsData,(error)=>{
+                newsData = JSON.stringify(newsData)
+                fs.writeFileSync("./assets/data/imedinews.json", newsData,(error)=>{
                     if(error) console.log(error)
                 })
             });
         }
+
         res.render('add_news');
-    });
+            
+        });
+    }
+    
 });
 
 fetchData(); 
-
-
-// let parser = new Parser();
-// (async () => {
-//     let feed = await parser.parseURL('https://rss.app/feeds/E4cHtYWoUj4jesXG.xml');
-//     // console.log(feed.title);
-  
-//     feed.items.forEach(item => {
-//     //   console.log(item.title + ':' + item.link)
-//     });
-// })();
-
-
-// request('https://rss.app/feeds/E4cHtYWoUj4jesXG.xml',(error,response,html)=>{
-//     if(!error && response.statusCode ==200){
-//         const $ = cheerio.load(html);
-
-
-//         const dataInfo = $('.dateandsource').children('span').first().text();
-//         // const title = siteHeading.find('h1').text();
-//         const text = find('h4.feed-item-title');
-//         // const imgUrl = siteHeading.find('img').attr("src");
-        
-//         console.log(text);
-//     }
-// });
