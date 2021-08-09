@@ -34,14 +34,14 @@ section#hero
     a.carousel-control-next(href='#heroCarousel' role='button' data-bs-slide='next')
       span.carousel-control-next-icon.bi.bi-chevron-right(aria-hidden='true')
 // End Hero
-.main
+.main.page
   h3#main სიახლეები
   hr.hrelement
-  .container.news_container
+  .container.news_container.archive
     each subObject in object
       a.main-card(href=subObject.link target='_blank')
-        .card.mb-5.flex-column
-          img.card-img-top(src=subObject.imgUrl alt='Card image cap')
+        .card.mb-5.flex-column.article
+          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
           .card-body
             h5.card-title=subObject.title
             p.card-text=subObject.text
