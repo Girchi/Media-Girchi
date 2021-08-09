@@ -1,4 +1,4 @@
-const article = document.querySelectorAll('.card-text'), n = 200,
+const article = document.querySelectorAll('.card-text'), n = 150,
 style = "color: #292424; font-weight: bolder; display: inline-block; white-space: nowrap;";
 
 article.forEach(el => {

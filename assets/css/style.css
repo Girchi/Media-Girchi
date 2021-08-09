@@ -728,7 +728,7 @@ h6 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 /* .card:hover{
@@ -904,8 +904,20 @@ h6 {
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
-
-@media (max-width: 992px) {
+@media (max-width: 1400px){
+  .card{
+    width: 300px;
+    height: 450px;
+  }
+  .image{
+    height: 200px;
+    width: 230px;
+  }
+  .card-title{
+    font-size: 13px;
+  }
+}
+@media (max-width: 1001px) {
   .breadcrumbs {
     margin-top: 66px;
   }
@@ -921,6 +933,17 @@ h6 {
     height: 200px;
     background-size: cover;
   }
+  .card{
+    width: 300px;
+    height: 450px;
+  }
+  .image{
+    height: 180px;
+    width: 210px;
+  }
+  .card-title{
+    font-size: 13px;
+  }
 
   .formGroupExampleInput {
     margin-bottom: 2rem;
@@ -932,11 +955,7 @@ h6 {
   }
 
   .card-text {
-    font-size: 13px;
-  }
-
-  .card-title {
-    font-size: 18px;
+    font-size: 11px;
   }
 
   #main {
