@@ -23,9 +23,14 @@ form.container.news_add_container(action='/add_news' method='POST')
         option(value='palitranews') PalitraNews
         option(value='mtavari') Mtavari
         option(value='imedi') ImediNews
+    label.accept-label(for='accept')
+      input#accept(type='checkbox' name='accept')
+      | მნიშვნელოვანი პოსტი
       
     .col-auto.my-1
       button.closeBtn.news-btn.btn.btn-primary.bg-white.mt-4(type='submit') დასტური
+    
+
 
 // ======= Footer =======
 include parts/footer.pug

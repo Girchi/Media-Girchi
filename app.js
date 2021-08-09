@@ -48,10 +48,12 @@ app.get("/add_news", (req, res) => {
   res.render(__dirname + "/views/add_news")
 });
 
+// Add news section
 app.post("/add_news", urlencodedParser, (req, res) => {
   const url = req.body.link;
   const source = req.body.source;
-  
+  const accept = req.body.accept;
+
   switch(source) {
     case "tabula":
         scrapTabula(url);
@@ -79,7 +81,7 @@ app.post("/add_news", urlencodedParser, (req, res) => {
         break;
 
     case "imedi":
-        scrapImedi(url);  
+        scrapImedi(url,accept);  
         res.render('add_news');
         break;
     }

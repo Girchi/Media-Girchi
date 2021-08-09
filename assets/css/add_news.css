@@ -59,3 +59,11 @@ body {
 .hiddenAlert {
   display: none;
 }
+#accept{
+  margin-right: 1rem;
+  background: #ffffff;
+}
+.accept-label{
+  margin-top: 1rem;
+  color: #ffffff;
+}
