@@ -1,38 +1,51 @@
 include parts/head.pug
 include parts/navbar.pug
 
-section#hero
-  #heroCarousel.carousel.slide.carousel-fade(data-bs-interval='5000' data-bs-ride='carousel')
-    ol#hero-carousel-indicators.carousel-indicators
-    .carousel-inner(role='listbox')
-      // Slide 1
-      .carousel-item.active(style='background-image: url(assets/img/slide/slide-1.jpg)')
-        .carousel-container
-          .container
-            h2.animate__animated.animate__fadeInDown იდეა იმარჯვებს
-            p.animate__animated.animate__fadeInUp
-              | კომუნისტები დამოუკიდებლობის იდეამ დაამარცხა, შევარდნაძე არა კორუფციის იდეამ, სააკაშვილი არა ძალადობას იდეამ, დღეს ოპოზიციას არ გააჩნია ასეთი იდეა, რომ ხელისუფლება დაამარცხოს
-            a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(target='_blank' href='https://fb.watch/79nIC8jTYV/') ვრცლად
-      // Slide 2
-      .carousel-item(style='background-image: url(assets/img/slide/slide-2.jpg)')
-        .carousel-container
-          .container
-            h2.animate__animated.animate__fadeInDown ცხრა წლიანი თამაში
-            p.animate__animated.animate__fadeInUp
-              | მუდმივად ერთმანეთის დამხმარე რგოლის ფუნქციას ასრულებდა ქართული ოცნება და ნაციონალური მოძრაობა
-            a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
-      // Slide 3
-      .carousel-item(style='background-image: url(assets/img/slide/slide-3.jpg.jpg)')
-        .carousel-container
-          .container
-            h2.animate__animated.animate__fadeInDown დისკომფორტი ქოცებს
-            p.animate__animated.animate__fadeInUp
-              | ჩვენ ხომ პარლამენტში მხოლოდ შარლ მიშელის დოკუმენტის გამო არ ვართ, ზოგადად ნორმალურ საზოგადოებაში პარლამენტი ხომ უნდა ფუნქციონირებდეს, ამიტომ ჩვენ უნდა გამოვიყენოთ ის რესურსი რაც გვაქვს
-            a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
-    a.carousel-control-prev(href='#heroCarousel' role='button' data-bs-slide='prev')
-      span.carousel-control-prev-icon.bi.bi-chevron-left(aria-hidden='true')
-    a.carousel-control-next(href='#heroCarousel' role='button' data-bs-slide='next')
-      span.carousel-control-next-icon.bi.bi-chevron-right(aria-hidden='true')
+//- .main.page
+//-   h3#main-important მნიშვნელოვანი სიახლეები
+//-   hr.hrelement
+//-   .container.news_container.archive
+//-     each subObject in object
+//-       a.main-card(href=subObject.link target='_blank')
+//-         .card.mb-5.flex-column.article
+//-           img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+//-           .card-body
+//-             h5.card-title=subObject.title
+//-             p.card-text=subObject.text
+//-             p.card-text
+//-               small.text-muted=subObject.articleDate
+//- section#hero
+//-   #heroCarousel.carousel.slide.carousel-fade(data-bs-interval='5000' data-bs-ride='carousel')
+//-     ol#hero-carousel-indicators.carousel-indicators
+//-     .carousel-inner(role='listbox')
+//-       // Slide 1
+//-       .carousel-item.active(style='background-image: url(assets/img/slide/slide-1.jpg)')
+//-         .carousel-container
+//-           .container
+//-             h2.animate__animated.animate__fadeInDown იდეა იმარჯვებს
+//-             p.animate__animated.animate__fadeInUp
+//-               | კომუნისტები დამოუკიდებლობის იდეამ დაამარცხა, შევარდნაძე არა კორუფციის იდეამ, სააკაშვილი არა ძალადობას იდეამ, დღეს ოპოზიციას არ გააჩნია ასეთი იდეა, რომ ხელისუფლება დაამარცხოს
+//-             a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(target='_blank' href='https://fb.watch/79nIC8jTYV/') ვრცლად
+//-       // Slide 2
+//-       .carousel-item(style='background-image: url(assets/img/slide/slide-2.jpg)')
+//-         .carousel-container
+//-           .container
+//-             h2.animate__animated.animate__fadeInDown ცხრა წლიანი თამაში
+//-             p.animate__animated.animate__fadeInUp
+//-               | მუდმივად ერთმანეთის დამხმარე რგოლის ფუნქციას ასრულებდა ქართული ოცნება და ნაციონალური მოძრაობა
+//-             a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
+//-       // Slide 3
+//-       .carousel-item(style='background-image: url(assets/img/slide/slide-3.jpg.jpg)')
+//-         .carousel-container
+//-           .container
+//-             h2.animate__animated.animate__fadeInDown დისკომფორტი ქოცებს
+//-             p.animate__animated.animate__fadeInUp
+//-               | ჩვენ ხომ პარლამენტში მხოლოდ შარლ მიშელის დოკუმენტის გამო არ ვართ, ზოგადად ნორმალურ საზოგადოებაში პარლამენტი ხომ უნდა ფუნქციონირებდეს, ამიტომ ჩვენ უნდა გამოვიყენოთ ის რესურსი რაც გვაქვს
+//-             a.btn-get-started.animate__animated.animate__fadeInUp.scrollto(href='#about') ვრცლად
+//-     a.carousel-control-prev(href='#heroCarousel' role='button' data-bs-slide='prev')
+//-       span.carousel-control-prev-icon.bi.bi-chevron-left(aria-hidden='true')
+//-     a.carousel-control-next(href='#heroCarousel' role='button' data-bs-slide='next')
+//-       span.carousel-control-next-icon.bi.bi-chevron-right(aria-hidden='true')
 // End Hero
 .main.page
   h3#main სიახლეები
@@ -47,6 +60,7 @@ section#hero
             p.card-text=subObject.text
             p.card-text
               small.text-muted=subObject.articleDate
+            img.small-img(src=subObject.logo alt='Card image cap')
     
 
 // ======= Footer =======

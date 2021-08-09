@@ -2,7 +2,7 @@ import fs from 'fs';
 import request from 'request'
 import cheerio from 'cheerio'
 
-export default function scrapImedi(url,accept) {
+export default function scrapImedi(url,accept,sourceImgUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -21,6 +21,8 @@ export default function scrapImedi(url,accept) {
             ...newsData[dataInfo],
             title: title,
             text: text,
+            link: url,
+            logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl
           };
@@ -36,6 +38,8 @@ export default function scrapImedi(url,accept) {
             ...newsData[dataInfo],
             title: title,
             text: text,
+            link: url,
+            logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl
           };
@@ -52,6 +56,8 @@ export default function scrapImedi(url,accept) {
             ...newsData[dataInfo],
             title: title,
             text: text,
+            link: url,
+            logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl
           };

@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import fs from 'fs';
 import bodyParser from 'body-parser';
 
+
 // JS Components
 import scrapTabula from './assets/components/scrapTabula.js';
 import scrapOn from './assets/components/scrapOn.js';
@@ -51,37 +52,64 @@ app.get("/add_news", (req, res) => {
 // Add news section
 app.post("/add_news", urlencodedParser, (req, res) => {
   const url = req.body.link;
-  const source = req.body.source;
+  let source;
+  let sourceImgUrl;
+  if(url.includes('https://on.ge')){
+    source='on';
+    sourceImgUrl='http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png'
+  }
+  if(url.includes('https://tabula.ge')){
+    source='tabula'
+    sourceImgUrl='https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png'
+  }
+  if(url.includes('https://formulanews.ge')){
+    source='formula'
+    sourceImgUrl='https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png'
+  }
+  if(url.includes('https://palitranews.ge')){
+    source='palitranews'
+    sourceImgUrl='https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg'
+  }
+  if(url.includes('https://mtavari.tv')){
+    source='mtavari'
+    sourceImgUrl='https://www.televizia.org/img/tv_mtavariarxi.png'
+  }
+  if(url.includes('https://imedinews.ge')){
+    source='imedi'
+    sourceImgUrl='https://www.imedi.ge/m/i/logo@2x.png'
+  }
+  console.log(source)
   const accept = req.body.accept;
 
   switch(source) {
     case "tabula":
-        scrapTabula(url);
+        scrapTabula(url,accept,sourceImgUrl);
         res.render('add_news');
         break;
 
     case "on":
-        scrapOn(url);
+        scrapOn(url,accept,sourceImgUrl);
+        console.log("Helo")
         res.render('add_news');
         break;
 
     case "formula":
-        scrapFormula(url);
+        scrapFormula(url,accept,sourceImgUrl);
         res.render('add_news');
         break;
 
     case "palitranews":
-        scrapPalitraNews(url);
+        scrapPalitraNews(url,accept,sourceImgUrl);
         res.render('add_news');
         break;
 
     case "mtavari":
-        scrapMtavari(url);
+        scrapMtavari(url,accept,sourceImgUrl);
         res.render('add_news');
         break;
 
     case "imedi":
-        scrapImedi(url,accept);  
+        scrapImedi(url,accept,sourceImgUrl);  
         res.render('add_news');
         break;
     }

@@ -11,18 +11,7 @@ include parts/navbar.pug
 form.container.news_add_container(action='/add_news' method='POST')
   .form-group
     label.formGroupExampleInput(for='formGroupExampleInput') &#x10E8;&#x10D4;&#x10D8;&#x10E7;&#x10D5;&#x10D0;&#x10DC;&#x10D4;&#x10D7; &#x10E1;&#x10D8;&#x10D0;&#x10EE;&#x10DA;&#x10D8;&#x10E1; &#x10DA;&#x10D8;&#x10DC;&#x10D9;&#x10D8;
-    input#formGroupExampleInput.shadow-none.form-control.mt-2(type='text' name='link' placeholder='ლინკი')
-  .form-row.align-items-center
-    .col-auto.my-1
-      label.mr-sm-4.text-white.mr-4(for='inlineFormCustomSelect') წყარო
-      select#inlineFormCustomSelect.shadow-none.custom-select.mr-sm-2.mt-2(name="source")
-        option.shadow-none(selected='') აირჩიე
-        option(value='tabula') Tabula
-        option(value='on') On.ge
-        option(value='formula') Formula
-        option(value='palitranews') PalitraNews
-        option(value='mtavari') Mtavari
-        option(value='imedi') ImediNews
+    input#formGroupExampleInput.shadow-none.form-control.mt-2(type='text' required='' name='link' placeholder='ლინკი')
     label.accept-label(for='accept')
       input#accept(type='checkbox' name='accept')
       | მნიშვნელოვანი პოსტი

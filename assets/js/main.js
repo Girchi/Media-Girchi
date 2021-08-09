@@ -178,8 +178,3 @@
 
 })()
 
-const alertBtn = document.querySelector(".closeBtn")
-const alert=document.querySelector(".alert");
-alertBtn.addEventListener('click',()=>{
-  alert.classList.remove("hiddenAlert");
-})
