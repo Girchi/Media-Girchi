@@ -10,7 +10,6 @@ function writeJSON(obj) {
 
     newsData[obj.pubDate] = {
         title: obj.title,
-        text: obj.title,
         link: obj.link,
         articleDate: obj.pubDate,
     };
@@ -18,6 +17,7 @@ function writeJSON(obj) {
     newsData = JSON.stringify(newsData);
     fs.writeFileSync("./assets/data/fb.json", newsData, (error) => {
       if (error) console.log(error)
+      console.log("Success");
     });
   } catch(err) { throw err };
 }
