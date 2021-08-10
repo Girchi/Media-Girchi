@@ -52,15 +52,18 @@ include parts/navbar.pug
   hr.hrelement
   .container.news_container.archive
     each subObject in object
-      a.main-card(href=subObject.link target='_blank')
-        .card.mb-5.flex-column.article
+      .main-card
+        .card.flex-column.article
           img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-          .card-body
+          a.card-body(href=subObject.link target='_blank')
             h5.card-title=subObject.title
             p.card-text=subObject.text
             p.card-text
               small.text-muted=subObject.articleDate
+          .img_font
             img.small-img(src=subObject.logo alt='Card image cap')
+            button.mark-btn.bg-white.mt-4(type='submit')
+              i.fas.fa-star(value=subObject)
     
 
 // ======= Footer =======
@@ -69,4 +72,5 @@ include parts/footer.pug
 
 include parts/scripts.pug
 script(src="../assets/js/shortenArticle.js") 
+script(type="module" src="../assets/js/clickFavorite.js") 
 

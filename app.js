@@ -15,6 +15,7 @@ import scrapMtavari from './assets/components/scrapMtavari.js';
 import scrapImedi from './assets/components/scrapImedi.js';
 
 
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -114,3 +115,4 @@ app.post("/add_news", urlencodedParser, (req, res) => {
         break;
     }
 });
+
