@@ -27,7 +27,6 @@ const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
 
-let globalParams = {}
 const postSourcesArr = ['formula.json', 'fb.json', 'imedinews.json', 'mtavari.json', 'on.json', 'palitra.json', 'tabula.json'];
 
 
@@ -38,7 +37,7 @@ app.get("/", (req, res) => {
 
     Object.assign(object, response);
   });
-  
+
   res.render(__dirname + "/views/index", { object })
 });
 
