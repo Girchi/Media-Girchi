@@ -25,11 +25,13 @@ const host = '127.0.0.1';
 const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
-// Automatically reading JSON files filenames to iterate over them in app.get("/")
-const postSourcesArr = fs.readdir('./assets/data', (err, files) => { if(err) throw err });
 
 app.get("/", (req, res) => {
   let object = {};
+  
+  // Automatically reading JSON files filenames to iterate over them in app.get("/")
+  let postSourcesArr = fs.readdirSync('./assets/data');
+  
   postSourcesArr.forEach(source => {
     let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
 
