@@ -120,3 +120,4 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 
 // Parsing Girchi's RSS Feed for getting Facebook's feed posts 
 parseRSSFeed();
+
