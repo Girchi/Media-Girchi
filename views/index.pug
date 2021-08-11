@@ -6,7 +6,7 @@ include parts/navbar.pug
   h3#main მნიშვნელოვანი სიახლეები
   hr.hrelement
   .container.news_container.archive
-    each subObject in object
+    each subObject in importantNews
       .main-card
         .card.flex-column.article
           img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
@@ -37,6 +37,7 @@ include parts/navbar.pug
             img.small-img(src=subObject.logo alt='Card image cap')
             button.mark-btn.bg-white.mt-4(type='submit')
               i.fas.fa-star(value=subObject)
+
     
 
 // ======= Footer =======

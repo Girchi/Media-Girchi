@@ -37,8 +37,9 @@ app.get("/", (req, res) => {
 
     Object.assign(object, response);
   });
-
-  res.render(__dirname + "/views/index", { object })
+  
+  let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
+  res.render(__dirname + "/views/index", { object, importantNews })
 });
 
 

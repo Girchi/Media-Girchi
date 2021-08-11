@@ -11,6 +11,7 @@ function writeJSON(obj) {
       title: obj.title,
       link: obj.link,
       articleDate: obj.pubDate,
+      content: obj.content
     };
 
     newsData = JSON.stringify(newsData);
