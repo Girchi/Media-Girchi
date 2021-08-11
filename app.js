@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
 
     Object.assign(object, response);
   });
-  
+
   res.render(__dirname + "/views/index", { object })
 });
 
@@ -46,6 +46,17 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.get("/add_news", (req, res) => {
   res.render(__dirname + "/views/add_news")
+});
+
+
+app.get("/girchi_news", (req, res) => {
+  let object = {};
+  
+  let response = JSON.parse(fs.readFileSync(`./assets/data/girchi.json`, 'utf-8'));
+
+  Object.assign(object, response);
+
+  res.render(__dirname + "/views/girchi_news",{ object })
 });
 
 // Add news section
@@ -84,35 +95,36 @@ app.post("/add_news", urlencodedParser, (req, res) => {
   }
 
   const accept = req.body.accept;
+  const accept1 = req.body.accept1;
 
   switch (source) {
     case "tabula":
-      scrapTabula(url, accept, sourceImgUrl);
+      scrapTabula(url, accept,accept1, sourceImgUrl);
       res.render('add_news');
       break;
 
     case "on":
-      scrapOn(url, accept, sourceImgUrl);
+      scrapOn(url, accept,accept1, sourceImgUrl);
       res.render('add_news');
       break;
 
     case "formula":
-      scrapFormula(url, accept, sourceImgUrl);
+      scrapFormula(url, accept,accept1, sourceImgUrl);
       res.render('add_news');
       break;
 
     case "palitranews":
-      scrapPalitraNews(url, accept, sourceImgUrl);
+      scrapPalitraNews(url, accept,accept1, sourceImgUrl);
       res.render('add_news');
       break;
 
     case "mtavari":
-      scrapMtavari(url, accept, sourceImgUrl);
+      scrapMtavari(url, accept,accept1, sourceImgUrl);
       res.render('add_news');
       break;
 
     case "imedi":
-      scrapImedi(url, accept, sourceImgUrl);
+      scrapImedi(url, accept,accept1,sourceImgUrl);
       res.render('add_news');
       break;
   }
