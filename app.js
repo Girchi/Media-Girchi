@@ -4,7 +4,6 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import fs from 'fs';
 import bodyParser from 'body-parser';
-import Parser from 'rss-parser';
 
 // JS Components
 import scrapTabula from './assets/components/scrapTabula.js';
@@ -26,10 +25,8 @@ const host = '127.0.0.1';
 const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
-
-let globalParams = {}
-const postSourcesArr = ['formula.json', 'fb.json', 'imedinews.json', 'mtavari.json', 'on.json', 'palitra.json', 'tabula.json'];
-
+// Automatically reading JSON files filenames to iterate over them in app.get("/")
+const postSourcesArr = fs.readdir('./assets/data', (err, files) => { if(err) throw err });
 
 app.get("/", (req, res) => {
   let object = {};
