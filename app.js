@@ -4,7 +4,6 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import fs from 'fs';
 import bodyParser from 'body-parser';
-import Parser from 'rss-parser';
 
 // JS Components
 import scrapTabula from './assets/components/scrapTabula.js';
@@ -27,11 +26,12 @@ const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 
 
-const postSourcesArr = ['formula.json', 'fb.json', 'imedinews.json', 'mtavari.json', 'on.json', 'palitra.json', 'tabula.json'];
-
-
 app.get("/", (req, res) => {
   let object = {};
+  
+  // Automatically reading JSON files filenames to iterate over them in app.get("/")
+  let postSourcesArr = fs.readdirSync('./assets/data');
+  
   postSourcesArr.forEach(source => {
     let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
 
@@ -46,6 +46,9 @@ const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 app.get("/add_news", (req, res) => {
   res.render(__dirname + "/views/add_news")
+});
+app.get("/girchi_news", (req, res) => {
+  res.render(__dirname + "/views/girchi_news")
 });
 
 // Add news section
@@ -119,4 +122,4 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 });
 
 // Parsing Girchi's RSS Feed for getting Facebook's feed posts 
-parseRSSFeed();
+// parseRSSFeed();
