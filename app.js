@@ -30,19 +30,18 @@ app.listen(port, host, () => console.log(`Server running at http://${host}:${por
 let globalParams = {}
 const postSourcesArr = ['formula.json', 'fb.json', 'imedinews.json', 'mtavari.json', 'on.json', 'palitra.json', 'tabula.json'];
 
-function readFileToDisplayNews(path) {
-  fs.readFile(`./assets/data/${path}`, (err, data) => {
-    if (err) throw err;
-    const response = JSON.parse(data);
 
-    let object = Object.assign(globalParams, response);
-    app.get("/", (req, res) => {
-      res.render(__dirname + "/views/index", { object })
-    });
-  })
-}
-// Display news from every JSON file
-postSourcesArr.forEach(source => readFileToDisplayNews(source));
+app.get("/", (req, res) => {
+  let object = {};
+  postSourcesArr.forEach(source => {
+    let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
+
+    Object.assign(object, response);
+  });
+  
+  res.render(__dirname + "/views/index", { object })
+});
+
 
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
