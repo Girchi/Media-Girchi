@@ -3,7 +3,6 @@ import request from 'request'
 import cheerio from 'cheerio'
 
 export default function scrapOn(url,accept,sourceImgUrl) {
-  console.log("zdzdzdzdzd")
   try {
     request(url, (error, response, html) => {
       if (!error && response.statusCode == 200) {
