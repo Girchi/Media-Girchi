@@ -27,6 +27,7 @@ app.listen(port, host, () => console.log(`Server running at http://${host}:${por
 
 
 app.get("/", (req, res) => {
+  parseRSSFeed();
   let object = {};
   
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
@@ -132,5 +133,5 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 });
 
 // Parsing Girchi's RSS Feed for getting Facebook's feed posts 
-parseRSSFeed();
+
 
