@@ -926,14 +926,13 @@ ul li a{
   right: 40px;
 }
 
-
 @media (max-width: 1370px) {
   .card {
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    height: 530px;
+    height: 500px;
     width: 400px;
   }
 
