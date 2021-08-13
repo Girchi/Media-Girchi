@@ -27,6 +27,23 @@ const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+// Functions
+const sentDataToImportant = async (obj)=>{
+  fs.readFile('assets/data/important.json', (err, data) => {
+    if (err) throw err;
+    let oldData = JSON.parse(data);
+    let newObj = JSON.parse(obj);
+    oldData[newObj.articleDate] = {
+      ...oldData[newObj.articleDate],
+      ...newObj
+    };
+    oldData = JSON.stringify(oldData)
+    fs.writeFile("assets/data/important.json", oldData, (error) => {
+      if (error) console.log(error)
+    })
+  });
+}
+
 app.get("/",urlencodedParser, (req, res) => {
   parseRSSFeed();
   let object = {};
@@ -46,20 +63,10 @@ app.get("/",urlencodedParser, (req, res) => {
 app.post("/",urlencodedParser, (req, res) => {
   const obj = req.body.obj;
 
-  fs.readFile('assets/data/important.json', (err, data) => {
-    if (err) throw err;
-    let oldData = JSON.parse(data);
-    let newObj = JSON.parse(obj);
-    oldData[newObj.articleDate] = {
-      ...oldData[newObj.articleDate],
-      ...newObj
-    };
-    oldData = JSON.stringify(oldData)
-    fs.writeFile("./assets/data/important.json", oldData, (error) => {
-      if (error) console.log(error)
-    })
-  });
+  sentDataToImportant(obj);
 
+
+  // parseRSSFeed();
   let object = {};
   
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
