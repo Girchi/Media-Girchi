@@ -12,6 +12,7 @@ import scrapFormula from './assets/components/scrapFormula.js';
 import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
 import scrapMtavari from './assets/components/scrapMtavari.js';
 import scrapImedi from './assets/components/scrapImedi.js';
+import scrapIpn from './assets/components/scrapIpn.js';
 import parseRSSFeed from './assets/components/parseRSSFeed.js';
 
 
@@ -98,6 +99,11 @@ app.post("/add_news", urlencodedParser, (req, res) => {
     sourceImgUrl = 'https://www.imedi.ge/m/i/logo@2x.png'
   }
 
+  if (url.includes('https://www.interpressnews.ge/')) {
+    source = 'ipn'
+    sourceImgUrl = 'https://www.interpressnews.ge/static/img/logofixed.svg'
+  }
+
   const accept = req.body.accept;
   const accept1 = req.body.accept1;
 
@@ -131,9 +137,10 @@ app.post("/add_news", urlencodedParser, (req, res) => {
       scrapImedi(url, accept,accept1,sourceImgUrl);
       res.render('add_news');
       break;
+
+    case "ipn":
+      scrapIpn(url, accept,accept1, sourceImgUrl);
+      res.render('add_news');
+      break;
   }
 });
-
-// Parsing Girchi's RSS Feed for getting Facebook's feed posts 
-
-
