@@ -20,6 +20,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -37,6 +38,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -54,6 +56,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -72,6 +75,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -89,6 +93,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -107,6 +112,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -124,6 +130,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,
@@ -142,6 +149,7 @@ export default function scrapFormula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Formula",
             title: title,
             text: text,
             link: url,

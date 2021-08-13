@@ -696,8 +696,13 @@ h6 {
   justify-content: space-between;
   align-items: center;
 }
-.fa-star{
-  color:#949494;
+.btn-click{
+  border: none;
+  color: rgba(163, 163, 163, 0.431);
+  text-align: center;
+  background: white;
+  text-decoration: none;
+  display: inline-block;
   font-size: 20px;
 }
 .background{

@@ -2,16 +2,16 @@ include parts/head.pug
 include parts/navbar.pug
 
 
-//- select.filter
-//-   option(default disabled selected value='default') არიჩიე წყარო
-//-   option(value='Formula') Formula
-//-   option(value='Facebook') Facebook
-//-   option(value='ImediNews') Imedi News
-//-   option(value='IPN') InterPress News
-//-   option(value='On') On
-//-   option(value='Mtavari') Mtavari
-//-   option(value='Palitra') Palitra
-//-   option(value='Tabula') Tabula
+select.filter
+  option.option(default disabled selected value='default') არიჩიე წყარო
+  option.option(value='Formula') Formula
+  option.option(value='Facebook') Facebook
+  option.option(value='ImediNews') Imedi News
+  option.option(value='IPN') InterPress News
+  option.option(value='On') On
+  option.option(value='Mtavari') Mtavari
+  option.option(value='Palitra') Palitra
+  option.option(value='Tabula') Tabula
 
 .main.page
   h3#main მნიშვნელოვანი სიახლეები
@@ -37,18 +37,18 @@ include parts/navbar.pug
   hr.hrelement
   .container.news_container.archive
     each subObject in object
-      .main-card
-        .card.flex-column.article
-          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-          a.card-body(href=subObject.link target='_blank')
-            h5.card-title=subObject.title
-            p.card-text=subObject.text
-            p.card-text
-              small.text-muted=subObject.articleDate
-          .img_font
-            img.small-img(src=subObject.logo alt='Card image cap')
-            button.mark-btn.bg-white.mt-4(type='submit')
-              i.fas.fa-star(value=subObject)
+      form.form(action='/' method='POST')
+        .main-card
+          .card.flex-column.article
+            img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+            a.card-body(href=subObject.link target='_blank')
+              h5.card-title=subObject.title
+              p(name='title' type='submit').card-text=subObject.text
+              p.card-text
+                small.text-muted=subObject.articleDate
+            .img_font
+              img.small-img(src=subObject.logo alt='Card image cap')
+              button.fas.fa-star.btn-click(type='submit' name="obj" value=subObject) 
 
 
 // ======= Footer =======
@@ -56,5 +56,7 @@ include parts/footer.pug
 // End footer 
 
 include parts/scripts.pug
+
 script(src="../assets/js/shortenArticle.js") 
+script(src="../assets/js/filterPosts.js")
 script(type="module" src="../assets/js/clickFavorite.js") 

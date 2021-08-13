@@ -19,12 +19,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
@@ -36,12 +37,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
@@ -53,12 +55,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
@@ -71,12 +74,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
@@ -88,12 +92,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
@@ -106,12 +111,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
@@ -123,12 +129,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
@@ -141,12 +148,13 @@ export default function scrapTabula(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Tabula",
             title: title,
             text: text,
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {

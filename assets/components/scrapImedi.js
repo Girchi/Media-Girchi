@@ -19,6 +19,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -36,6 +37,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -53,6 +55,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -71,6 +74,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -88,6 +92,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -106,6 +111,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -123,6 +129,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
@@ -141,6 +148,7 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
             ...newsData[dataInfo],
+            source: "Imedi",
             title: title,
             text: text,
             link: url,
