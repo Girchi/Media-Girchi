@@ -24,10 +24,12 @@ app.use("/assets", express.static("assets"));
 const host = '127.0.0.1';
 const port = 3000;
 app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
-
-app.get("/", (req, res) => {
-  parseRSSFeed();
+app.get("/",urlencodedParser, (req, res) => {
+    // const url = req.body.i;
+    // console.log(url);
+  // parseRSSFeed();
   let object = {};
   
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
@@ -44,7 +46,7 @@ app.get("/", (req, res) => {
 });
 
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 
 app.get("/add_news", (req, res) => {
   res.render(__dirname + "/views/add_news")
