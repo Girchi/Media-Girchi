@@ -620,11 +620,6 @@ h6 {
   align-items: center;
 }
 
-
-/* .main-card {
-  cursor: pointer;
-
-} */
 .news_container{
   margin-top: 1rem;
   display: flex;
@@ -923,4 +918,29 @@ ul li a{
 }
 .accept-label1{
   margin-left: 1rem;
+}
+
+.filter {
+  float: right;
+  position: relative;
+  right: 40px;
+}
+
+
+@media (max-width: 1370px) {
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 530px;
+    width: 400px;
+  }
+
+
+  /* .card-img-top {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  } */
 }
