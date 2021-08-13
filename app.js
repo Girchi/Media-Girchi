@@ -14,8 +14,9 @@ import scrapMtavari from './assets/components/scrapMtavari.js';
 import scrapImedi from './assets/components/scrapImedi.js';
 import scrapIpn from './assets/components/scrapIpn.js';
 import parseRSSFeed from './assets/components/parseRSSFeed.js';
+// import msg from "./assets/js/clickFavorite.js"
 
-
+// console.log(msg.SimpleMessage);
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -45,7 +46,50 @@ app.get("/",urlencodedParser, (req, res) => {
   let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
   res.render(__dirname + "/views/index", { object, importantNews })
 });
+app.post("/",urlencodedParser, (req, res) => {
+  const obj = req.body.obj;
 
+  fs.readFile('assets/data/important.json', (err, data) => {
+    if (err) throw err;
+    let oldData = JSON.parse(data);
+    let newObj = JSON.parse(obj);
+    oldData[newObj.articleDate] = {
+      ...oldData[newObj.articleDate],
+      ...newObj
+    };
+    oldData = JSON.stringify(oldData)
+    fs.writeFile("./assets/data/important.json", oldData, (error) => {
+      if (error) console.log(error)
+    })
+  });
+
+  // let oldData = JSON.parse(fs.readFileSync('assets/data/important.json', 'utf-8'));
+
+  // let newObj = JSON.parse(obj);
+  // oldData[newObj.articleDate] = {
+  //   ...oldData[newObj.articleDate],
+  //   ...newObj
+  // };
+  // oldData = JSON.stringify(oldData)
+  // fs.writeFile("./assets/data/important.json", oldData, (error) => {
+  //   if (error) console.log(error)
+  // })
+
+
+
+  // parseRSSFeed();
+  let object = {};
+  
+  // Automatically reading JSON files filenames to iterate over them in app.get("/")
+  let postSourcesArr = fs.readdirSync('./assets/data');
+  
+  postSourcesArr.forEach(source => {
+    let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
+    Object.assign(object, response);
+  });
+  let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
+  res.render('index.pug',{ object, importantNews });
+});
 
 
 
