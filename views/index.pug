@@ -2,6 +2,17 @@ include parts/head.pug
 include parts/navbar.pug
 
 
+//- select.filter
+//-   option(default disabled selected value='default') არიჩიე წყარო
+//-   option(value='Formula') Formula
+//-   option(value='Facebook') Facebook
+//-   option(value='ImediNews') Imedi News
+//-   option(value='IPN') InterPress News
+//-   option(value='On') On
+//-   option(value='Mtavari') Mtavari
+//-   option(value='Palitra') Palitra
+//-   option(value='Tabula') Tabula
+
 .main.page
   h3#main მნიშვნელოვანი სიახლეები
   hr.hrelement
@@ -19,6 +30,7 @@ include parts/navbar.pug
             img.small-img(src=subObject.logo alt='Card image cap')
             button.mark-btn.bg-white.mt-4(type='submit')
               i.fas.fa-star(value=subObject)
+
 // End Hero
 .main.page
   h3#main სიახლეები
