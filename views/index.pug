@@ -1,7 +1,6 @@
 include parts/head.pug
 include parts/navbar.pug
 
-
 select.filter
   option.option(default disabled selected value='default') არიჩიე წყარო
   option.option(value='Formula') Formula
@@ -18,7 +17,7 @@ select.filter
   hr.hrelement
   .container.news_container.archive
     each subObject in importantNews
-      .main-card
+      .main-card(value=subObject.source)
         .card.flex-column.article
           img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
           a.card-body(href=subObject.link target='_blank')
@@ -38,7 +37,7 @@ select.filter
   .container.news_container.archive
     each subObject in object
       form.form(action='/' method='POST')
-        .main-card
+        .main-card(value=subObject.source)
           .card.flex-column.article
             img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
             a.card-body(href=subObject.link target='_blank')

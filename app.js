@@ -14,7 +14,6 @@ import scrapMtavari from './assets/components/scrapMtavari.js';
 import scrapImedi from './assets/components/scrapImedi.js';
 import scrapIpn from './assets/components/scrapIpn.js';
 import parseRSSFeed from './assets/components/parseRSSFeed.js';
-// import msg from "./assets/js/clickFavorite.js"
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
