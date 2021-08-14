@@ -61,22 +61,21 @@ app.get("/",urlencodedParser, (req, res) => {
 });
 app.post("/",urlencodedParser, (req, res) => {
   const obj = req.body.obj;
-
+  console.log(obj)
   sentDataToImportant(obj);
-
-
-  // parseRSSFeed();
+  // // parseRSSFeed();
   let object = {};
   
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
   let postSourcesArr = fs.readdirSync('./assets/data');
   
   postSourcesArr.forEach(source => {
-    let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
-    Object.assign(object, response);
-  });
-  let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
-  res.render('index.pug',{ object, importantNews });
+      let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
+      Object.assign(object, response);
+    });
+    let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
+    res.status(200).render('index', { object, importantNews });
+  // res.render('index.pug',{ object, importantNews });
 });
 
 
