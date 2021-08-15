@@ -1,6 +1,7 @@
 const fs = require('fs');
 const request = require('request')
-const cheerio = request('cheerio');
+const cheerio = require('cheerio');
+
 
 function scrapTabula(url,accept,accept1,sourceImgUrl) {
   request(url, (error, response, html) => {
@@ -165,4 +166,5 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
     }
   });
 }
-module.exports=scrapTabula
+
+module.exports = scrapTabula;

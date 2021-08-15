@@ -1,8 +1,8 @@
 const fs = require('fs');
 const request = require('request');
-const cheerio = request('cheerio');
+const cheerio = require('cheerio');
 
-export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
+function scrapImedi(url,accept,accept1,sourceImgUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
@@ -166,3 +166,5 @@ export default function scrapImedi(url,accept,accept1,sourceImgUrl) {
     }
   });
 }
+
+module.exports = scrapImedi;

@@ -11,25 +11,27 @@ const fileURLToPath = require("url")
 const bodyParser = require('body-parser')
 
 // // JS Components
-// const scrapTabula = require('./assets/components/scrapTabula.js')
-// import scrapTabula from './assets/components/scrapTabula.js';
-// const scrapOn = require('/assets/components/scrapOn.js')
-// // import scrapOn from './assets/components/scrapOn.js';
-// const scrapFormula = require('./assets/components/scrapFormula.js')
-// // import scrapFormula from './assets/components/scrapFormula.js';
-// const scrapPalitraNews = require('./assets/components/scrapPalitraNews.js')
-// // import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
-// const scrapMtavari = require('./assets/components/scrapMtavari.js')
-// // import scrapMtavari from './assets/components/scrapMtavari.js';
-// const scrapImedi = require('./assets/components/scrapImedi.js')
-// // import scrapImedi from './assets/components/scrapImedi.js';
-// const scrapIpn = require('./assets/components/scrapIpn.js');
-// // import scrapIpn from './assets/components/scrapIpn.js';
-// const parseRSSFeed = require('./assets/components/parseRSSFeed.js')
-// // import parseRSSFeed from './assets/components/parseRSSFeed.js';
-// const isObject = require('util')
-// import { isObject } from 'util';
+const scrapTabula = require('./assets/components/scrapTabula.js')
+const scrapOn = require('./assets/components/scrapOn.js')
+const scrapFormula = require('./assets/components/scrapFormula.js')
+const scrapPalitraNews = require('./assets/components/scrapPalitraNews.js')
+const scrapMtavari = require('./assets/components/scrapMtavari.js')
+const scrapImedi = require('./assets/components/scrapImedi.js')
+const scrapIpn = require('./assets/components/scrapIpn.js');
+const parseRSSFeed = require('./assets/components/parseRSSFeed.js')
+const isObject = require('util')
 
+
+// ES6 IMPORTS
+// import scrapTabula from './assets/components/scrapTabula.js';
+// import scrapOn from './assets/components/scrapOn.js';
+// import scrapFormula from './assets/components/scrapFormula.js';
+// import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
+// import scrapMtavari from './assets/components/scrapMtavari.js';
+// import scrapImedi from './assets/components/scrapImedi.js';
+// import scrapIpn from './assets/components/scrapIpn.js';
+// import parseRSSFeed from './assets/components/parseRSSFeed.js';
+// import { isObject } from 'util';
 
 
 app.set("view engine","pug");

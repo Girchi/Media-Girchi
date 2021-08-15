@@ -1,8 +1,8 @@
 const fs = require('fs');
 const request = require('request');
-const cheerio = request('cheerio');
+const cheerio = require('cheerio');
 
-export default function scrapOn(url, accept, accept1, sourceImgUrl) {
+function scrapOn(url, accept, accept1, sourceImgUrl) {
   try {
     request(url, (error, response, html) => {
       if (!error && response.statusCode == 200) {
@@ -170,3 +170,5 @@ export default function scrapOn(url, accept, accept1, sourceImgUrl) {
   }
 
 }
+
+module.exports = scrapOn;
