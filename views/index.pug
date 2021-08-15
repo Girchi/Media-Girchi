@@ -1,6 +1,6 @@
 include parts/head.pug
 include parts/navbar.pug
-
+script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 select.filter
   option.option(default disabled selected value='default') არიჩიე წყარო
   option.option(value='Formula') Formula
@@ -27,27 +27,26 @@ select.filter
               small.text-muted=subObject.articleDate
           .img_font
             img.small-img(src=subObject.logo alt='Card image cap')
-            button.mark-btn.bg-white.mt-4(type='submit')
-              i.fas.fa-star(value=subObject)
 
-// End Hero
+
+//- // End Hero
 .main.page
   h3#main სიახლეები
   hr.hrelement
   .container.news_container.archive
     each subObject in object
-      form.form(action='/' method='POST')
-        .main-card(value=subObject.source)
+      .main-card.card-data(value=subObject)
           .card.flex-column.article
             img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
             a.card-body(href=subObject.link target='_blank')
               h5.card-title=subObject.title
-              p(name='title' type='submit').card-text=subObject.text
+              p(name='title').card-text=subObject.text
               p.card-text
                 small.text-muted=subObject.articleDate
             .img_font
               img.small-img(src=subObject.logo alt='Card image cap')
-              button.fas.fa-star.btn-click(type='submit' name="obj" value=subObject) 
+              button.fas.fa-star.btn-click( name="obj" value=subObject)
+         
 
 
 // ======= Footer =======
@@ -55,7 +54,9 @@ include parts/footer.pug
 // End footer 
 
 include parts/scripts.pug
-
+script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
+script(src="../assets/js/favorite.js") 
 script(src="../assets/js/shortenArticle.js") 
 script(src="../assets/js/filterPosts.js")
-script(type="module" src="../assets/js/clickFavorite.js") 
+script(type="module" src="../assets/js/clickFavorite.js")
+

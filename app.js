@@ -1,93 +1,89 @@
+// =------------------------------------------ SOCKET.io -----------------------------------/
+
 // Node modules
-import express from 'express';
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import fs from 'fs';
-import bodyParser from 'body-parser';
-
-// JS Components
-import scrapTabula from './assets/components/scrapTabula.js';
-import scrapOn from './assets/components/scrapOn.js';
-import scrapFormula from './assets/components/scrapFormula.js';
-import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
-import scrapMtavari from './assets/components/scrapMtavari.js';
-import scrapImedi from './assets/components/scrapImedi.js';
-import scrapIpn from './assets/components/scrapIpn.js';
-import parseRSSFeed from './assets/components/parseRSSFeed.js';
-
+const express = require("express");
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-app.set("view engine", "pug");
+const server = require("http").createServer(app);
+const fs = require('fs');
+const io =require("socket.io")(server,{cors:{origin: "*"}});
+const dirname = require("path")
+const fileURLToPath = require("url")
+const bodyParser = require('body-parser')
+
+// // JS Components
+// const scrapTabula = require('./assets/components/scrapTabula.js')
+// import scrapTabula from './assets/components/scrapTabula.js';
+// const scrapOn = require('/assets/components/scrapOn.js')
+// // import scrapOn from './assets/components/scrapOn.js';
+// const scrapFormula = require('./assets/components/scrapFormula.js')
+// // import scrapFormula from './assets/components/scrapFormula.js';
+// const scrapPalitraNews = require('./assets/components/scrapPalitraNews.js')
+// // import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
+// const scrapMtavari = require('./assets/components/scrapMtavari.js')
+// // import scrapMtavari from './assets/components/scrapMtavari.js';
+// const scrapImedi = require('./assets/components/scrapImedi.js')
+// // import scrapImedi from './assets/components/scrapImedi.js';
+// const scrapIpn = require('./assets/components/scrapIpn.js');
+// // import scrapIpn from './assets/components/scrapIpn.js';
+// const parseRSSFeed = require('./assets/components/parseRSSFeed.js')
+// // import parseRSSFeed from './assets/components/parseRSSFeed.js';
+// const isObject = require('util')
+// import { isObject } from 'util';
+
+
+
+app.set("view engine","pug");
 app.use("/assets", express.static("assets"));
 
-const host = '127.0.0.1';
-const port = 3000;
-app.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
-const urlencodedParser = bodyParser.urlencoded({ extended: false });
-
-// Functions
-const sentDataToImportant = async (obj)=>{
-  fs.readFile('assets/data/important.json', (err, data) => {
-    if (err) throw err;
-    let oldData = JSON.parse(data);
-    let newObj = JSON.parse(obj);
-    oldData[newObj.articleDate] = {
-      ...oldData[newObj.articleDate],
-      ...newObj
-    };
-    oldData = JSON.stringify(oldData)
-    fs.writeFile("assets/data/important.json", oldData, (error) => {
-      if (error) console.log(error)
-    })
-  });
-}
-
-app.get("/",urlencodedParser, (req, res) => {
-  parseRSSFeed();
+app.get("/",(req,res)=>{
+  // parseRSSFeed();
   let object = {};
-  
+
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
   let postSourcesArr = fs.readdirSync('./assets/data');
-  
+
   postSourcesArr.forEach(source => {
     let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
 
     Object.assign(object, response);
   });
-  
+
   let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
-  res.render(__dirname + "/views/index", { object, importantNews })
-});
-app.post("/",urlencodedParser, (req, res) => {
-  const obj = req.body.obj;
-  console.log(obj)
-  sentDataToImportant(obj);
-  // // parseRSSFeed();
-  let object = {};
-  
-  // Automatically reading JSON files filenames to iterate over them in app.get("/")
-  let postSourcesArr = fs.readdirSync('./assets/data');
-  
-  postSourcesArr.forEach(source => {
-      let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, 'utf-8'));
-      Object.assign(object, response);
-    });
-    let importantNews = JSON.parse(fs.readFileSync('./assets/data/important.json', 'utf-8'));
-    res.status(200).render('index', { object, importantNews });
-  // res.render('index.pug',{ object, importantNews });
-});
+  res.render("index",{ object, importantNews });
+})
 
+const host = '127.0.0.1';
+const port = 3000;
+server.listen(port, host, () => console.log(`Server running at http://${host}:${port}/\n`));
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+io.on("connection",(socket)=>{
+  console.log("User : " + socket.id);
+
+  socket.on("message",(obj)=>{
+    fs.readFile('assets/data/important.json', (err, data) => {
+      if (err) throw err;
+          let oldData = JSON.parse(data);
+          let newObj = JSON.parse(obj);
+          oldData[newObj.articleDate] = {
+            ...oldData[newObj.articleDate],
+            ...newObj
+          };
+          oldData = JSON.stringify(oldData)
+          fs.writeFile("assets/data/important.json", oldData, (error) => {
+            if (error) console.log(error)
+          })
+        });
+  })
+})
 
 app.get("/add_news", (req, res) => {
   res.render(__dirname + "/views/add_news")
 });
 
-
 app.get("/girchi_news", (req, res) => {
   let object = {};
-  
+
   let response = JSON.parse(fs.readFileSync(`./assets/data/girchi.json`, 'utf-8'));
 
   Object.assign(object, response);

@@ -1,8 +1,9 @@
-import fs from 'fs';
-import request from 'request'
-import cheerio from 'cheerio'
+const fs = require('fs');
+const request = require('request');
+const cheerio = request('cheerio');
 
-export default function scrapIpn(url, accept, accept1, sourceImgUrl) {
+
+export function scrapIpn(url, accept, accept1, sourceImgUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);

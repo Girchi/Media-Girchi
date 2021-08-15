@@ -1,6 +1,6 @@
-import fs from 'fs';
-import request from 'request'
-import cheerio from 'cheerio'
+const fs = require('fs');
+const request = require('request');
+const cheerio = request('cheerio');
 
 export default function scrapOn(url, accept, accept1, sourceImgUrl) {
   try {
