@@ -26,7 +26,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
@@ -44,7 +45,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
@@ -62,7 +64,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/formula.json", newsData, (error) => {
@@ -81,7 +84,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
@@ -99,7 +103,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/formula.json", newsData, (error) => {
@@ -118,7 +123,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
@@ -136,7 +142,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/formula.json", newsData, (error) => {
@@ -155,7 +162,8 @@ function scrapFormula(url,accept,accept1,sourceImgUrl) {
             link: url,
             logo: sourceImgUrl,
             articleDate: dataInfo,
-            imgUrl: imgUrl
+            imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/formula.json", newsData, (error) => {

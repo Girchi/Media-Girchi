@@ -12,7 +12,8 @@ function writeJSON(obj) {
       link: obj.link,
       articleDate: obj.pubDate,
       content: obj.content,
-      logo: "./assets/img/icons/facebook.png"
+      logo: "./assets/img/icons/facebook.png",
+      important: false
     };
 
     newsData = JSON.stringify(newsData);
