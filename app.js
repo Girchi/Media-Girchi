@@ -10,6 +10,7 @@ const dirname = require("path");
 const fileURLToPath = require("url");
 const bodyParser = require("body-parser");
 
+
 // // JS Components
 const scrapTabula = require("./assets/components/scrapTabula.js");
 const scrapOn = require("./assets/components/scrapOn.js");
@@ -27,8 +28,8 @@ const isObject = require("util");
 // import scrapFormula from './assets/components/scrapFormula.js';
 // import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
 // import scrapMtavari from './assets/components/scrapMtavari.js';
-// import scrapImedi from './assets/components/scrapImedi.js';
 // import scrapIpn from './assets/components/scrapIpn.js';
+// import scrapImedi from './assets/components/scrapImedi.js';
 // import parseRSSFeed from './assets/components/parseRSSFeed.js';
 // import { isObject } from 'util';
 
