@@ -2,7 +2,7 @@
   "name": "media_girchi",
   "version": "1.0.0",
   "description": "Thanks for downloading this template!",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,12 +10,8 @@
     "type": "git",
     "url": "https://github.com/Girchi/Media_Girchi.git"
   },
-  "author": "",
+  "author": "N.N, G.K",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/GiorgiKeburia/Media_Girchi/issues"
-  },
-  "homepage": "https://github.com/GiorgiKeburia/Media_Girchi#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cheerio": "^1.0.0-rc.10",
