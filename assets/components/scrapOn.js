@@ -10,11 +10,11 @@ function scrapOn(url, accept, accept1, sourceImgUrl) {
       if (!error && response.statusCode == 200) {
         const $ = cheerio.load(html);
 
-        const newsDiv = $('.col-article-content x-border-right')
-        const title = $('.article-title').text();
-        const dataInfo = $('.date').first().text();
-        const text = $('.article-body').text();
-        const imgUrl = `https:${$('.global-figure-image  ').attr("src")}`;
+        const newsDiv = $(".col-article-content x-border-right");
+        const title = $(".article-title").text();
+        const dataInfo = $(".date").first().text();
+        const text = $(".article-body").text();
+        const imgUrl = `https:${$(".global-figure-image  ").attr("src")}`;
 
         const writeGirchi = () => writeDataToGirchi("on.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
         const writeImportants = () => writeDataToImportants("on.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);

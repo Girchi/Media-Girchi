@@ -12,7 +12,7 @@ function scrapIpn(url, accept, accept1, sourceImgUrl) {
         const $ = cheerio.load(html);
 
         const title = $("*[itemprop='name']").first().text();
-        const dataInfo = $('time').first().text();
+        const dataInfo = $("time").first().text();
         const text = $("*[itemprop='description']").text();
         const imgUrl = $("*[itemprop='image']").attr("data-src");
 

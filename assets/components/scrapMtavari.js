@@ -4,16 +4,20 @@ const writeDataToGirchi = require('./writeDataToGirchi');
 const writeDataToImportants = require('./writeDataToImportants');
 const writeToSource = require('./writeToSource');
 
-function scrapMtavari(url,accept,accept1,sourceImgUrl) {
+function scrapMtavari(url, accept, accept1, sourceImgUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
 
-      const newsDiv = $('.id__Content-bhuaj0-13')
-      const title = $('.id__Title-bhuaj0-10').text();
-      const dataInfo = $('.id__PublishedAndUpdated-bhuaj0-15').find('time').attr('title');
-      const text = $('.EditorContent__EditorContentWrapper-ygblm0-0').find('p').text();
-      const imgUrl = newsDiv.find('img').attr("src");
+      const newsDiv = $(".id__Content-bhuaj0-13");
+      const title = $(".id__Title-bhuaj0-10").text();
+      const dataInfo = $(".id__PublishedAndUpdated-bhuaj0-15")
+        .find("time")
+        .attr("title");
+      const text = $(".EditorContent__EditorContentWrapper-ygblm0-0")
+        .find("p")
+        .text();
+      const imgUrl = newsDiv.find("img").attr("src");
 
       const writeGirchi = () => writeDataToGirchi("mtavari.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
       const writeImportants = () => writeDataToImportants("mtavari.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);

@@ -68,15 +68,16 @@ io.on("connection", (socket) => {
   socket.on("message", (obj) => {
     const checkData = JSON.parse(obj);
     const importance = checkData.important;
-    const jsonName = checkData.fileName;
+    const important = !importance;
+    const filename = checkData.fileName;
+    console.log(filename);
     console.log(importance);
     if (importance === false) {
-      const reverseImportant = !importance;
       fs.readFile("assets/data/important.json", (err, data) => {
         if (err) throw err;
         let oldData = JSON.parse(data);
         let newObj = JSON.parse(obj);
-        newObj["important"] = reverseImportant;
+        newObj["important"] = important;
         oldData[newObj.articleDate] = {
           ...oldData[newObj.articleDate],
           ...newObj,
@@ -86,9 +87,19 @@ io.on("connection", (socket) => {
           if (error) console.log(error);
         });
       });
+      fs.readFile(`assets/data/${filename}`, (err, data) => {
+        if (err) throw err;
+        let oldData = JSON.parse(data);
+        oldData[checkData.articleDate].important = true
+
+        oldData = JSON.stringify(oldData);
+        fs.writeFile(`assets/data/${filename}`, oldData, (error) => {
+          if (error) console.log(error);
+        });
+      });
     } else {
       // const reverseImportant=!importance
-      console.log("already true");
+      console.log("This news is already MARKED!!");
     }
   });
 });
