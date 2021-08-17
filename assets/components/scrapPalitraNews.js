@@ -1,21 +1,21 @@
-const fs = require('fs');
-const request = require('request');
-const cheerio = require('cheerio');
+const fs = require("fs");
+const request = require("request");
+const cheerio = require("cheerio");
 
-function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
+function scrapPalitraNews(url, accept, accept1, sourceImgUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);
 
-      const newsDiv = $('.video_block')
-      const newText = $(".video_block_title_desc")
-      const title = $('.video_block_desc').text();
-      const dataInfo = $('.newsblockdate_video_page').text();
-      const text = newText.find('p').text();
-      const imgUrl = newsDiv.find('source').attr("src");
+      const newsDiv = $(".video_block");
+      const newText = $(".video_block_title_desc");
+      const title = $(".video_block_desc").text();
+      const dataInfo = $(".newsblockdate_video_page").text();
+      const text = newText.find("p").text();
+      const imgUrl = newsDiv.find("source").attr("src");
 
-      if(accept==="on" && accept1==="on"){
-        fs.readFile('./assets/data/girchi.json', (err, data) => {
+      if (accept === "on" && accept1 === "on") {
+        fs.readFile("./assets/data/girchi.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -27,14 +27,15 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
+          newsData = JSON.stringify(newsData);
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+            if (error) console.log(error);
+          });
         });
-        fs.readFile('./assets/data/important.json', (err, data) => {
+        fs.readFile("./assets/data/important.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -46,14 +47,19 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+          newsData = JSON.stringify(newsData);
+          fs.writeFileSync(
+            "./assets/data/important.json",
+            newsData,
+            (error) => {
+              if (error) console.log(error);
+            }
+          );
         });
-        fs.readFile('./assets/data/palitra.json', (err, data) => {
+        fs.readFile("./assets/data/palitra.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -65,15 +71,16 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
+          newsData = JSON.stringify(newsData);
           fs.writeFileSync("./assets/data/palitra.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+            if (error) console.log(error);
+          });
         });
-      }else if(accept==="on"){
-        fs.readFile('./assets/data/important.json', (err, data) => {
+      } else if (accept === "on") {
+        fs.readFile("./assets/data/important.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -85,14 +92,19 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+          newsData = JSON.stringify(newsData);
+          fs.writeFileSync(
+            "./assets/data/important.json",
+            newsData,
+            (error) => {
+              if (error) console.log(error);
+            }
+          );
         });
-        fs.readFile('./assets/data/palitra.json', (err, data) => {
+        fs.readFile("./assets/data/palitra.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -104,15 +116,16 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
+          newsData = JSON.stringify(newsData);
           fs.writeFileSync("./assets/data/palitra.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+            if (error) console.log(error);
+          });
         });
-      }else if(accept1==="on"){
-        fs.readFile('./assets/data/girchi.json', (err, data) => {
+      } else if (accept1 === "on") {
+        fs.readFile("./assets/data/girchi.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -124,14 +137,15 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
+          newsData = JSON.stringify(newsData);
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+            if (error) console.log(error);
+          });
         });
-        fs.readFile('./assets/data/palitra.json', (err, data) => {
+        fs.readFile("./assets/data/palitra.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -143,15 +157,16 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
+          newsData = JSON.stringify(newsData);
           fs.writeFileSync("./assets/data/palitra.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+            if (error) console.log(error);
+          });
         });
-      }else{
-        fs.readFile('./assets/data/palitra.json', (err, data) => {
+      } else {
+        fs.readFile("./assets/data/palitra.json", (err, data) => {
           if (err) throw err;
           let newsData = JSON.parse(data);
           newsData[dataInfo] = {
@@ -163,12 +178,13 @@ function scrapPalitraNews(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
-            important: false
+            fileName: "palitra.json",
+            important: false,
           };
-          newsData = JSON.stringify(newsData)
+          newsData = JSON.stringify(newsData);
           fs.writeFileSync("./assets/data/palitra.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
+            if (error) console.log(error);
+          });
         });
       }
     }

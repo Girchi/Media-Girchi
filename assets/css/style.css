@@ -826,7 +826,10 @@ h6 {
 #footer .credits {
   font-size: 13px;
 }
-
+.succes{
+  color:#449d5b;
+  font-size: 1.4rem;
+}
 
 /*--------------------------------------------------------------
 # Media Query

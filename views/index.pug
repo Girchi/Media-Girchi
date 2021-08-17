@@ -47,7 +47,13 @@ select.filter
                 small.text-muted=subObject.articleDate
             .img_font
               img.small-img(src=subObject.logo alt='Card image cap')
-              button.fas.fa-star.btn-click( name="obj" value=subObject)
+              if (subObject.important===false)
+                abb(title="მნიშვნელოვანად მონიშვნა")  
+                  button.fas.fa-star.btn-click( name="obj" value=subObject)
+              else 
+                abb(title="მნიშვნელოვანი სიახლე")  
+                  i.fas.fa-check.succes
+
          
 
 
