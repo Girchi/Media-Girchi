@@ -11,7 +11,7 @@ export default function automateOn() {
 
       let text = obj[3].children[0].data;
       let url = obj[3].attribs.href;
-      for (let i = 0; i < obj.length; i++) {
+      for (let i = 0; i < 15; i++) {
         automatedWriteToSource(obj[i].attribs.href, "on.json", "On", "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png");
       }
     } else {
