@@ -23,6 +23,7 @@ import scrapImedi from './assets/components/Scrapping/scrapImedi.js';
 import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
 
 import automateOn from './assets/components/automatedScrapping/automateOn.js';
+import automateImedi from './assets/components/automatedScrapping/automateImedi.js';
 
 
 const app = express();
@@ -203,3 +204,4 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 
 
 // automateOn();
+// automateImedi()
