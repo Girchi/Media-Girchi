@@ -1,6 +1,6 @@
-const fs = require('fs');
+import fs from 'fs';
 
-function writeToSource(fileName, name, title, dataInfo, text, imgUrl, sourceImgUrl, url) {
+export default function writeToSource(fileName, name, title, dataInfo, text, imgUrl, sourceImgUrl, url) {
   fs.readFile(`./assets/data/${fileName}`, (err, data) => {
     if (err) throw err;
     let newsData = JSON.parse(data);
@@ -22,5 +22,3 @@ function writeToSource(fileName, name, title, dataInfo, text, imgUrl, sourceImgU
     })
   });
 }
-
-module.exports = writeToSource;

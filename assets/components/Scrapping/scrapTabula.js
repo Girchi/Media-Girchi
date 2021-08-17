@@ -1,11 +1,11 @@
-const request = require('request');
-const cheerio = require('cheerio');
-const writeDataToGirchi = require('../writingData/writeDataToGirchi');
-const writeDataToImportants = require('../writingData/writeDataToImportants');
-const writeToSource = require('../writingData/writeToSource');
+import request from 'request';
+import cheerio from 'cheerio'; 
+import writeDataToGirchi from '../writingData/writeDataToGirchi.js';
+import writeDataToImportants from '../writingData/writeDataToImportants.js';
+import writeToSource from '../writingData/writeToSource.js';
 
 
-function scrapTabula(url, accept, accept1, sourceImgUrl) {
+export default function scrapTabula(url, accept, accept1, sourceImgUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode === 200) {
       const $ = cheerio.load(html);
@@ -37,5 +37,3 @@ function scrapTabula(url, accept, accept1, sourceImgUrl) {
     }
   });
 }
-
-module.exports = scrapTabula;

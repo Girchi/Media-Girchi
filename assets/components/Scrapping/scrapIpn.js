@@ -1,11 +1,11 @@
-const request = require('request');
-const cheerio = require('cheerio');
-const writeDataToGirchi = require('../writingData/writeDataToGirchi');
-const writeDataToImportants = require('../writingData/writeDataToImportants');
-const writeToSource = require('../writingData/writeToSource');
+import request from 'request';
+import cheerio from 'cheerio'; 
+import writeDataToGirchi from '../writingData/writeDataToGirchi.js';
+import writeDataToImportants from '../writingData/writeDataToImportants.js';
+import writeToSource from '../writingData/writeToSource.js';
 
 
-function scrapIpn(url, accept, accept1, sourceImgUrl) {
+export default function scrapIpn(url, accept, accept1, sourceImgUrl) {
   try {
     request(url, (error, response, html) => {
       if (!error && response.statusCode == 200) {
@@ -42,5 +42,3 @@ function scrapIpn(url, accept, accept1, sourceImgUrl) {
     console.log(err);
   }
 }
-
-module.exports = scrapIpn;

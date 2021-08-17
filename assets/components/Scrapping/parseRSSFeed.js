@@ -1,5 +1,5 @@
-const fs = require('fs');
-const Parser = require('rss-parser');
+import fs from 'fs';
+import Parser from 'rss-parser'; 
 
 const parser = new Parser();
 
@@ -26,7 +26,7 @@ function writeJSON(obj) {
   };
 }
 
-async function parseRSSFeed() {
+export default async function parseRSSFeed() {
   const feed = await parser.parseURL('https://rss.app/feeds/E4cHtYWoUj4jesXG.xml');
   /* 
   * The writeJSON() function wont't work if the file is empty or it doesn't have a curly brackets
@@ -43,5 +43,3 @@ async function parseRSSFeed() {
     }
   })
 };
-
-module.exports = parseRSSFeed;

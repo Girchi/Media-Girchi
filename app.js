@@ -1,43 +1,40 @@
-// =------------------------------------------ SOCKET.io -----------------------------------/
 
 // Node modules
-const express = require("express");
+import express from 'express';
+import http from 'http';
+import fs from 'fs';
+import {Server, Socket} from 'socket.io';
+import dirname from 'path';
+import fileURLToPath from 'url'
+import bodyParser from 'body-parser';
+import isObject from 'util';
+
+
+// JS Components
+import scrapTabula from './assets/components/Scrapping/scrapTabula.js';
+import scrapOn from './assets/components/Scrapping/scrapOn.js';
+import scrapFormula from './assets/components/Scrapping/scrapFormula.js';
+import scrapPalitraNews from './assets/components/Scrapping/scrapPalitraNews.js';
+import scrapMtavari from './assets/components/Scrapping/scrapMtavari.js';
+import scrapIpn from './assets/components/Scrapping/scrapIpn.js';
+import scrapImedi from './assets/components/Scrapping/scrapImedi.js';
+import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
+
+
 const app = express();
-const server = require("http").createServer(app);
-const fs = require("fs");
-const io = require("socket.io")(server, { cors: { origin: "*" } });
-const dirname = require("path");
-const fileURLToPath = require("url");
-const bodyParser = require("body-parser");
+const server = http.createServer(app);
 
-
-// // JS Components
-const scrapTabula = require("./assets/components/Scrapping/scrapTabula.js");
-const scrapOn = require("./assets/components/Scrapping/scrapOn.js");
-const scrapFormula = require("./assets/components/Scrapping/scrapFormula.js");
-const scrapPalitraNews = require("./assets/components/Scrapping/scrapPalitraNews.js");
-const scrapMtavari = require("./assets/components/Scrapping/scrapMtavari.js");
-const scrapImedi = require("./assets/components/Scrapping/scrapImedi.js");
-const scrapIpn = require("./assets/components/Scrapping/scrapIpn.js");
-const parseRSSFeed = require("./assets/components/Scrapping/parseRSSFeed.js");
-const isObject = require("util");
-
-// ES6 IMPORTS
-// import scrapTabula from './assets/components/scrapTabula.js';
-// import scrapOn from './assets/components/scrapOn.js';
-// import scrapFormula from './assets/components/scrapFormula.js';
-// import scrapPalitraNews from './assets/components/scrapPalitraNews.js';
-// import scrapMtavari from './assets/components/scrapMtavari.js';
-// import scrapIpn from './assets/components/scrapIpn.js';
-// import scrapImedi from './assets/components/scrapImedi.js';
-// import parseRSSFeed from './assets/components/parseRSSFeed.js';
-// import { isObject } from 'util';
+const io = new Server(server, { 
+  cors: { 
+    origin: "*" 
+  } 
+});
 
 app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
 app.get("/", (req, res) => {
-  // parseRSSFeed();
+  parseRSSFeed();
   let object = {};
 
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
