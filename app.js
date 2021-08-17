@@ -105,7 +105,6 @@ app.get("/girchi_news", (req, res) => {
   );
 
   Object.assign(object, response);
-
   res.render(__dirname + "/views/girchi_news", { object });
 });
 

@@ -1,6 +1,8 @@
-const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
+const writeDataToGirchi = require('./writeDataToGirchi');
+const writeDataToImportants = require('./writeDataToImportants');
+const writeToSource = require('./writeToSource');
 
 function scrapOn(url, accept, accept1, sourceImgUrl) {
   try {
@@ -14,169 +16,29 @@ function scrapOn(url, accept, accept1, sourceImgUrl) {
         const text = $('.article-body').text();
         const imgUrl = `https:${$('.global-figure-image  ').attr("src")}`;
 
+        const writeGirchi = () => writeDataToGirchi("on.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
+        const writeImportants = () => writeDataToImportants("on.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
+        const writeSource = () => writeToSource("on.json", "On", title, dataInfo, text, imgUrl, sourceImgUrl, url);
+
+
         if (accept === "on" && accept1 === "on") {
-          fs.readFile('./assets/data/girchi.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
-          fs.readFile('./assets/data/important.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
-          fs.readFile('./assets/data/on.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/on.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
+          writeGirchi();
+          writeImportants();
+          writeSource();
         } else if (accept === "on") {
-          fs.readFile('./assets/data/important.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
-          fs.readFile('./assets/data/on.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/on.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
+          writeImportants();
+          writeSource();
         } else if (accept1 === "on") {
-          fs.readFile('./assets/data/girchi.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
-          fs.readFile('./assets/data/on.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/on.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
+          writeGirchi();
+          writeSource();
         } else {
-          fs.readFile('./assets/data/on.json', (err, data) => {
-            if (err) throw err;
-            let newsData = JSON.parse(data);
-            newsData[dataInfo] = {
-              ...newsData[dataInfo],
-              source: "On",
-              title: title,
-              text: text,
-              link: url,
-              logo: sourceImgUrl,
-              articleDate: dataInfo,
-              imgUrl: imgUrl,
-              important: false
-            };
-            newsData = JSON.stringify(newsData)
-            fs.writeFileSync("./assets/data/on.json", newsData, (error) => {
-              if (error) console.log(error)
-            })
-          });
+          writeSource();
         }
       }
     });
   } catch (err) {
     console.log(err);
   }
-
 }
 
 module.exports = scrapOn;

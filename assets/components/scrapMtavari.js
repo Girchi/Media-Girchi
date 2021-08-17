@@ -1,6 +1,8 @@
-const fs = require('fs');
 const request = require('request');
 const cheerio = require('cheerio');
+const writeDataToGirchi = require('./writeDataToGirchi');
+const writeDataToImportants = require('./writeDataToImportants');
+const writeToSource = require('./writeToSource');
 
 function scrapMtavari(url,accept,accept1,sourceImgUrl) {
   request(url, (error, response, html) => {
@@ -13,162 +15,22 @@ function scrapMtavari(url,accept,accept1,sourceImgUrl) {
       const text = $('.EditorContent__EditorContentWrapper-ygblm0-0').find('p').text();
       const imgUrl = newsDiv.find('img').attr("src");
 
+      const writeGirchi = () => writeDataToGirchi("mtavari.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
+      const writeImportants = () => writeDataToImportants("mtavari.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
+      const writeSource = () => writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, sourceImgUrl, url);
+
       if(accept==="on" && accept1==="on"){
-        fs.readFile('./assets/data/girchi.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
-        fs.readFile('./assets/data/important.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
-        fs.readFile('./assets/data/mtavari.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/mtavari.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
+        writeGirchi();
+        writeImportants();
+        writeSource();
       }else if(accept==="on"){
-        fs.readFile('./assets/data/important.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
-        fs.readFile('./assets/data/mtavari.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/mtavari.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
+        writeImportants();
+        writeSource();
       }else if(accept1==="on"){
-        fs.readFile('./assets/data/girchi.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
-        fs.readFile('./assets/data/mtavari.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/mtavari.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
+        writeGirchi();
+        writeSource();
       }else{
-        fs.readFile('./assets/data/mtavari.json', (err, data) => {
-          if (err) throw err;
-          let newsData = JSON.parse(data);
-          newsData[dataInfo] = {
-            ...newsData[dataInfo],
-            source: "Mtavari",
-            title: title,
-            text: text,
-            link: url,
-            logo: sourceImgUrl,
-            articleDate: dataInfo,
-            imgUrl: imgUrl,
-            important: false
-          };
-          newsData = JSON.stringify(newsData)
-          fs.writeFileSync("./assets/data/mtavari.json", newsData, (error) => {
-            if (error) console.log(error)
-          })
-        });
+        writeSource();
       }
     }
   });
