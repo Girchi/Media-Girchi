@@ -13,6 +13,7 @@ function scrapIpn(url, accept, accept1, sourceImgUrl) {
         const text = $("*[itemprop='description']").text();
         const imgUrl = $("*[itemprop='image']").attr("data-src");
 
+        console.log($.html());
 
         if (accept === "on" && accept1 === "on") {
           fs.readFile('./assets/data/girchi.json', (err, data) => {
