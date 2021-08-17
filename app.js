@@ -8,6 +8,8 @@ import dirname from 'path';
 import fileURLToPath from 'url'
 import bodyParser from 'body-parser';
 import isObject from 'util';
+import cheerio from 'cheerio';
+import request from 'request';
 
 
 // JS Components
@@ -19,6 +21,8 @@ import scrapMtavari from './assets/components/Scrapping/scrapMtavari.js';
 import scrapIpn from './assets/components/Scrapping/scrapIpn.js';
 import scrapImedi from './assets/components/Scrapping/scrapImedi.js';
 import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
+
+import automateOn from './assets/components/automatedScrapping/automateOn.js';
 
 
 const app = express();
@@ -34,7 +38,7 @@ app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
 app.get("/", (req, res) => {
-  parseRSSFeed();
+  // parseRSSFeed();
   let object = {};
 
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
@@ -123,8 +127,7 @@ app.post("/add_news", urlencodedParser, (req, res) => {
   let sourceImgUrl;
   if (url.includes("https://on.ge")) {
     source = "on";
-    sourceImgUrl =
-      "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png";
+    sourceImgUrl = "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png";
   }
 
   if (url.includes("https://tabula.ge")) {
@@ -199,3 +202,6 @@ app.post("/add_news", urlencodedParser, (req, res) => {
       break;
   }
 });
+
+
+automateOn();

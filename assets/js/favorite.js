@@ -14,10 +14,8 @@ el.forEach((e) => {
 
     if (check != true) {
       check = !check;
-      // alert("დაემატა მნიშვნელოვან სიახლეებში!");
     } else {
       check = !check;
-      // alert("მოთხოვნა უარყოფილია");
     }
   });
 });

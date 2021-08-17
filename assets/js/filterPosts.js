@@ -15,8 +15,8 @@ container.addEventListener('input', () => {
     let value = container.value;
     console.log(value);
     switch (value) {
-        case "ImediNews":
-            filterPosts('ImediNews');
+        case "Imedi":
+            filterPosts('Imedi');
             break;
         case "Formula":
             filterPosts('Formula');
