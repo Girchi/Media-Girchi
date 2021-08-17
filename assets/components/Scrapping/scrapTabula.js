@@ -1,8 +1,8 @@
 const request = require('request');
 const cheerio = require('cheerio');
-const writeDataToGirchi = require('./writeDataToGirchi');
-const writeDataToImportants = require('./writeDataToImportants');
-const writeToSource = require('./writeToSource');
+const writeDataToGirchi = require('../writingData/writeDataToGirchi');
+const writeDataToImportants = require('../writingData/writeDataToImportants');
+const writeToSource = require('../writingData/writeToSource');
 
 
 function scrapTabula(url, accept, accept1, sourceImgUrl) {

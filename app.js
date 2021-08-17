@@ -12,14 +12,14 @@ const bodyParser = require("body-parser");
 
 
 // // JS Components
-const scrapTabula = require("./assets/components/scrapTabula.js");
-const scrapOn = require("./assets/components/scrapOn.js");
-const scrapFormula = require("./assets/components/scrapFormula.js");
-const scrapPalitraNews = require("./assets/components/scrapPalitraNews.js");
-const scrapMtavari = require("./assets/components/scrapMtavari.js");
-const scrapImedi = require("./assets/components/scrapImedi.js");
-const scrapIpn = require("./assets/components/scrapIpn.js");
-const parseRSSFeed = require("./assets/components/parseRSSFeed.js");
+const scrapTabula = require("./assets/components/Scrapping/scrapTabula.js");
+const scrapOn = require("./assets/components/Scrapping/scrapOn.js");
+const scrapFormula = require("./assets/components/Scrapping/scrapFormula.js");
+const scrapPalitraNews = require("./assets/components/Scrapping/scrapPalitraNews.js");
+const scrapMtavari = require("./assets/components/Scrapping/scrapMtavari.js");
+const scrapImedi = require("./assets/components/Scrapping/scrapImedi.js");
+const scrapIpn = require("./assets/components/Scrapping/scrapIpn.js");
+const parseRSSFeed = require("./assets/components/Scrapping/parseRSSFeed.js");
 const isObject = require("util");
 
 // ES6 IMPORTS
