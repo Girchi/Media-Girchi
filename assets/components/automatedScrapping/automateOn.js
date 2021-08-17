@@ -7,6 +7,7 @@ export default function automateOn() {
   request('https://on.ge', (err, response, html) => {
     if (!err && response.statusCode === 200) {
       const $ = cheerio.load(html);
+
       let obj = $('.row').find('section').find('a.overlay-link');
 
       let text = obj[3].children[0].data;

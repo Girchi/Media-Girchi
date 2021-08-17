@@ -71,8 +71,6 @@ io.on("connection", (socket) => {
     const importance = checkData.important;
     const important = !importance;
     const filename = checkData.fileName;
-    console.log(filename);
-    console.log(importance);
     if (importance === false) {
       fs.readFile("assets/data/important.json", (err, data) => {
         if (err) throw err;
@@ -204,4 +202,4 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 });
 
 
-automateOn();
+// automateOn();
