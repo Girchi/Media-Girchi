@@ -27,6 +27,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
@@ -45,6 +46,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
@@ -63,6 +65,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
@@ -82,6 +85,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/important.json", newsData, (error) => {
@@ -100,6 +104,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
@@ -119,6 +124,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
@@ -137,6 +143,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
@@ -156,6 +163,7 @@ function scrapTabula(url,accept,accept1,sourceImgUrl) {
             logo: sourceImgUrl,
             articleDate: dataInfo,
             imgUrl: imgUrl,
+            important: false
           };
           newsData = JSON.stringify(newsData)
           fs.writeFileSync("./assets/data/tabula.json", newsData, (error) => {
