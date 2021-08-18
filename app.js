@@ -8,8 +8,6 @@ import dirname from 'path';
 import fileURLToPath from 'url'
 import bodyParser from 'body-parser';
 import isObject from 'util';
-import cheerio from 'cheerio';
-import request from 'request';
 
 
 // JS Components
@@ -202,6 +200,5 @@ app.post("/add_news", urlencodedParser, (req, res) => {
       break;
   }
 });
-
 
 automateOn();
