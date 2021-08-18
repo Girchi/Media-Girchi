@@ -24,7 +24,8 @@ import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
 
 import automateOn from './assets/components/automatedScrapping/automateOn.js';
 import automateImedi from './assets/components/automatedScrapping/automateImedi.js';
-
+import automateMtavari from './assets/components/automatedScrapping/automateMtavari.js';
+import automateTabula from './assets/components/automatedScrapping/automateTabula.js';
 
 const app = express();
 const server = http.createServer(app);
@@ -205,3 +206,5 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 
 // automateOn();
 // automateImedi()
+// automateMtavari()
+// automateTabula()
