@@ -1,6 +1,7 @@
 import request from "request";
 import cheerio from "cheerio";
 import writeToSource from '../writingData/writeToSource.js';
+import checkFile from '../writingData/checkIfFileIsEmpty.js';
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -25,7 +26,7 @@ export default function automateOn() {
       let obj = $(".PagedNewsItemList_listWrap__Jr25w").find(".news-item-list-item").find("a");
 
       for (let i = 0; i < obj.length; i++) {
-        writeToFile(`https://tabula.ge${obj[i].attribs.href}`);
+        checkFile('tabula', writeToFile(`https://tabula.ge${obj[i].attribs.href}`));
       }
     } else {
       console.log("Something failed!");

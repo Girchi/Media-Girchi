@@ -1,6 +1,7 @@
 import request from 'request';
 import cheerio from 'cheerio';
 import writeToSource from '../writingData/writeToSource.js';
+import checkFile from '../writingData/checkIfFileIsEmpty.js';
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -25,7 +26,7 @@ export default function automateOn() {
       let obj = $('.row').find('section').find('a.overlay-link');
 
       for (let i = 0; i < 10; i++) {
-        writeToFile(obj[i].attribs.href);
+        checkFile('on', writeToFile(obj[i].attribs.href));
       }
     } else {
       console.log("Something failed!");

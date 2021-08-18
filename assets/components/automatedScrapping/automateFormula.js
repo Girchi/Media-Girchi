@@ -1,6 +1,7 @@
 import request from 'request';
 import cheerio from 'cheerio';
 import writeToSource from '../writingData/writeToSource.js';
+import checkFile from '../writingData/checkIfFileIsEmpty.js';
 
 
 function writeToFile(url) {
@@ -24,9 +25,8 @@ export default function automateFormula() {
       const $ = cheerio.load(html);
       let obj = $('#news__box').find('.main__new__slider__desc').find('a');
 
-
       for (let i = 0; i < 10; i++) {
-        writeToFile(`https://formulanews.ge${obj[i].attribs.href}`);
+        checkFile('formula', writeToFile(`https://formulanews.ge${obj[i].attribs.href}`));
       }
     } else {
       console.log("Something failed!");

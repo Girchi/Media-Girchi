@@ -1,6 +1,7 @@
 import request from 'request';
 import cheerio from 'cheerio';
 import writeToSource from '../writingData/writeToSource.js';
+import checkFile from '../writingData/checkIfFileIsEmpty.js';
 
 function writeToFile(url, image) {
   request(url, (error, response, html) => {
@@ -25,7 +26,7 @@ export default function automatePalitra() {
       let imageObj = obj.find(".card").find(".card-img-top");
 
       for (let i = 3; i < 16; i++) {
-        writeToFile(obj[i].attribs.href, `https://palitranews.ge${imageObj[i].attribs.src}`);
+        checkFile("palitra", writeToFile(obj[i].attribs.href, `https://palitranews.ge${imageObj[i].attribs.src}`));
       }
     } else {
       console.log("Something failed!");

@@ -1,6 +1,8 @@
 import request from 'request';
 import cheerio from 'cheerio';
 import writeToSource from '../writingData/writeToSource.js';
+import checkFile from '../writingData/checkIfFileIsEmpty.js';
+
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -25,7 +27,7 @@ export default function automateImedi() {
       let obj = $('.row').find('.single-item');
       
       for (let i = 0; i < 10; i++) {
-        writeToFile(obj[i].attribs.href);
+        checkFile('imedinews', writeToFile(obj[i].attribs.href));
       }
     } else {
       console.log("Something failed!");

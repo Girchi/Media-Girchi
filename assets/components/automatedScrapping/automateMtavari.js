@@ -1,6 +1,7 @@
 import request from 'request';
 import cheerio from 'cheerio';
 import writeToSource from '../writingData/writeToSource.js';
+import checkFile from '../writingData/checkIfFileIsEmpty.js';
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -27,7 +28,7 @@ export default function automateMtavari() {
 
       for (let i = 0; i < obj.length; i++) {
         if (`https://mtavari.tv${obj[i].attribs.href}`.length > 65) {
-          writeToFile(`https://mtavari.tv${obj[i].attribs.href}`);
+          checkFile('mtavari', writeToFile(`https://mtavari.tv${obj[i].attribs.href}`));
         }
       }
     } else {

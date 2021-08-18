@@ -1,7 +1,6 @@
 include parts/head.pug
 include parts/navbar.pug
 
-
 .main.page
   h3#main სიახლეები გირჩზე
   hr.hrelement
@@ -26,4 +25,8 @@ include parts/footer.pug
 include parts/scripts.pug
 script(src="../assets/components/browserSide/shortenArticle.js") 
 script(type="module" src="../assets/components/browserSide/clickFavorite.js") 
+
+script.  
+  document.querySelector("#general").className = "nav-link scrollto";
+  document.querySelector("#girchi").className = "nav-link scrollto active";
 
