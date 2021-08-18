@@ -943,11 +943,13 @@ ul li a{
     height: 500px;
     width: 400px;
   }
+}
 
+.emailInput {
+  width: 30%;
+  height: max-content;
+}
 
-  /* .card-img-top {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-  } */
+.emailInputButton {
+  margin: 15px;
 }

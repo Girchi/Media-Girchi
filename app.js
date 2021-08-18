@@ -4,16 +4,18 @@ import http from 'http';
 import fs from 'fs';
 import {Server, Socket} from 'socket.io';
 import bodyParser from 'body-parser';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 // JS Components
-import scrapTabula from './assets/components/Scrapping/scrapTabula.js';
-import scrapOn from './assets/components/Scrapping/scrapOn.js';
-import scrapFormula from './assets/components/Scrapping/scrapFormula.js';
-import scrapPalitraNews from './assets/components/Scrapping/scrapPalitraNews.js';
-import scrapMtavari from './assets/components/Scrapping/scrapMtavari.js';
-import scrapIpn from './assets/components/Scrapping/scrapIpn.js';
-import scrapImedi from './assets/components/Scrapping/scrapImedi.js';
-import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
+import scrapTabula from './assets/components/manualScrapping/scrapTabula.js';
+import scrapOn from './assets/components/manualScrapping/scrapOn.js';
+import scrapFormula from './assets/components/manualScrapping/scrapFormula.js';
+import scrapPalitraNews from './assets/components/manualScrapping/scrapPalitraNews.js';
+import scrapMtavari from './assets/components/manualScrapping/scrapMtavari.js';
+import scrapIpn from './assets/components/manualScrapping/scrapIpn.js';
+import scrapImedi from './assets/components/manualScrapping/scrapImedi.js';
+import parseRSSFeed from './assets/components/manualScrapping/parseRSSFeed.js';
 
 import automateOn from './assets/components/automatedScrapping/automateOn.js';
 import automateImedi from './assets/components/automatedScrapping/automateImedi.js';
@@ -24,12 +26,15 @@ import automateTabula from './assets/components/automatedScrapping/automateTabul
 
 const app = express();
 const server = http.createServer(app);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const io = new Server(server, { 
   cors: { 
     origin: "*" 
   } 
 });
+
 
 app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
