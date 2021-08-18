@@ -28,7 +28,7 @@ select.filter
             p.card-text
               small.text-muted=subObject.articleDate
           .img_font
-            img.small-img(src=subObject.logo alt='Card image cap')
+            img.small-img(src=subObject.logo alt="Source's logo")
 
 
 //- // End Hero
@@ -38,21 +38,21 @@ select.filter
   .container.news_container.archive
     each subObject in object
       .main-card.card-data(value=subObject)
-          .card.flex-column.article
-            img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-            a.card-body(href=subObject.link target='_blank')
-              h5.card-title=subObject.title
-              p(name='title').card-text=subObject.text
-              p.card-text
-                small.text-muted=subObject.articleDate
-            .img_font
-              img.small-img(src=subObject.logo alt='Card image cap')
-              if (subObject.important===false)
-                abb(title="მნიშვნელოვანად მონიშვნა")  
-                  button.fas.fa-star.btn-click( name="obj" value=subObject)
-              else 
-                abb(title="მნიშვნელოვანი სიახლე")  
-                  i.fas.fa-check.succes
+        .card.flex-column.article
+          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+          a.card-body(href=subObject.link target='_blank')
+            h5.card-title=subObject.title
+            p(name='title').card-text=subObject.text
+            p.card-text
+              small.text-muted=subObject.articleDate
+          .img_font
+            img.small-img(src=subObject.logo alt='Card image cap')
+            if (subObject.important===false)
+              abb(title="მნიშვნელოვანად მონიშვნა")  
+                button.fas.fa-star.btn-click( name="obj" value=subObject)
+            else 
+              abb(title="მნიშვნელოვანი სიახლე")  
+                i.fas.fa-check.succes
 
          
 
@@ -63,8 +63,8 @@ include parts/footer.pug
 
 include parts/scripts.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
-script(src="../assets/js/favorite.js") 
-script(src="../assets/js/shortenArticle.js") 
-script(src="../assets/js/filterPosts.js")
-script(type="module" src="../assets/js/clickFavorite.js")
+script(src="../assets/components/browserSide/favorite.js") 
+script(src="../assets/components/browserSide/shortenArticle.js") 
+script(src="../assets/components/browserSide/filterPosts.js")
+script(type="module" src="../assets/components/browserSide/clickFavorite.js")
 
