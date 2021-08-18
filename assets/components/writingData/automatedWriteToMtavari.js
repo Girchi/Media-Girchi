@@ -2,6 +2,8 @@ import fs from "fs";
 import request from "request";
 import cheerio from "cheerio";
 
+import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
+
 export default function automatedWriteToMtavari(
   url,
   fileName,
@@ -22,25 +24,68 @@ export default function automatedWriteToMtavari(
         .text();
       const imgUrl = newsDiv.find("img").attr("src");
 
-      let newsData = JSON.parse(
-        fs.readFileSync(`./assets/data/${fileName}`, "utf-8")
-      );
-      newsData[dataInfo] = {
-        ...newsData[dataInfo],
-        source: sourceName,
-        title: title,
-        text: text,
-        link: url,
-        logo: logoUrl,
-        articleDate: dataInfo,
-        imgUrl: imgUrl,
-        important: false,
-        fileName: fileName,
-      };
-      newsData = JSON.stringify(newsData);
-      fs.writeFileSync(`./assets/data/${fileName}`, newsData, (error) => {
-        if (error) console.log(error);
-      });
+      if (
+        title.includes("გირჩი") ||
+        title.includes("იაგო ხვიჩია") ||
+        title.includes("ვახტანგ მეგრელიშვილი") ||
+        title.includes("ვახტანგ მეგრელიშვილი") ||
+        title.includes("სანდრო რაქვიაშვილი")
+      ) {
+        console.log("მოიძებნა");
+
+        // Write in Girchi Json
+        writeDataToGirchi(
+          "imedinews.json",
+          title,
+          dataInfo,
+          text,
+          imgUrl,
+          "https://www.televizia.org/img/tv_mtavariarxi.png",
+          url
+        );
+        // Write in Mtavari Json
+        let newsData = JSON.parse(
+          fs.readFileSync(`./assets/data/${fileName}`, "utf-8")
+        );
+        newsData[dataInfo] = {
+          ...newsData[dataInfo],
+          source: sourceName,
+          title: title,
+          text: text,
+          link: url,
+          logo: logoUrl,
+          articleDate: dataInfo,
+          imgUrl: imgUrl,
+          important: false,
+          fileName: fileName,
+        };
+        newsData = JSON.stringify(newsData);
+        fs.writeFileSync(`./assets/data/${fileName}`, newsData, (error) => {
+          if (error) console.log(error);
+        });
+      } else {
+        console.log("არ მოიძებნა");
+        // Write in Mtavari news Json
+        let newsData = JSON.parse(
+          fs.readFileSync(`./assets/data/${fileName}`, "utf-8")
+        );
+        newsData[dataInfo] = {
+          ...newsData[dataInfo],
+          source: sourceName,
+          title: title,
+          text: text,
+          link: url,
+          logo: logoUrl,
+          articleDate: dataInfo,
+          imgUrl: imgUrl,
+          important: false,
+          fileName: fileName,
+        };
+        newsData = JSON.stringify(newsData);
+        fs.writeFileSync(`./assets/data/${fileName}`, newsData, (error) => {
+          if (error) console.log(error);
+        });
+      }
     }
   });
 }

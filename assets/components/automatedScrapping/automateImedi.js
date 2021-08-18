@@ -12,7 +12,7 @@ export default function automateImedi() {
 
     //   let text = obj[3].children[0].data;
     //   let url = obj[3].attribs.href;
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < obj.length; i++) {
         automatedWriteToImedi(obj[i].attribs.href, "imedinews.json", "On", "https://www.imedi.ge/m/i/logo@2x.png");
       }
     } else {
