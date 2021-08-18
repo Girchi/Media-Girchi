@@ -28,7 +28,7 @@ select.filter
             p.card-text
               small.text-muted=subObject.articleDate
           .img_font
-            img.small-img(src=subObject.logo alt='Card image cap')
+            img.small-img(src=subObject.logo alt="Source's logo")
 
 
 //- // End Hero
@@ -39,6 +39,10 @@ select.filter
     each subObject in object
       .main-card.card-data(value=subObject)
           .card.flex-column.article
+            //- if (subObject.imgUrl.includes("video"))
+            //-   video.image.card-img-top
+            //-     source(src=subObject.imgUrl type='video/mp4')
+            //- else
             img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
             a.card-body(href=subObject.link target='_blank')
               h5.card-title=subObject.title

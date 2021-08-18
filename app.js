@@ -1,11 +1,9 @@
-
 // Node modules
 import express from 'express';
 import http from 'http';
 import fs from 'fs';
 import {Server, Socket} from 'socket.io';
 import bodyParser from 'body-parser';
-
 
 // JS Components
 import scrapTabula from './assets/components/Scrapping/scrapTabula.js';
@@ -20,6 +18,7 @@ import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
 import automateOn from './assets/components/automatedScrapping/automateOn.js';
 import automateImedi from './assets/components/automatedScrapping/automateImedi.js';
 import automateFormula from './assets/components/automatedScrapping/automateFormula.js';
+import automatePalitra from './assets/components/automatedScrapping/automatePalitra.js'
 import automateMtavari from './assets/components/automatedScrapping/automateMtavari.js';
 import automateTabula from './assets/components/automatedScrapping/automateTabula.js';
 
@@ -202,5 +201,6 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 automateOn();
 automateImedi();
 automateFormula();
+automatePalitra();
 automateMtavari();
 automateTabula();
