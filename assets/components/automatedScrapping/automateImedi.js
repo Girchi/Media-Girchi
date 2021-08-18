@@ -25,7 +25,7 @@ export default function automateImedi() {
     if (!err && response.statusCode === 200) {
       const $ = cheerio.load(html);
       let obj = $('.row').find('.single-item');
-      
+
       for (let i = 0; i < 10; i++) {
         checkFile('imedinews', writeToFile(obj[i].attribs.href));
       }

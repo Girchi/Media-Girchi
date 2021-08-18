@@ -106,7 +106,7 @@ io.on("connection", (socket) => {
 });
 
 app.get("/add_news", (req, res) => {
-  res.render(__dirname + "/views/add_news");
+  res.render("add_news");
 });
 
 app.get("/girchi_news", (req, res) => {
@@ -117,7 +117,7 @@ app.get("/girchi_news", (req, res) => {
   );
 
   Object.assign(object, response);
-  res.render(__dirname + "/views/girchi_news", { object });
+  res.render("girchi_news", { object });
 });
 
 // Add news section
@@ -206,6 +206,5 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 automateOn();
 automateImedi();
 automateFormula();
-automatePalitra();
 automateMtavari();
 automateTabula();
