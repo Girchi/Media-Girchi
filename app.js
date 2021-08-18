@@ -4,10 +4,7 @@ import express from 'express';
 import http from 'http';
 import fs from 'fs';
 import {Server, Socket} from 'socket.io';
-import dirname from 'path';
-import fileURLToPath from 'url'
 import bodyParser from 'body-parser';
-import isObject from 'util';
 
 
 // JS Components
@@ -21,6 +18,8 @@ import scrapImedi from './assets/components/Scrapping/scrapImedi.js';
 import parseRSSFeed from './assets/components/Scrapping/parseRSSFeed.js';
 
 import automateOn from './assets/components/automatedScrapping/automateOn.js';
+import automateImedi from './assets/components/automatedScrapping/automateImedi.js';
+import automateFormula from './assets/components/automatedScrapping/automateFormula.js';
 
 
 const app = express();
@@ -69,8 +68,6 @@ io.on("connection", (socket) => {
     const importance = checkData.important;
     const important = !importance;
     const filename = checkData.fileName;
-    console.log(filename);
-    console.log(importance);
     if (importance === false) {
       fs.readFile("assets/data/important.json", (err, data) => {
         if (err) throw err;
@@ -202,3 +199,5 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 });
 
 automateOn();
+automateImedi()
+automateFormula();
