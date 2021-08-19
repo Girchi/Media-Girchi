@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+
 // JS Components
 import scrapTabula from './assets/components/manualScrapping/scrapTabula.js';
 import scrapOn from './assets/components/manualScrapping/scrapOn.js';
@@ -35,7 +36,6 @@ const io = new Server(server, {
   } 
 });
 
-
 app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
@@ -57,6 +57,7 @@ app.get("/", (req, res) => {
   let importantNews = JSON.parse(
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
+
   res.render("index", { object, importantNews });
 });
 
