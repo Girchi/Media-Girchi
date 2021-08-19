@@ -1,0 +1,31 @@
+include parts/head.pug
+include parts/navbar.pug
+
+.main.page
+  h3#main.container ყველა მნიშვნელოვანი სიახლე
+  hr.hrelement.container
+  .container.news_container.archive
+    each subObject in object
+      .main-card
+        .card.flex-column.article
+          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+          a.card-body(href=subObject.link target='_blank')
+            h5.card-title=subObject.title
+            p.card-text=subObject.text
+            p.card-text
+              small.text-muted=subObject.articleDate
+          .img_font
+            img.small-img(src=subObject.logo alt='Card image cap')
+    
+
+// ======= Footer =======
+include parts/footer.pug
+// End footer 
+
+include parts/scripts.pug
+script(src="../assets/components/browserSide/shortenArticle.js") 
+script(type="module" src="../assets/components/browserSide/clickFavorite.js") 
+
+script.  
+  document.querySelector("#general").className = "nav-link scrollto";
+  document.querySelector("#girchi").className = "nav-link scrollto active";

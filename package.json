@@ -10,10 +10,12 @@
     "type": "git",
     "url": "https://github.com/Girchi/Media_Girchi.git"
   },
-  "author": "N.N, G.K",
+  "author": "Nika Nabakhteveli, Giorgi Keburia",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bpg-banner-caps": "^1.0.0",
+    "bpg-quadrosquare-mtavruli": "^1.0.0",
     "cheerio": "^1.0.0-rc.10",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",

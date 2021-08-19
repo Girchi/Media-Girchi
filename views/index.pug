@@ -1,40 +1,75 @@
 include parts/head.pug
-include parts/navbar.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
-select.filter
-  option.option(default disabled selected value='default') არიჩიე წყარო
-  option.option(value='Formula') Formula
-  option.option(value='Facebook') Facebook
-  option.option(value='ImediNews') Imedi News
-  option.option(value='IPN') InterPress News
-  option.option(value='On') On
-  option.option(value='Mtavari') Mtavari
-  option.option(value='Palitra') Palitra
-  option.option(value='Tabula') Tabula
+
+//- .outerContainer
+//-   .item
+//-     img(src='./assets/img/download')
+//-   .circle
+// ======= Top Bar =======
+section#topbar.d-flex.align-items-center
+  .container.d-flex.justify-content-center.justify-content-md-between
+    .contact-info.d-flex.align-items-center
+      i.bi.bi-envelope-fill
+      a(href='mailto:contact@example.com')
+        | info@girchi.com
+    .social-links.d-none.d-md-block
+      a.twitter(href='https://twitter.com/girchiparty' target='_blank')
+        i.bi.bi-twitter#twitter
+      a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
+        i.bi.bi-facebook#facebook
+      a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
+        i.bi.bi-instagram#instagram
+
+// ======= Header =======
+header#header.d-flex.align-items-center
+  .container.d-flex.align-items-center
+    nav#navbar.navbar
+      ul
+        li
+          a.nav-link.scrollto.active#general(href='/') ზოგადი
+        li
+          a.nav-link.scrollto#girchi(href='/girchi_news') გირჩი
+      ul  
+        select.filter
+            option.option( selected value='default') არიჩიე წყარო
+            option.option(value='Formula') ფორმულა
+            option.option(value='Facebook') Facebook
+            option.option(value='ImediNews') იმედი ნიუსი
+            option.option(value='IPN') ინტერპრეს ნიუსი
+            option.option(value='On') On.ge
+            option.option(value='Mtavari') მთავარი
+            option.option(value='Palitra') პალიტრა
+            option.option(value='Tabula') ტაბულა
 
 
 
-.main.page
-  h3#main მნიშვნელოვანი სიახლეები
-  hr.hrelement
-  .container.news_container.archive
-    each subObject in importantNews
-      .main-card(value=subObject.source)
-        .card.flex-column.article
-          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-          a.card-body(href=subObject.link target='_blank')
-            h5.card-title=subObject.title
-            p.card-text=subObject.text
-            p.card-text
-              small.text-muted=subObject.articleDate
-          .img_font
-            img.small-img(src=subObject.logo alt="Source's logo")
+
+
+
+.main.page.important-section
+  h3#main.container მნიშვნელოვანი სიახლეები
+  hr.hrelement.container
+  .important-container.container
+    .container.news_container.archive
+        each subObject in slicedObj
+          .main-card.main-card--important(value=subObject.source)
+            .card.flex-column.article.main-card--important
+              img.image-important(src=subObject.imgUrl alt='Card image cap')
+              a.card-body(href=subObject.link target='_blank')
+                h5.card-title--important-p=subObject.title
+                p.card-text=subObject.text
+              p.card-text-important
+                small.text-muted=subObject.articleDate
+                img.small-img--important(src=subObject.logo alt="Source's logo")
+    .important-btn
+      a(href='/important_news') ყველა მნიშვნელოვანი სიახლე
+              
 
 
 //- // End Hero
 .main.page
-  h3#main სიახლეები
-  hr.hrelement
+  h3#main.container სიახლეები
+  hr.hrelement.container
   .container.news_container.archive
     each subObject in object
       .main-card.card-data(value=subObject)

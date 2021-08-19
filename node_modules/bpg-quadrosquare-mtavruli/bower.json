@@ -1,0 +1,28 @@
+{
+  "name": "bpg-quadrosquare-mtavruli",
+  "description": "BPG QuadroSquare Mtavruli Web-Font Package",
+  "version": "1.0.0",
+  "keywords": ["ttf", "woff", "woff2", "svg", "font", "web-font", "bpg-quadrosquare-mtavruli"],
+  "main": [
+    "css/bpg-quadrosquare-mtavruli.css"
+  ],
+  "homepage": "https://github.com/web-fonts/bpg-quadrosquare-mtavruli",
+  "authors": [
+    "Lado Lomidze <lado.lomidze@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/web-fonts/bpg-quadrosquare-mtavruli.git"
+  },
+  "license": ["MIT", "CC-BY-NC-ND-4.0"],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "*.md",
+    "font.json",
+    "package.json"
+  ]
+}
