@@ -2,6 +2,7 @@ import request from 'request';
 import cheerio from 'cheerio';
 import writeToSource from '../writingData/writeToSource.js';
 import checkFile from '../writingData/checkIfFileIsEmpty.js';
+import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -14,7 +15,34 @@ function writeToFile(url) {
       const text = $(".EditorContent__EditorContentWrapper-ygblm0-0").find("p").text();
       const imgUrl = newsDiv.find("img").attr("src");
 
-      writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, 'https://www.televizia.org/img/tv_mtavariarxi.png', url);
+      if (
+        title.includes("გირჩი") ||
+        title.includes("იაგო ხვიჩია") ||
+        title.includes("ვახტანგ მეგრელიშვილი") ||
+        title.includes("ვახტანგ მეგრელიშვილი") ||
+        title.includes("სანდრო რაქვიაშვილი")
+      ) {
+        console.log("მოიძებნა");
+
+        // Write in Girchi Json
+        writeDataToGirchi(
+          "mtavari.json",
+          title,
+          dataInfo,
+          text,
+          imgUrl,
+          "https://www.televizia.org/img/tv_mtavariarxi.png",
+          url
+        );
+        // Write in Source  Json
+        writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, 'https://www.televizia.org/img/tv_mtavariarxi.png', url);
+      } else {
+        console.log("არ მოიძებნა");
+        // Write in Source Json
+        writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, 'https://www.televizia.org/img/tv_mtavariarxi.png', url);
+      }
+
+      
     }
   });
 }

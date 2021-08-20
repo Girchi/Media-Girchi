@@ -25,6 +25,7 @@ import automateFormula from './assets/components/automatedScrapping/automateForm
 import automatePalitra from './assets/components/automatedScrapping/automatePalitra.js'
 import automateMtavari from './assets/components/automatedScrapping/automateMtavari.js';
 import automateTabula from './assets/components/automatedScrapping/automateTabula.js';
+import automateIpn from './assets/components/automatedScrapping/automateIpn.js';
 
 const app = express();
 const server = http.createServer(app);
@@ -65,18 +66,17 @@ app.get("/", (req, res) => {
 
   res.render("index", { object, slicedObj });
 
+  let objLength = Math.round(Object.keys(object).length / 20);
 
-  let objectLength = JSON.stringify({ length: Math.round(Object.keys(object).length / 20) });
-  
-  checkFile("./assets/additional_data/newsCount.json", () => {
-    fs.writeFile("./assets/additional_data/newsCount.json", objectLength, (err) => {
+  let objectToPass = JSON.stringify({ length: objLength });
+  function some() {
+    fs.writeFile("./assets/additional_data/newsCount.json", objectToPass, (err) => {
       if(err) throw err;
       console.log("Success");
     })
-  })
-
-
-  let objLength = Math.round(Object.keys(object).length / 20);
+  }
+  checkFile("./assets/additional_data/newsCount.json", some());
+  
   
   let newObj = [];
   let objectAsArr = Object.entries(object);  
@@ -261,5 +261,5 @@ automateImedi();
 automateFormula();
 automateMtavari();
 automateTabula();
-
-
+automatePalitra()
+automateIpn()
