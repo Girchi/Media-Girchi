@@ -28,7 +28,7 @@ export default function automateMtavari() {
 
       for (let i = 0; i < obj.length; i++) {
         if (`https://mtavari.tv${obj[i].attribs.href}`.length > 65) {
-          checkFile('mtavari', writeToFile(`https://mtavari.tv${obj[i].attribs.href}`));
+          checkFile('./assets/data/mtavari.json', writeToFile(`https://mtavari.tv${obj[i].attribs.href}`));
         }
       }
     } else {

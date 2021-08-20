@@ -26,7 +26,7 @@ export default function automateOn() {
       let obj = $('.row').find('section').find('a.overlay-link');
 
       for (let i = 0; i < 10; i++) {
-        checkFile('on', writeToFile(obj[i].attribs.href));
+        checkFile('./assets/data/on.json', writeToFile(obj[i].attribs.href));
       }
     } else {
       console.log("Something failed!");

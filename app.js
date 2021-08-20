@@ -18,6 +18,7 @@ import scrapIpn from './assets/components/manualScrapping/scrapIpn.js';
 import scrapImedi from './assets/components/manualScrapping/scrapImedi.js';
 import parseRSSFeed from './assets/components/manualScrapping/parseRSSFeed.js';
 
+import checkFile from './assets/components/writingData/checkIfFileIsEmpty.js';
 import automateOn from './assets/components/automatedScrapping/automateOn.js';
 import automateImedi from './assets/components/automatedScrapping/automateImedi.js';
 import automateFormula from './assets/components/automatedScrapping/automateFormula.js';
@@ -39,9 +40,9 @@ const io = new Server(server, {
 app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
+let object = {};
 app.get("/", (req, res) => {
   // parseRSSFeed();
-  let object = {};
 
   // Automatically reading JSON files filenames to iterate over them in app.get("/")
   let postSourcesArr = fs.readdirSync("./assets/data");
@@ -54,14 +55,49 @@ app.get("/", (req, res) => {
     Object.assign(object, response);
   });
 
+  let objectLength = JSON.stringify({ length: Math.round(Object.keys(object).length / 20) });
+
+
+  checkFile("./assets/additional_data/newsCount.json", () => {
+    fs.writeFile("./assets/additional_data/newsCount.json", objectLength, (err) => {
+      if(err) throw err;
+      console.log("Success");
+    })
+  })
+
   let importantNews = JSON.parse(
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
 
-  const arr=Object.entries(importantNews)
-  const arrRess=arr.slice(arr.length-6,arr.length)
+  const arr = Object.entries(importantNews)
+  const arrRess = arr.slice(arr.length - 6, arr.length)
   const slicedObj = Object.fromEntries(arrRess)
+
   res.render("index", { object, slicedObj });
+
+
+  let objLength = Math.round(Object.keys(object).length / 20);
+
+  let newObj = [];
+  let objArr = Object.entries(object);
+
+  for(let i = 0; i < objLength; i++) {
+    let startingSliceCount = 0;
+    let endSliceCount = 20;
+
+    let arr = objArr.slice(startingSliceCount, endSliceCount);
+    newObj.push(arr);
+  }
+  console.log(newObj);
+
+  for(let i = 1; i <= objLength; i++) {
+    app.get(`/:page=${i}`, async(req, res) => {
+      for(let i in newObj) {
+        console.log(newObj[i]);
+        res.render("pages", { object: newObj[i] });
+      }
+    })
+  }
 });
 
 const host = "127.0.0.1";
@@ -217,8 +253,10 @@ app.post("/add_news", urlencodedParser, (req, res) => {
   }
 });
 
-// automateOn();
-// automateImedi();
-// automateFormula();
-// automateMtavari();
-// automateTabula();
+automateOn();
+automateImedi();
+automateFormula();
+automateMtavari();
+automateTabula();
+
+
