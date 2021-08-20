@@ -42,7 +42,7 @@ header#header.d-flex.align-items-center
 
 .main.page.news_container#main
     each subObject in object[pageCount]
-        .main-card.card-data(value=subObject)
+        .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
             .card.flex-column.article
                 img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
                 a.card-body(href=subObject.link target='_blank')

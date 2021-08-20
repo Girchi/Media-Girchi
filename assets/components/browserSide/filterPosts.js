@@ -1,13 +1,25 @@
 const container = document.querySelector('.filter');
-const cardContainer = document.querySelectorAll('.main-card');
+const cardContainer = document.querySelectorAll('#othernews');
 
 function filterPosts(sourceName) {
-  for (let i in cardContainer) {
-    if (cardContainer[i].getAttribute('value') !== sourceName) {
-      cardContainer[i].style.display = 'none';
+    let localContainer = cardContainer; 
+    for (let i in localContainer) {
+      if (localContainer[i].getAttribute('itemprop') !== sourceName) {
+          localContainer[i].style.display = 'none';
+      }
     }
-  }
+    localContainer = cardContainer;
 }
+
+
+$(document).ready(function(){
+    $(".filter").on("keyup", function() {
+      var value = $(this).val();
+      $("#list").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
 
 container.addEventListener('input', () => {
     let value = container.value;
