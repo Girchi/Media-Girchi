@@ -68,7 +68,11 @@ export default function automateImedi() {
       let obj = $(".row").find(".single-item");
 
       for (let i = 0; i < 10; i++) {
+<<<<<<< HEAD
         checkFile("imedinews", writeToFile(obj[i].attribs.href));
+=======
+        checkFile('./assets/data/imedinews.json', writeToFile(obj[i].attribs.href));
+>>>>>>> 486dde1c6857a53e583588bf1d3486951de7568e
       }
     } else {
       console.log("Something failed!");

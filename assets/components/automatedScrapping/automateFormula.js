@@ -71,10 +71,14 @@ export default function automateFormula() {
       let obj = $("#news__box").find(".main__new__slider__desc").find("a");
 
       for (let i = 0; i < 10; i++) {
+<<<<<<< HEAD
         checkFile(
           "formula",
           writeToFile(`https://formulanews.ge${obj[i].attribs.href}`)
         );
+=======
+        checkFile('./assets/data/formula.json', writeToFile(`https://formulanews.ge${obj[i].attribs.href}`));
+>>>>>>> 486dde1c6857a53e583588bf1d3486951de7568e
       }
     } else {
       console.log("Something failed!");

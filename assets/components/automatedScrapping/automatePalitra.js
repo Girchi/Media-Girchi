@@ -53,7 +53,7 @@ export default function automatePalitra() {
       let imageObj = obj.find(".card").find(".card-img-top");
 
       for (let i = 3; i < 16; i++) {
-        checkFile("palitra", writeToFile(obj[i].attribs.href, `https://palitranews.ge${imageObj[i].attribs.src}`));
+        checkFile("./assets/data/palitra.json", writeToFile(obj[i].attribs.href, `https://palitranews.ge${imageObj[i].attribs.src}`));
       }
     } else {
       console.log("Something failed!");

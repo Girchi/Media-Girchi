@@ -53,7 +53,7 @@ export default function automateOn() {
       let obj = $(".PagedNewsItemList_listWrap__Jr25w").find(".news-item-list-item").find("a");
 
       for (let i = 0; i < obj.length; i++) {
-        checkFile('tabula', writeToFile(`https://tabula.ge${obj[i].attribs.href}`));
+        checkFile('./assets/data/tabula.json', writeToFile(`https://tabula.ge${obj[i].attribs.href}`));
       }
     } else {
       console.log("Something failed!");

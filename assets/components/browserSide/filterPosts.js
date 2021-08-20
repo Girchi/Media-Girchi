@@ -1,8 +1,6 @@
 const container = document.querySelector('.filter');
 const cardContainer = document.querySelectorAll('.main-card');
 
-console.log(cardContainer);
-
 function filterPosts(sourceName) {
   for (let i in cardContainer) {
     if (cardContainer[i].getAttribute('value') !== sourceName) {

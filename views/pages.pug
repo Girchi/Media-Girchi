@@ -1,14 +1,7 @@
 include parts/head.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
-<<<<<<< HEAD
-.outerContainer
-  .item
-    img(src='./assets/img/download')
-  .circle
-=======
 
->>>>>>> 486dde1c6857a53e583588bf1d3486951de7568e
 // ======= Top Bar =======
 section#topbar.d-flex.align-items-center
   .container.d-flex.justify-content-center.justify-content-md-between
@@ -46,31 +39,7 @@ header#header.d-flex.align-items-center
             option.option(value='Tabula') ტაბულა
 
 
-
-
-.main.page.important-section
-  h3#main.container მნიშვნელოვანი სიახლეები
-  hr.hrelement.container
-  .important-container.container
-    .container.news_container.archive
-        each subObject in slicedObj
-          .main-card.main-card--important(value=subObject.source)
-            .card.flex-column.article.main-card--important
-              img.image-important(src=subObject.imgUrl alt='Card image cap')
-              a.card-body(href=subObject.link target='_blank')
-                h5.card-title--important-p=subObject.title
-                p.card-text=subObject.text
-              p.card-text-important
-                small.text-muted=subObject.articleDate
-                img.small-img--important(src=subObject.logo alt="Source's logo")
-    .important-btn
-      a(href='/important_news') ყველა მნიშვნელოვანი სიახლე
-              
-
 .main.page#list
-  h3#main.container სიახლეები
-  hr.hrelement.container
-  .container.news_container.archive
     each subObject in object
       .main-card.card-data(value=subObject)
         .card.flex-column.article
@@ -94,6 +63,7 @@ header#header.d-flex.align-items-center
 nav.pagination(aria-label='Page navigation example')
   ul.pagination
     
+
 
 // ======= Footer =======
 include parts/footer.pug
