@@ -36,7 +36,7 @@ function writeToFile(url) {
           // Write in Source  Json
           writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, 'https://www.interpressnews.ge/static/img/logofixed.svg', url);
         } else {
-          console.log("არ მოიძებნა");
+          // console.log("არ მოიძებნა");
           // Write in Source Json
           writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, 'https://www.interpressnews.ge/static/img/logofixed.svg', url);
         }

@@ -65,17 +65,18 @@ app.get("/", (req, res) => {
   const slicedObj = Object.fromEntries(arrRess)
 
   
+  const newsPerPage = 20;
 
-  let objLength = Math.round(Object.keys(object).length / 20);
+  let objLength = Math.round(Object.keys(object).length / newsPerPage);
 
   let objectToPass = JSON.stringify({ length: objLength });
-  function some() {
+  function writeObjectLength() {
     fs.writeFile("./assets/additional_data/newsCount.json", objectToPass, (err) => {
       if(err) throw err;
       console.log("Success");
     })
   }
-  checkFile("./assets/additional_data/newsCount.json", some());
+  checkFile("./assets/additional_data/newsCount.json", writeObjectLength());
   
   
   let newObj = [];
@@ -83,12 +84,12 @@ app.get("/", (req, res) => {
   let objArr = objectAsArr.map(arr => arr.pop());
 
   let startingSliceCount = 0;
-  let endSliceCount = 20;
+  let endSliceCount = newsPerPage;
 
-  for(let i = 0; i < objLength; i++) {
+  for(let i = 1; i <= objLength; i++) {
     let arr = objArr.slice(startingSliceCount, endSliceCount);
-    startingSliceCount += 20;
-    endSliceCount += 20;
+    startingSliceCount += newsPerPage;
+    endSliceCount += newsPerPage;
     newObj.push(arr);
   }
 
@@ -97,12 +98,11 @@ app.get("/", (req, res) => {
       res.render("pages", { 
         object: newObj, 
         pageCount: i
-      
       });
     })
   }
 
-  res.render("index", { object: newObj[1], slicedObj });
+  res.render("index", { object: newObj[0], slicedObj });
 });
 
 const host = "127.0.0.1";

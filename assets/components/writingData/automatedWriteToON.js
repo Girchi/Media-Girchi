@@ -54,7 +54,7 @@ export default function automatedWriteToON(url, fileName, sourceName, logoUrl) {
           if (error) console.log(error);
         });
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in on  Json
         let newsData = JSON.parse(
           fs.readFileSync(`./assets/data/${fileName}`, "utf-8")

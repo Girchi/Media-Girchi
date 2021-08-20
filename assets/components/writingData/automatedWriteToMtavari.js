@@ -64,7 +64,7 @@ export default function automatedWriteToMtavari(
           if (error) console.log(error);
         });
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Mtavari news Json
         let newsData = JSON.parse(
           fs.readFileSync(`./assets/data/${fileName}`, "utf-8")

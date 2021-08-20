@@ -47,7 +47,7 @@ function writeToFile(url) {
           url
         );
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Source Json
         writeToSource(
           "formula.json",

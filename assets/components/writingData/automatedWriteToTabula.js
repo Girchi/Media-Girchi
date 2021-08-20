@@ -58,7 +58,7 @@ export default function automatedWriteToTabula(
           if (error) console.log(error);
         });
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Tabula news Json
         let newsData = JSON.parse(
           fs.readFileSync(`./assets/data/${fileName}`, "utf-8")

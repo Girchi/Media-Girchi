@@ -37,7 +37,7 @@ function writeToFile(url) {
         // Write in Source  Json
         writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, 'https://www.televizia.org/img/tv_mtavariarxi.png', url);
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Source Json
         writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, 'https://www.televizia.org/img/tv_mtavariarxi.png', url);
       }

@@ -359,17 +359,6 @@ h6 {
   visibility: visible;
 }
 
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
-  }
-}
-
-
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -1045,6 +1034,14 @@ ul li a {
     cursor: pointer;
     height: 500px;
     width: 400px;
+  }
+
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
   }
 }
 
