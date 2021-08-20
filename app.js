@@ -65,6 +65,8 @@ app.get("/", (req, res) => {
   const slicedObj = Object.fromEntries(arrRess)
 
   
+//               --------------- Pagination ---------------
+// ========================== DO NOT TOUCH THIS ================================
   const newsPerPage = 20;
 
   let objLength = Math.round(Object.keys(object).length / newsPerPage);
@@ -103,6 +105,7 @@ app.get("/", (req, res) => {
   }
 
   res.render("index", { object: newObj[0], slicedObj });
+//==============================================================================
 });
 
 const host = "127.0.0.1";
