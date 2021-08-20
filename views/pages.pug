@@ -17,6 +17,7 @@ section#topbar.d-flex.align-items-center
       a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
         i.bi.bi-instagram#instagram
 
+h1=pageCount
 
 header#header.d-flex.align-items-center
   .container.d-flex.align-items-center
@@ -39,24 +40,22 @@ header#header.d-flex.align-items-center
             option.option(value='Tabula') ტაბულა
 
 
-.main.page#list
-    each subObject in object
-      .main-card.card-data(value=subObject)
-        .card.flex-column.article
-          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-          a.card-body(href=subObject.link target='_blank')
-            h5.card-title=subObject.title
-            p(name='title').card-text=subObject.text
-            p.card-text
-              small.text-muted=subObject.articleDate
-          .img_font
-            img.small-img(src=subObject.logo alt='Card image cap')
-            if (subObject.important===false)
-              abb(title="მნიშვნელოვანად მონიშვნა")  
-                button.fas.fa-star.btn-click( name="obj" value=subObject)
-            else 
-              abb(title="მნიშვნელოვანი სიახლე")  
-                i.fas.fa-check.succes
+
+.main.page#main
+    each subObject in object[pageCount]
+        .main-card.card-data(value=subObject.articleDate)
+            .card.flex-column.article
+                img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+                a.card-body(href=subObject.link target='_blank')
+                h5.card-title=subObject.title
+                p(name='title').card-text=subObject.text
+                p.card-text
+                    small.text-muted=subObject.articleDate
+                .img_font
+                img.small-img(src=subObject.logo alt='Card image cap')
+                if (subObject.important===false)
+                    abb(title="მნიშვნელოვანად მონიშვნა")  
+                    button.fas.fa-star.btn-click( name="obj" value=subObject.articleDate)
 
 
 

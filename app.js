@@ -55,16 +55,6 @@ app.get("/", (req, res) => {
     Object.assign(object, response);
   });
 
-  let objectLength = JSON.stringify({ length: Math.round(Object.keys(object).length / 20) });
-
-
-  checkFile("./assets/additional_data/newsCount.json", () => {
-    fs.writeFile("./assets/additional_data/newsCount.json", objectLength, (err) => {
-      if(err) throw err;
-      console.log("Success");
-    })
-  })
-
   let importantNews = JSON.parse(
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
@@ -76,26 +66,39 @@ app.get("/", (req, res) => {
   res.render("index", { object, slicedObj });
 
 
-  let objLength = Math.round(Object.keys(object).length / 20);
+  let objectLength = JSON.stringify({ length: Math.round(Object.keys(object).length / 20) });
+  
+  checkFile("./assets/additional_data/newsCount.json", () => {
+    fs.writeFile("./assets/additional_data/newsCount.json", objectLength, (err) => {
+      if(err) throw err;
+      console.log("Success");
+    })
+  })
 
+
+  let objLength = Math.round(Object.keys(object).length / 20);
+  
   let newObj = [];
-  let objArr = Object.entries(object);
+  let objectAsArr = Object.entries(object);  
+  let objArr = objectAsArr.map(arr => arr.pop());
+
+  let startingSliceCount = 0;
+  let endSliceCount = 20;
 
   for(let i = 0; i < objLength; i++) {
-    let startingSliceCount = 0;
-    let endSliceCount = 20;
-
     let arr = objArr.slice(startingSliceCount, endSliceCount);
+    startingSliceCount += 20;
+    endSliceCount += 20;
     newObj.push(arr);
   }
-  console.log(newObj);
 
   for(let i = 1; i <= objLength; i++) {
     app.get(`/:page=${i}`, async(req, res) => {
-      for(let i in newObj) {
-        console.log(newObj[i]);
-        res.render("pages", { object: newObj[i] });
-      }
+      res.render("pages", { 
+        object: newObj, 
+        pageCount: i
+      
+      });
     })
   }
 });

@@ -1,6 +1,5 @@
 const ul_container = document.querySelector('ul.pagination');
 
-
 async function getLength() {
     const response = await fetch('/assets/additional_data/newsCount.json');
     const result = await response.json();
@@ -21,6 +20,4 @@ async function getLength() {
         ul_container.appendChild(li);
     }
 }
-
 getLength();
-
