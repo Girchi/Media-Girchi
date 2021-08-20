@@ -23,6 +23,7 @@ import automateFormula from './assets/components/automatedScrapping/automateForm
 import automatePalitra from './assets/components/automatedScrapping/automatePalitra.js'
 import automateMtavari from './assets/components/automatedScrapping/automateMtavari.js';
 import automateTabula from './assets/components/automatedScrapping/automateTabula.js';
+import automateIpn from './assets/components/automatedScrapping/automateIpn.js';
 
 const app = express();
 const server = http.createServer(app);
@@ -222,3 +223,5 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 // automateFormula();
 // automateMtavari();
 // automateTabula();
+// automatePalitra()
+// automateIpn()

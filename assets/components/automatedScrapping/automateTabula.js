@@ -2,6 +2,7 @@ import request from "request";
 import cheerio from "cheerio";
 import writeToSource from '../writingData/writeToSource.js';
 import checkFile from '../writingData/checkIfFileIsEmpty.js';
+import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -13,7 +14,33 @@ function writeToFile(url) {
       const text = newsDiv.find("p").text();
       const imgUrl = newsDiv.find("img").attr("src");
 
+      if (
+        title.includes("გირჩი") ||
+        title.includes("იაგო ხვიჩია") ||
+        title.includes("ვახტანგ მეგრელიშვილი") ||
+        title.includes("ვახტანგ მეგრელიშვილი") ||
+        title.includes("სანდრო რაქვიაშვილი")
+      ) {
+        console.log("მოიძებნა");
+
+        // Write in Girchi Json
+        writeDataToGirchi(
+          "tabula.json",
+          title,
+          dataInfo,
+          text,
+          imgUrl,
+          "https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png",
+          url
+        );
+        // Write in Source  Json
         writeToSource("tabula.json", "Tabula", title, dataInfo, text, imgUrl, 'https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png', url);
+      } else {
+        console.log("არ მოიძებნა");
+        // Write in Source Json
+        writeToSource("tabula.json", "Tabula", title, dataInfo, text, imgUrl, 'https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png', url);
+      }
+        
     }
   });
 }
