@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
   const arrRess = arr.slice(arr.length - 6, arr.length)
   const slicedObj = Object.fromEntries(arrRess)
 
-  res.render("index", { object, slicedObj });
+  
 
   let objLength = Math.round(Object.keys(object).length / 20);
 
@@ -101,6 +101,8 @@ app.get("/", (req, res) => {
       });
     })
   }
+
+  res.render("index", { object: newObj[1], slicedObj });
 });
 
 const host = "127.0.0.1";
