@@ -1333,3 +1333,15 @@ ul li a {
     margin-top: 0.5rem;
   }
 }
+
+@media (max-width: 1370px){
+  .card {
+    width: 325px;
+    height: 480px;
+  }
+
+  .image {
+    max-height: 180px;
+    width: 230px;
+  }
+}
