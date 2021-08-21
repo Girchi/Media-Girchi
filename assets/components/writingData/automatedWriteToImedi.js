@@ -60,7 +60,7 @@ export default function automatedWriteToImedi(
           if (error) console.log(error);
         });
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Imedi news Json
         let newsData = JSON.parse(
           fs.readFileSync(`./assets/data/${fileName}`, "utf-8")

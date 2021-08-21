@@ -36,7 +36,7 @@ function writeToFile(url, image) {
           // Write in Source  Json
           writeToSource("palitra.json", "Palitra", title, dataInfo, text, image, 'https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg', url);
         } else {
-          console.log("არ მოიძებნა");
+          // console.log("არ მოიძებნა");
           // Write in Source Json
           writeToSource("palitra.json", "Palitra", title, dataInfo, text, image, 'https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg', url);
         }

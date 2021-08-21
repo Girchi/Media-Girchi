@@ -56,16 +56,6 @@ app.get("/", (req, res) => {
     Object.assign(object, response);
   });
 
-  let objectLength = JSON.stringify({ length: Math.round(Object.keys(object).length / 20) });
-
-
-  checkFile("./assets/additional_data/newsCount.json", () => {
-    fs.writeFile("./assets/additional_data/newsCount.json", objectLength, (err) => {
-      if(err) throw err;
-      console.log("Success");
-    })
-  })
-
   let importantNews = JSON.parse(
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
@@ -74,31 +64,48 @@ app.get("/", (req, res) => {
   const arrRess = arr.slice(arr.length - 6, arr.length)
   const slicedObj = Object.fromEntries(arrRess)
 
-  res.render("index", { object, slicedObj });
+  
+//               --------------- Pagination ---------------
+// ========================== DO NOT TOUCH THIS ================================
+  const newsPerPage = 20;
 
+  let objLength = Math.round(Object.keys(object).length / newsPerPage);
 
-  let objLength = Math.round(Object.keys(object).length / 20);
-
+  let objectToPass = JSON.stringify({ length: objLength });
+  function writeObjectLength() {
+    fs.writeFile("./assets/additional_data/newsCount.json", objectToPass, (err) => {
+      if(err) throw err;
+      console.log("Success");
+    })
+  }
+  checkFile("./assets/additional_data/newsCount.json", writeObjectLength());
+  
+  
   let newObj = [];
-  let objArr = Object.entries(object);
+  let objectAsArr = Object.entries(object);  
+  let objArr = objectAsArr.map(arr => arr.pop());
 
-  for(let i = 0; i < objLength; i++) {
-    let startingSliceCount = 0;
-    let endSliceCount = 20;
+  let startingSliceCount = 0;
+  let endSliceCount = newsPerPage;
 
+  for(let i = 1; i <= objLength; i++) {
     let arr = objArr.slice(startingSliceCount, endSliceCount);
+    startingSliceCount += newsPerPage;
+    endSliceCount += newsPerPage;
     newObj.push(arr);
   }
-  console.log(newObj);
 
   for(let i = 1; i <= objLength; i++) {
     app.get(`/:page=${i}`, async(req, res) => {
-      for(let i in newObj) {
-        console.log(newObj[i]);
-        res.render("pages", { object: newObj[i] });
-      }
+      res.render("pages", { 
+        object: newObj, 
+        pageCount: i
+      });
     })
   }
+
+  res.render("index", { object: newObj[0], slicedObj });
+//==============================================================================
 });
 
 const host = "127.0.0.1";
@@ -254,20 +261,10 @@ app.post("/add_news", urlencodedParser, (req, res) => {
   }
 });
 
-<<<<<<< HEAD
-// automateOn();
-// automateImedi();
-// automateFormula();
-// automateMtavari();
-// automateTabula();
-// automatePalitra()
-// automateIpn()
-=======
 automateOn();
 automateImedi();
 automateFormula();
 automateMtavari();
 automateTabula();
-
-
->>>>>>> 486dde1c6857a53e583588bf1d3486951de7568e
+automatePalitra()
+automateIpn()

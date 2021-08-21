@@ -47,7 +47,7 @@ function writeToFile(url) {
           url
         );
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Source Json
         writeToSource(
           "formula.json",
@@ -71,10 +71,7 @@ export default function automateFormula() {
       let obj = $("#news__box").find(".main__new__slider__desc").find("a");
 
       for (let i = 0; i < 10; i++) {
-        checkFile(
-          "formula",
-          writeToFile(`https://formulanews.ge${obj[i].attribs.href}`)
-        );
+        checkFile('./assets/data/formula.json', writeToFile(`https://formulanews.ge${obj[i].attribs.href}`));
       }
     } else {
       console.log("Something failed!");

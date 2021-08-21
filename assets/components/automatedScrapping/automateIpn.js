@@ -36,7 +36,7 @@ function writeToFile(url) {
           // Write in Source  Json
           writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, 'https://www.interpressnews.ge/static/img/logofixed.svg', url);
         } else {
-          console.log("არ მოიძებნა");
+          // console.log("არ მოიძებნა");
           // Write in Source Json
           writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, 'https://www.interpressnews.ge/static/img/logofixed.svg', url);
         }
@@ -53,7 +53,7 @@ export default function automateIpn() {
       let obj = $("div").children().find('a')
       for (let i = 26; i < 32; i++) {
         //   console.log(`https://www.interpressnews.ge${obj[i].attribs.href}`);
-        checkFile('on', writeToFile(`https://www.interpressnews.ge${obj[i].attribs.href}`));
+        checkFile('./assets/data/on.json', writeToFile(`https://www.interpressnews.ge${obj[i].attribs.href}`));
       }
     } else {
       console.log("Something failed!");

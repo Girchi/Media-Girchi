@@ -1,16 +1,13 @@
 const ul_container = document.querySelector('ul.pagination');
 
-
 async function getLength() {
     const response = await fetch('/assets/additional_data/newsCount.json');
     const result = await response.json();
-
     let objectLength = result.length;
-    console.log(typeof objectLength);
 
     for(let i = 1; i <= objectLength; i++) {
         const li = document.createElement('li');
-        li.className = 'page-item';
+        li.className = `page-item item${i}`;
 
         const a = document.createElement('a');
         a.className = 'page-link';
@@ -23,4 +20,3 @@ async function getLength() {
 }
 
 getLength();
-

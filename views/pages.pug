@@ -4,65 +4,65 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
 // ======= Top Bar =======
 section#topbar.d-flex.align-items-center
-  .container.d-flex.justify-content-center.justify-content-md-between
-    .contact-info.d-flex.align-items-center
-      i.bi.bi-envelope-fill
-      a(href='mailto:contact@example.com')
-        | info@girchi.com
-    .social-links.d-none.d-md-block
-      a.twitter(href='https://twitter.com/girchiparty' target='_blank')
-        i.bi.bi-twitter#twitter
-      a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
-        i.bi.bi-facebook#facebook
-      a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
-        i.bi.bi-instagram#instagram
+    .container.d-flex.justify-content-center.justify-content-md-between
+        .contact-info.d-flex.align-items-center
+            i.bi.bi-envelope-fill
+            a(href='mailto:contact@example.com')
+                | info@girchi.com
+        .social-links.d-none.d-md-block
+            a.twitter(href='https://twitter.com/girchiparty' target='_blank')
+                i.bi.bi-twitter#twitter
+            a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
+                i.bi.bi-facebook#facebook
+            a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
+                i.bi.bi-instagram#instagram
 
 
 header#header.d-flex.align-items-center
-  .container.d-flex.align-items-center
-    nav#navbar.navbar
-      ul
-        li
-          a.nav-link.scrollto.active#general(href='/') ზოგადი
-        li
-          a.nav-link.scrollto#girchi(href='/girchi_news') გირჩი
-      ul  
-        select.filter
-            option.option( selected value='default') არიჩიე წყარო
-            option.option(value='Formula') ფორმულა
-            option.option(value='Facebook') Facebook
-            option.option(value='ImediNews') იმედი ნიუსი
-            option.option(value='IPN') ინტერპრეს ნიუსი
-            option.option(value='On') On.ge
-            option.option(value='Mtavari') მთავარი
-            option.option(value='Palitra') პალიტრა
-            option.option(value='Tabula') ტაბულა
+    .container.d-flex.align-items-center
+        nav#navbar.navbar
+            ul
+                li
+                    a.nav-link.scrollto.active#general(href='/') ზოგადი
+                li
+                    a.nav-link.scrollto#girchi(href='/girchi_news') გირჩი
+            ul  
+                select.filter
+                    option.option( selected value='default') არიჩიე წყარო
+                    option.option(value='Formula') ფორმულა
+                    option.option(value='Facebook') Facebook
+                    option.option(value='ImediNews') იმედი ნიუსი
+                    option.option(value='IPN') ინტერპრეს ნიუსი
+                    option.option(value='On') On.ge
+                    option.option(value='Mtavari') მთავარი
+                    option.option(value='Palitra') პალიტრა
+                    option.option(value='Tabula') ტაბულა
 
 
-.main.page#list
-    each subObject in object
-      .main-card.card-data(value=subObject)
-        .card.flex-column.article
-          img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-          a.card-body(href=subObject.link target='_blank')
-            h5.card-title=subObject.title
-            p(name='title').card-text=subObject.text
-            p.card-text
-              small.text-muted=subObject.articleDate
-          .img_font
-            img.small-img(src=subObject.logo alt='Card image cap')
-            if (subObject.important===false)
-              abb(title="მნიშვნელოვანად მონიშვნა")  
-                button.fas.fa-star.btn-click( name="obj" value=subObject)
-            else 
-              abb(title="მნიშვნელოვანი სიახლე")  
-                i.fas.fa-check.succes
+
+.main.page.news_container#main
+    each subObject in object[pageCount - 1]
+        .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
+            .card.flex-column.article
+                img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+                a.card-body(href=subObject.link target='_blank')
+                    h5.card-title=subObject.title
+                    p(name='title').card-text=subObject.text
+                    p.card-text
+                    small.text-muted=subObject.articleDate
+                .img_font
+                    img.small-img(src=subObject.logo alt='Card image cap')
+                    if (subObject.important===false)
+                        abb(title="მნიშვნელოვანად მონიშვნა")  
+                            button.fas.fa-star.btn-click( name="obj" value=subObject)
+                    else 
+                        abb(title="მნიშვნელოვანი სიახლე")  
+                            i.fas.fa-check.succes
 
 
 
 nav.pagination(aria-label='Page navigation example')
-  ul.pagination
-    
+    ul.pagination
 
 
 // ======= Footer =======
@@ -76,4 +76,3 @@ script(src="../assets/components/browserSide/shortenArticle.js")
 script(src="../assets/components/browserSide/filterPosts.js")
 script(src="../assets/components/browserSide/pagination.js") 
 script(type="module" src="../assets/components/browserSide/favorite.js")
-

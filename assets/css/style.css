@@ -14,7 +14,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
-  background: #eceaea;
+  width: 100%;
 }
 
 .shorten {
@@ -359,17 +359,6 @@ h6 {
   visibility: visible;
 }
 
-@media (max-width: 1366px) {
-  .navbar .dropdown .dropdown ul {
-    left: -90%;
-  }
-
-  .navbar .dropdown .dropdown:hover>ul {
-    left: -100%;
-  }
-}
-
-
 
 /*--------------------------------------------------------------
 # Hero Section
@@ -666,9 +655,8 @@ h6 {
   align-items: center;
 }
 
-.main h3 {
+#main-h3 {
   font-family: "BPG Glaho WEB Caps", sans-serif;
-  margin-bottom: 1rem;
   color: #7a7a7a;
 }
 
@@ -727,21 +715,33 @@ h6 {
 
 /* ------------------important---------------- */
 .important-container {
-  background: #f3f3f34f;
+  background: #ffffff4f;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-/* .important-section{
-  background: #f5f5f5;
-} */
+.important-section {
+  margin-top: 1.7rem;
+  background: white;
+}
+
+.important-section h3 {
+  font-family: "BPG Glaho WEB Caps", sans-serif;
+  color: #7a7a7a;
+}
+
 .main-card--important {
   padding: 0;
   width: 350px;
   height: 450px;
 }
 
-.main-card--important:hover {
+/* .main-card--important:hover {
   transform: scale(1.01);
-}
+} */
 
 .image-important {
   width: 100%;
@@ -855,7 +855,11 @@ option {
     display: inline-block;
   }
 }
-
+/* ---------------Girchi News Section */
+.girchi-news--section h3{
+  color: #7a7a7a;
+  font-family: "BPG Glaho WEB Caps", sans-serif;
+}
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
@@ -926,80 +930,6 @@ option {
   font-size: 1.4rem;
 }
 
-/*--------------------------------------------------------------
-# Media Query
---------------------------------------------------------------*/
-@media (max-width: 1400px) {
-  .card {
-    width: 300px;
-    height: 450px;
-  }
-
-  .image {
-    height: 200px;
-    width: 230px;
-  }
-
-  .card-title {
-    font-size: 13px;
-  }
-}
-
-@media (max-width: 1001px) {
-  .breadcrumbs {
-    margin-top: 66px;
-  }
-
-  .main {
-    margin: 5rem;
-  }
-
-  .card-img-top {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 200px;
-    background-size: cover;
-  }
-
-  .card {
-    width: 300px;
-    height: 450px;
-  }
-
-  .image {
-    height: 180px;
-    width: 210px;
-  }
-
-  .card-title {
-    font-size: 13px;
-  }
-
-  .formGroupExampleInput {
-    margin-bottom: 2rem;
-    font-size: 1rem;
-  }
-
-  .card {
-    padding: 1rem;
-  }
-
-  .card-text {
-    font-size: 11px;
-  }
-
-  #main {
-    margin-top: 3rem;
-  }
-}
-
-@media (max-width: 650px) {
-  .main {
-    margin: 1rem;
-  }
-}
-
 #important-button {
   position: relative;
   top: -50px;
@@ -1034,18 +964,17 @@ ul li a {
 .filter {
   float: right;
   position: relative;
-  right: 40px;
+  right: 0px;
 }
 
-@media (max-width: 1370px) {
-  .card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    height: 500px;
-    width: 400px;
-  }
+
+ul li a {
+  font-size: 1.6rem;
+}
+
+
+#main {
+  display: flex;
 }
 
 .pagination {
@@ -1056,6 +985,351 @@ ul li a {
   margin-bottom: 20px;
 }
 
-ul li a {
-  font-size: 1.6rem;
+.pagination ul a {
+  color: #444444;
+  font-size: 1rem;
+  margin-right: 0.2rem;
+  border-radius: 3px;
+  transition: 0.5s;
+}
+
+.pagination ul a:hover {
+  color: white;
+  background: #449d5b;
+}
+
+/*--------------------------------------------------------------
+# Media Query
+--------------------------------------------------------------*/
+@media (max-width: 1400px) {
+  .card {
+    width: 300px;
+    height: 450px;
+  }
+
+  .image {
+    height: 200px;
+    width: 230px;
+  }
+
+  .card-title {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 1370px) {
+
+  /* .important-section{
+    height: 100%;
+    background: yellowgreen;
+  } */
+
+  .card-main {
+    height: 560px;
+    width: 320px;
+    padding: 0.5rem;
+  }
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+@media (max-width: 1001px) {
+
+  /* -------------Important section----------------------*/
+  .navbar ul li a {
+    font-size: 1rem;
+  }
+
+  .filter {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .main-card--important {
+    padding: 0;
+    width: 320px;
+    height: 420px;
+    margin-top: 1rem;
+  }
+  .important-btn{
+    margin-top: 5rem;
+  }
+  .image-important {
+    height: 180px;
+  }
+
+  .small-img--important {
+    width: 40px
+  }
+
+  .main-card--important a h5 {
+    font-size: 0.8rem;
+  }
+
+  .important-section h3 {
+    font-size: 1.5rem;
+    display: flex;
+    color: #5a5a5a;
+    justify-content: center;
+  }
+    /*----------- Main -----------------*/
+    #main-h3 {
+      margin-top: 5rem;
+      font-size: 1.5rem;
+      display: flex;
+      color: #5a5a5a;
+      justify-content: center;
+    }
+  
+    .main {
+      margin-top: 0;
+    }
+    .small-img{
+      height: 20px;
+    }
+    .card-main {
+      height: 560px;
+      width: 320px;
+      padding: 0.5rem;
+    }
+  
+    .image {
+      width: 100%;
+    }
+  .formGroupExampleInput {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 770px){
+
+  /* -------------Important section----------------------*/
+  .navbar ul li a {
+    font-size: 1rem;
+  }
+
+  .filter {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .main-card--important {
+    padding: 0;
+    width: 240px;
+    height: 440px;
+    margin-top: 1rem;
+  }
+  .text-date--important{
+    font-size: 10px;
+  }
+  .important-btn{
+    margin-top: 5rem;
+  }
+  .image-important {
+    height: 180px;
+  }
+
+  .small-img--important {
+    width: 60px
+  }
+
+  .main-card--important a h5 {
+    font-size: 0.7rem;
+  }
+  .main-card--important a p {
+    font-size: 0.7rem;
+  }
+
+  .important-section h3 {
+    font-size: 1.5rem;
+    display: flex;
+    color: #5a5a5a;
+    justify-content: center;
+  }
+    /*----------- Main -----------------*/
+    #main-h3 {
+      margin-top: 5rem;
+      font-size: 1.5rem;
+      display: flex;
+      color: #5a5a5a;
+      justify-content: center;
+    }
+  
+    .main {
+      margin-top: 0;
+    }
+    .small-img{
+      height: 20px;
+    }
+    .card-main {
+      height: 560px;
+      width: 320px;
+      padding: 0.5rem;
+    }
+  
+    .image {
+      width: 100%;
+    }
+  .formGroupExampleInput {
+    margin-bottom: 2rem;
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 650px) {
+
+  /* -------------Important section----------------------*/
+  .navbar ul li a {
+    font-size: 1rem;
+  }
+
+  .filter {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .main-card--important {
+    padding: 0;
+    width: 350px;
+    height: 520px;
+  }
+
+  .image-important {
+    height: 230px;
+  }
+
+  .small-img--important {
+    width: 40px
+  }
+
+  .main-card--important a h5 {
+    font-size: 0.8rem;
+  }
+
+  .important-section h3 {
+    font-size: 1.4rem;
+    display: flex;
+    color: #5a5a5a;
+    justify-content: center;
+  }
+
+  /*----------- Main -----------------*/
+  #main-h3 {
+    margin-top: 5rem;
+    font-size: 1.4rem;
+    display: flex;
+    color: #5a5a5a;
+    justify-content: center;
+  }
+
+  .main {
+    margin-top: 0;
+  }
+
+  .card-main {
+    width: 350px;
+    height: 560px;
+  }
+
+  .image {
+    height: 250px;
+    width: 100%;
+  }
+
+  /* --------Pagination------------- */
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto 1rem;
+    margin-bottom: 20px;
+  }
+
+  .pagination ul a {
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+
+  /* -------------Important section----------------------*/
+  .navbar ul li a {
+    font-size: 1rem;
+  }
+
+  .filter {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .main-card--important {
+    padding: 0;
+    width: 320px;
+    height: 400px;
+  }
+
+  .image-important {
+    height: 180px;
+  }
+
+  .small-img--important {
+    width: 40px
+  }
+
+  .main-card--important a h5 {
+    font-size: 0.8rem;
+  }
+
+  .important-section h3 {
+    font-size: 1.4rem;
+    display: flex;
+    color: #5a5a5a;
+    justify-content: center;
+  }
+
+  /*----------- Main -----------------*/
+  #main-h3 {
+    margin-top: 5rem;
+    font-size: 1.4rem;
+    display: flex;
+    color: #5a5a5a;
+    justify-content: center;
+  }
+
+  .main {
+    margin-top: 0;
+  }
+
+  .card-main {
+    height: 560px;
+  }
+
+  .image {
+    width: 100%;
+  }
+
+  /* --------Pagination------------- */
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: auto 1rem;
+    margin-bottom: 20px;
+  }
+
+  .pagination ul a {
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+  }
 }

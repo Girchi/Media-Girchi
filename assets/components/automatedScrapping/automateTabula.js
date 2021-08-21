@@ -36,7 +36,7 @@ function writeToFile(url) {
         // Write in Source  Json
         writeToSource("tabula.json", "Tabula", title, dataInfo, text, imgUrl, 'https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png', url);
       } else {
-        console.log("არ მოიძებნა");
+        // console.log("არ მოიძებნა");
         // Write in Source Json
         writeToSource("tabula.json", "Tabula", title, dataInfo, text, imgUrl, 'https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png', url);
       }
