@@ -12,10 +12,13 @@ function writeToFile(url) {
       const title = $(".news__inner__desc__title").text();
       const dataInfo = $(".news__inner__images_created").text();
       const text = newsDiv.find("p").text();
-      const imgUrl = `https://formulanews.ge${$(".news__inner__main__image")
+      let imgUrl = `https://formulanews.ge${$(".news__inner__main__image")
         .find("img")
         .attr("src")}`;
 
+      if (imgUrl === "https://formulanews.geundefined") {
+        imgUrl ="https://formulanews.ge/uploads_script2/articles/2021/08/21/yjupldlo82izpkc.jpg";
+      }
       if (
         title.includes("გირჩი") ||
         title.includes("იაგო ხვიჩია") ||
@@ -71,7 +74,10 @@ export default function automateFormula() {
       let obj = $("#news__box").find(".main__new__slider__desc").find("a");
 
       for (let i = 0; i < 10; i++) {
-        checkFile('./assets/data/formula.json', writeToFile(`https://formulanews.ge${obj[i].attribs.href}`));
+        checkFile(
+          "./assets/data/formula.json",
+          writeToFile(`https://formulanews.ge${obj[i].attribs.href}`)
+        );
       }
     } else {
       console.log("Something failed!");

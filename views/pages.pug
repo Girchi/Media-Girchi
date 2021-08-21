@@ -1,6 +1,10 @@
 include parts/head.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
+.outerContainer
+  .item
+    img(src='./assets/img/download')
+  .circle
 
 // ======= Top Bar =======
 section#topbar.d-flex.align-items-center
@@ -40,10 +44,10 @@ header#header.d-flex.align-items-center
 
 
 
-.main.page.news_container#main
+.main.page.news_container#main.page-section
     each subObject in object[pageCount - 1]
         .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
-            .card.flex-column.article
+            .card.flex-column.article.page-card
                 img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
                 a.card-body(href=subObject.link target='_blank')
                     h5.card-title=subObject.title

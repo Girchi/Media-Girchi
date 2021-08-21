@@ -8,10 +8,10 @@ socket.on("connection");
 el.forEach((e) => {
   let check = false;
   e.addEventListener("click", () => {
+    console.log(e.classList);
+    e.classList.add("background");
     let sendData = e.getAttribute("value");
     socket.emit("message", sendData);
-    e.classList.toggle("background");
-
     if (check != true) {
       check = !check;
     } else {
