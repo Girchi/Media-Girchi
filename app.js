@@ -261,10 +261,21 @@ app.post("/add_news", urlencodedParser, (req, res) => {
   }
 });
 
-automateOn();
-automateImedi();
-automateFormula();
-automateMtavari();
-automateTabula();
-automatePalitra()
-automateIpn()
+function callTheFunctions() {
+  automateOn();
+  automateImedi();
+  automateFormula();
+  automateMtavari();
+  automateTabula();
+  automatePalitra();
+  automateIpn();
+}
+
+// In case if we want to change it, there are hours in milliseconds
+let oneHour = 3600000;
+let halfAnHour = 1800000;
+let hourAndHalf = 5400000;
+
+// Update the news in every 1 hour
+setInterval(callTheFunctions(), oneHour);
+
