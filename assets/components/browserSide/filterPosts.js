@@ -4,10 +4,13 @@ const cardContainer = document.querySelectorAll('#othernews');
 function filterPosts(sourceName) {
     for (let i = 0; i < cardContainer.length; i++) {
         cardContainer[i].classList.add("hideElement");
+    }  
+    for (let i = 0; i < cardContainer.length; i++) {
         if (cardContainer[i].getAttribute('itemprop') === sourceName) {
             cardContainer[i].classList.add("showElement");
         }
     }
+
 }
 
 container.addEventListener('input', () => {

@@ -616,9 +616,9 @@ h6 {
 
 .news_container {
   margin-top: 1rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
   justify-content: space-evenly;
 }
 
@@ -631,6 +631,7 @@ h6 {
 }
 
 .card {
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -715,12 +716,9 @@ h6 {
 
 /* ------------------important---------------- */
 .important-container {
-  background: #ffffff4f;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
+  display: block;
+  background: hsla(0, 0%, 100%, 0.31);
+  margin: 0 auto;
 }
 
 .important-section {
@@ -736,15 +734,17 @@ h6 {
 .main-card--important {
   padding: 0;
   width: 350px;
+  margin: 0 auto 100px auto;
   height: 450px;
 }
 
-/* .main-card--important:hover {
+.main-card--important:hover {
   transform: scale(1.01);
-} */
+}
 
 .image-important {
-  width: 100%;
+  padding-top: 30px;
+  width: 60%;
   height: 200px;
 }
 
@@ -766,9 +766,9 @@ h6 {
 }
 
 .card-title--important-p {
-  font-size: 15px;
+  font-size: 13px;
   color: #222222;
-  font-weight: 1000;
+  font-weight: 900;
 }
 
 .important-btn {
@@ -1010,7 +1010,8 @@ ul li a {
 --------------------------------------------------------------*/
 @media (max-width: 1400px) {
   .card {
-    width: 300px;
+    margin: 0 auto;
+    width: 600px;
     height: 450px;
   }
 
@@ -1039,6 +1040,12 @@ ul li a {
   .page-card {
     height: 600px;
   }
+  
+  .card {
+    margin: 0 auto;
+    width: 600px;
+    height: 450px;
+  }
 
   .page-section {
     margin-top: 1rem;
@@ -1051,7 +1058,8 @@ ul li a {
 
   .card-main {
     height: 560px;
-    width: 320px;
+    margin: 0 auto;
+    width: 600px;
     padding: 0.5rem;
   }
 
@@ -1179,6 +1187,7 @@ ul li a {
 
   .card-main {
     height: 560px;
+    margin: 0 auto;
     width: 320px;
     padding: 0.5rem;
   }
@@ -1315,6 +1324,7 @@ ul li a {
 
   .card-main {
     height: 560px;
+    margin: 0 auto;
     width: 320px;
     padding: 0.5rem;
   }
@@ -1439,6 +1449,7 @@ ul li a {
   .card-main {
     width: 350px;
     height: 560px;
+    margin: 0 auto;
   }
 
   .image {
@@ -1543,6 +1554,7 @@ ul li a {
 
   .card-main {
     height: 560px;
+    margin: 0 auto;
   }
 
   .image {
@@ -1617,4 +1629,19 @@ ul li a {
 
 .showElement {
   display: block;
+}
+
+.vote-post {
+  position: relative;
+}
+
+.vote {
+  padding: 0;
+  margin: 0;
+  transition: .4s;
+  cursor: pointer;
+}
+
+.vote:hover {
+  color: black;
 }

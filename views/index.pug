@@ -31,16 +31,15 @@ header#header.d-flex.align-items-center
           a.nav-link.scrollto#girchi(href='/girchi_news') გირჩი
       ul.style_ul
         select.filter
-            option.option(default disabled selected value='default') არიჩიე წყარო
-            option.option(value='Formula') ფორმულა
-            option.option(value='Facebook') Facebook
-            option.option(value='Imedi') იმედი ნიუსი
-            option.option(value='IPN') ინტერპრეს ნიუსი
-            option.option(value='On') On.ge
-            option.option(value='Mtavari') მთავარი
-            option.option(value='Palitra') პალიტრა
-            option.option(value='Tabula') ტაბულა
-
+          option.option(default disabled selected value='default') არიჩიე წყარო
+          option.option(value='Formula') ფორმულა
+          option.option(value='Facebook') Facebook
+          option.option(value='Imedi') იმედი ნიუსი
+          option.option(value='IPN') ინტერპრეს ნიუსი
+          option.option(value='On') On.ge
+          option.option(value='Mtavari') მთავარი
+          option.option(value='Palitra') პალიტრა
+          option.option(value='Tabula') ტაბულა
 
 
 
@@ -49,25 +48,29 @@ header#header.d-flex.align-items-center
   hr.hrelement.container
   .important-container.container
     each subObject in slicedObj
-          .main-card.main-card--important(value=subObject.source)
-            .card.flex-column.article.main-card--important
-              img.image-important(src=subObject.imgUrl alt='Card image cap')
-              a.card-body(href=subObject.link target='_blank')
-                h5.card-title--important-p=subObject.title
-                p.card-text=subObject.text
-              p.card-text-important
-                small.text-muted.text-date--important=subObject.articleDate
-                img.small-img--important(src=subObject.logo alt="Source's logo")
+      .main-card.main-card--important(value=subObject.source)
+        .card.flex-column.article.main-card--important
+          img.image-important(src=subObject.imgUrl alt='Card image cap')
+          a.card-body(href=subObject.link target='_blank')
+            h5.card-title--important-p=subObject.title
+            p.card-text=subObject.text
+          p.card-text-important
+            small.text-muted.text-date--important=subObject.articleDate
+            img.small-img--important(src=subObject.logo alt="Source's logo")
   .important-btn
     a(href='/important_news') ყველა მნიშვნელოვანი სიახლე
 
-h3#main-h3.container სიახლეები            
+h3#main-h3.container სხვა სიახლეები            
 hr.hrelement.container
 .main.page#list    
   .container.news_container.archive
     each subObject in object
       .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
         .card.card-main.flex-column.article
+          .vote-post
+            i.fas.fa-arrow-up.vote.upvote
+            p 17
+            i.fas.fa-arrow-down.vote.downvote
           img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
           a.card-body(href=subObject.link target='_blank')
             h5.card-title=subObject.title
@@ -84,9 +87,6 @@ hr.hrelement.container
                 i.fas.fa-check.succes
 
 
-nav.pagination(aria-label='Page navigation example')
-  ul.pagination
-    
 
 // ======= Footer =======
 include parts/footer.pug
@@ -97,6 +97,5 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 script(src="../assets/components/browserSide/favorite.js") 
 script(src="../assets/components/browserSide/shortenArticle.js") 
 script(src="../assets/components/browserSide/filterPosts.js")
-script(src="../assets/components/browserSide/pagination.js") 
 script(type="module" src="../assets/components/browserSide/favorite.js")
 

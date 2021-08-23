@@ -64,48 +64,7 @@ app.get("/", (req, res) => {
   const arrRess = arr.slice(arr.length - 6, arr.length)
   const slicedObj = Object.fromEntries(arrRess)
 
-  
-//               --------------- Pagination ---------------
-// ========================== DO NOT TOUCH THIS ================================
-  const newsPerPage = 20;
-
-  let objLength = Math.round(Object.keys(object).length / newsPerPage);
-
-  let objectToPass = JSON.stringify({ length: objLength });
-  function writeObjectLength() {
-    fs.writeFile("./assets/additional_data/newsCount.json", objectToPass, (err) => {
-      if(err) throw err;
-      console.log("Success");
-    })
-  }
-  checkFile("./assets/additional_data/newsCount.json", writeObjectLength());
-  
-  
-  let newObj = [];
-  let objectAsArr = Object.entries(object);  
-  let objArr = objectAsArr.map(arr => arr.pop());
-
-  let startingSliceCount = 0;
-  let endSliceCount = newsPerPage;
-
-  for(let i = 1; i <= objLength; i++) {
-    let arr = objArr.slice(startingSliceCount, endSliceCount);
-    startingSliceCount += newsPerPage;
-    endSliceCount += newsPerPage;
-    newObj.push(arr);
-  }
-
-  for(let i = 1; i <= objLength; i++) {
-    app.get(`/:page=${i}`, async(req, res) => {
-      res.render("pages", { 
-        object: newObj, 
-        pageCount: i
-      });
-    })
-  }
-
-  res.render("index", { object: newObj[0], slicedObj });
-//==============================================================================
+  res.render("index", { object: object, slicedObj });
 });
 
 const host = "127.0.0.1";
@@ -277,5 +236,5 @@ let halfAnHour = 1800000;
 let hourAndHalf = 5400000;
 
 // Update the news in every 1 hour
-setInterval(callTheFunctions(), oneHour);
+setInterval(callTheFunctions, oneHour);
 
