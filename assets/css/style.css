@@ -628,7 +628,6 @@ h6 {
 } */
 .small-img {
   height: 30px;
-  margin: 5px 0 20px 10px;
 }
 
 .card {
@@ -1017,8 +1016,8 @@ ul li a {
   }
 
   .image {
-    height: 300px;
-    width: max-content;
+    height: 200px;
+    width: 230px;
   }
 
   .card-title {
@@ -1647,73 +1646,45 @@ ul li a {
   color: black;
 }
 
-.about-girchi {
-  float: right;
-  margin: 55px;
-  margin-bottom: 50px;
-  margin-right: 115px;
-  border: 1px solid #cecfc8;
-  text-align: center;
+.left-fixed-container {
+  position: fixed;
+  background-color: #4f9f38;
   border-radius: 8px;
+  border: 1px solid #cccac4;
+  text-align: center;
+  margin-top: 60px;
+  margin-left: 40px;
+  padding: 0 10px 0 10px;
 }
 
-.about-girchi-header-div {
-  background-color: #4d9d38;
+.fixed-container-list-item {
+  cursor: pointer;
   color: white;
-}
-
-.about-girchi-header-p {
-  margin: 0;
-  padding: 30px 0 0 10px;
-  text-align: left;
-}
-
-.project-list {
   list-style-type: decimal;
-  margin: 0 auto;
-  text-align: center;
+  padding: 10px;
+  margin: 5px;
+  transition: .4s;
 }
 
-.project-list-item {
-  margin: 5px 20px 5px 5px;
+.fixed-container-list-item:hover {
+  color: rgb(231, 218, 27);
+  font-weight: 500;
 }
 
-.project-img {
-  width: 28px;
-}
-
-.project-list-btn {
-  font-size: 0.7rem;
-}
-
-
-.latest-news {
-  float: right;
-  margin: 55px;
-  position: relative;
-  margin-right: 115px;
-  border: 1px solid #cecfc8;
-  text-align: center;
-  border-radius: 8px;
-}
-
-.latest-news-header-div {
-  background-color: #4d9d38;
+.left-fixed-container-p {
   color: white;
+  font-weight: 500;
+  padding-top: 10px;
 }
 
-.latest-news-header-p {
-  margin: 0;
-  padding: 30px 0 0 10px;
-  text-align: left;
-}
-
-.latest-news-list {
-  list-style-type: decimal;
+.left-fixed-container-hr {
+  width: 70%;
   margin: 0 auto;
-  text-align: center;
+  color: white;
+  height: auto;
 }
 
-.latest-news-list-list-item {
-  margin: 5px 20px 5px 5px;
+
+#main, #main-h3, .hrelement {
+  max-width: 800px;
 }

@@ -30,16 +30,31 @@ header#header.d-flex.align-items-center
         li
           a.nav-link.scrollto#girchi(href='/girchi_news') გირჩი
       ul.style_ul
-        select.filter
-          option.option(default disabled selected value='default') არიჩიე წყარო
-          option.option(value='Formula') ფორმულა
-          option.option(value='Facebook') Facebook
-          option.option(value='Imedi') იმედი ნიუსი
-          option.option(value='IPN') ინტერპრეს ნიუსი
-          option.option(value='On') On.ge
-          option.option(value='Mtavari') მთავარი
-          option.option(value='Palitra') პალიტრა
-          option.option(value='Tabula') ტაბულა
+        //- select.filter
+        //-   option.option(default disabled selected value='default') არიჩიე წყარო
+        //-   option.option(value='Formula') ფორმულა
+        //-   option.option(value='Facebook') Facebook
+        //-   option.option(value='Imedi') იმედი ნიუსი
+        //-   option.option(value='IPN') ინტერპრეს ნიუსი
+        //-   option.option(value='On') On.ge
+        //-   option.option(value='Mtavari') მთავარი
+        //-   option.option(value='Palitra') პალიტრა
+        //-   option.option(value='Tabula') ტაბულა
+
+
+
+.left-fixed-container
+  p.left-fixed-container-p გაფილტრე სიახლეები
+  hr.left-fixed-container-hr
+  ul.left-fixed-container-ul
+    li(onclick='filterPosts("Formula")').fixed-container-list-item ფორმულა
+    li(onclick='filterPosts("Imedi")').fixed-container-list-item იმედი ნიუსი
+    li(onclick='filterPosts("IPN")').fixed-container-list-item ინტერპრეს ნიუსი
+    li(onclick='filterPosts("On")').fixed-container-list-item On.ge
+    li(onclick='filterPosts("Mtavari")').fixed-container-list-item მთავარი არხი
+    li(onclick='filterPosts("Palitra")').fixed-container-list-item პალიტრა
+    li(onclick='filterPosts("Tabula")').fixed-container-list-item ტაბულა
+    li(onclick='filterPosts("Facebook")').fixed-container-list-item Facebook
 
 
 
@@ -65,30 +80,6 @@ header#header.d-flex.align-items-center
 h3#main-h3.container სხვა სიახლეები            
 hr.hrelement.container
 
-.about-girchi 
-  .about-girchi-header-div
-    p.about-girchi-header-p გირჩის პროექტები
-    hr
-  ul.project-list
-    li.project-list-item Legalize
-      img.project-img(src="../assets/img/icons/kanafi.png" alt="Project logo")
-      a(href='https://legalize.ge' target='_blank')  
-        button.project-list-btn.btn.btn-warning დაუჭირე მხარი  
-      hr
-      
-    li.project-list-item Amnistia
-      img.project-img(src="../assets/img/icons/amnistia.png" alt="Project logo")
-      a(href='https://amnistia.ge' target='_blank')  
-        button.project-list-btn.btn.btn-warning დაუჭირე მხარი  
-      hr
-
-//- .latest-news
-//-   .latest-news-header-div
-//-     p.latest-news-header-p ბოლო სიახლეები
-//-     hr
-
-//-   ul.latest-news-list
-//-     li.latest-news-list-item Very good post
 
 .main.page#list    
   .container.news_container.archive
