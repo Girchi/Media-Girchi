@@ -14,7 +14,7 @@ export default function writeDataToImportants(fileName, title, dataInfo, text, i
       articleDate: dataInfo,
       imgUrl: imgUrl,
       important: false,
-      fileName: fileName
+      fileName: fileName,
     };
     newsData = JSON.stringify(newsData)
     fs.writeFileSync("./assets/data/important.json", newsData, (error) => {

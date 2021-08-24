@@ -6,7 +6,7 @@ export default function writeDataToGirchi(fileName, title, dataInfo, text, imgUr
     let newsData = JSON.parse(data);
     newsData[dataInfo] = {
       ...newsData[dataInfo],
-      source: "IPN",
+      source: "Girchi",
       title: title,
       text: text,
       link: url,

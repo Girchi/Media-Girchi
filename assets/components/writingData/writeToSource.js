@@ -27,6 +27,7 @@ export default function writeToSource(
         imgUrl: imgUrl,
         important: false,
         fileName: fileName,
+        voteCount: 0
       };
       newsData = JSON.stringify(newsData);
       fs.writeFileSync(`./assets/data/${fileName}`, newsData, (error) => {
