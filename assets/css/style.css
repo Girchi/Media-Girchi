@@ -146,7 +146,8 @@ h6 {
 # Top Bar
 --------------------------------------------------------------*/
 #topbar {
-  background: #ffffff;
+
+  background:#5cb874;
   font-size: 15px;
   height: 40px;
   padding: 0;
@@ -154,16 +155,14 @@ h6 {
 
 #topbar .contact-info a {
   line-height: 0;
-  color: #444444;
+  color: #ffffff;
   transition: 0.3s;
 }
 
-#topbar .contact-info a:hover {
-  color: #5cb874;
-}
+
 
 #topbar .contact-info i {
-  color: #5cb874;
+  color: #ffffff;
   line-height: 0;
   margin-right: 5px;
 }
@@ -173,7 +172,7 @@ h6 {
 }
 
 #topbar .social-links a {
-  color: #6f6f6f;
+  color: #ffffff;
   padding: 4px 12px;
   display: inline-block;
   line-height: 1px;
@@ -185,7 +184,7 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: rgb(240, 240, 240);
+  background: rgb(255, 255, 255);
   transition: all 0.5s;
   /* z-index: 997; */
   height: 70px;
@@ -227,7 +226,7 @@ h6 {
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
 
 }
@@ -659,6 +658,8 @@ h6 {
 #main-h3 {
   font-family: "BPG Glaho WEB Caps", sans-serif;
   color: #7a7a7a;
+  display: flex;
+  justify-content: center;
 }
 
 .card-text {
@@ -729,6 +730,9 @@ h6 {
 .important-section h3 {
   font-family: "BPG Glaho WEB Caps", sans-serif;
   color: #7a7a7a;
+  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .main-card--important {
@@ -956,9 +960,9 @@ option {
   margin-bottom: 3rem;
 }
 
-.fixed-top {
+/* .fixed-top {
   z-index: 150;
-}
+} */
 
 ul li a {
   font-size: 2rem;
@@ -1646,17 +1650,89 @@ ul li a {
   color: black;
 }
 
-.left-fixed-container {
-  position: fixed;
-  background-color: #4f9f38;
-  border-radius: 8px;
-  border: 1px solid #cccac4;
-  text-align: center;
-  margin-top: 60px;
-  margin-left: 40px;
-  padding: 0 10px 0 10px;
-}
 
+/*--------------------------------------------------------------
+#  New Container
+--------------------------------------------------------------*/
+/* Header */
+.big-nav--header{
+  width: 100%;
+  height: 3rem;
+  background: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.288) -8px 5px 16px -12px;
+  display: flex;
+  align-items: center;
+}
+/* HEAD - Section */
+.big-nav{
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top:0;
+  width: 100%;
+  z-index: 1000;
+}
+.big-nav--section{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  background: #5cb874;
+}
+.nav-section{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.social-links{
+  display: flex;
+  justify-content: space-between;
+}
+.social-links a{
+  color: white;
+  margin-right: 1rem;
+}
+.bi-envelope-fill{
+  color: white;
+}
+.contact-info a{
+  color: white;
+  margin-left: 1rem;
+}
+/* Main section */
+.big-main{
+  display: flex;
+  justify-content: center;
+  background: #f0f2f5;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
+.big-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 80%;
+  margin-top: 5.5%;
+}
+.big-inside-main{
+  width: 50%;
+  margin: auto 2rem;
+  padding: 2rem;
+  background: rgb(255, 255, 255);
+  border-radius: 0.5rem;
+}
+/* Left section */
+.left-fixed-container {
+  /* position: fixed; */
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 20%;
+  position: fixed;
+  top: 10%;
+  left: 8%;
+  height: 88%;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+}
 .fixed-container-list-item {
   cursor: pointer;
   color: white;
@@ -1687,4 +1763,40 @@ ul li a {
 
 #main, #main-h3, .hrelement {
   max-width: 800px;
+}
+/* Right Section */
+.right-fixed-container {
+  /* position: fixed; */
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 20%;
+  height: 88%;
+  position: fixed;
+  top: 10%;
+  right: 8%;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.right-fixed-container-ul li{
+  display: flex;
+  align-items: center;
+}
+.right-fixed-container-ul li img{
+  width: 50px;
+}
+.right-fixed-container-ul li h3{
+  color:#3b3b3b;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-left: 2rem;
+  font-family: "BPG Glaho WEB Caps", sans-serif;
+}
+.right-fixed-container-p{
+  color: #505050;
+  font-size: 20px;
+  font-family: "BPG Glaho WEB Caps", sans-serif;
 }
