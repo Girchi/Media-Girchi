@@ -18,6 +18,7 @@ export default function writeDataToGirchi(fileName, title, dataInfo, text, imgUr
     };
 
     newsData = JSON.stringify(newsData)
+    
     fs.writeFileSync("./assets/data/girchi.json", newsData, (error) => {
       if (error) console.log(error)
     })

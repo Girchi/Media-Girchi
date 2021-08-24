@@ -60,8 +60,36 @@ header#header.d-flex.align-items-center
   .important-btn
     a(href='/important_news') ყველა მნიშვნელოვანი სიახლე
 
+
+
 h3#main-h3.container სხვა სიახლეები            
 hr.hrelement.container
+
+.about-girchi 
+  .about-girchi-header-div
+    p.about-girchi-header-p გირჩის პროექტები
+    hr
+  ul.project-list
+    li.project-list-item Legalize
+      img.project-img(src="../assets/img/icons/kanafi.png" alt="Project logo")
+      a(href='https://legalize.ge' target='_blank')  
+        button.project-list-btn.btn.btn-warning დაუჭირე მხარი  
+      hr
+      
+    li.project-list-item Amnistia
+      img.project-img(src="../assets/img/icons/amnistia.png" alt="Project logo")
+      a(href='https://amnistia.ge' target='_blank')  
+        button.project-list-btn.btn.btn-warning დაუჭირე მხარი  
+      hr
+
+//- .latest-news
+//-   .latest-news-header-div
+//-     p.latest-news-header-p ბოლო სიახლეები
+//-     hr
+
+//-   ul.latest-news-list
+//-     li.latest-news-list-item Very good post
+
 .main.page#list    
   .container.news_container.archive
     each subObject in object

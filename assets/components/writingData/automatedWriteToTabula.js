@@ -3,12 +3,7 @@ import request from "request";
 import cheerio from "cheerio";
 import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
-export default function automatedWriteToTabula(
-  url,
-  fileName,
-  sourceName,
-  logoUrl
-) {
+export default function automatedWriteToTabula(url, fileName, sourceName,logoUrl) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode === 200) {
       const $ = cheerio.load(html);

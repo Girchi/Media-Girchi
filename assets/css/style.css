@@ -1646,3 +1646,74 @@ ul li a {
 .vote:hover {
   color: black;
 }
+
+.about-girchi {
+  float: right;
+  margin: 55px;
+  margin-bottom: 50px;
+  margin-right: 115px;
+  border: 1px solid #cecfc8;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.about-girchi-header-div {
+  background-color: #4d9d38;
+  color: white;
+}
+
+.about-girchi-header-p {
+  margin: 0;
+  padding: 30px 0 0 10px;
+  text-align: left;
+}
+
+.project-list {
+  list-style-type: decimal;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.project-list-item {
+  margin: 5px 20px 5px 5px;
+}
+
+.project-img {
+  width: 28px;
+}
+
+.project-list-btn {
+  font-size: 0.7rem;
+}
+
+
+.latest-news {
+  float: right;
+  margin: 55px;
+  position: relative;
+  margin-right: 115px;
+  border: 1px solid #cecfc8;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.latest-news-header-div {
+  background-color: #4d9d38;
+  color: white;
+}
+
+.latest-news-header-p {
+  margin: 0;
+  padding: 30px 0 0 10px;
+  text-align: left;
+}
+
+.latest-news-list {
+  list-style-type: decimal;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.latest-news-list-list-item {
+  margin: 5px 20px 5px 5px;
+}

@@ -17,7 +17,7 @@ function writeToFile(url) {
         .attr("src")}`;
 
       if (imgUrl === "https://formulanews.geundefined") {
-        imgUrl ="https://formulanews.ge/uploads_script2/articles/2021/08/21/yjupldlo82izpkc.jpg";
+        imgUrl = "https://formulanews.ge/uploads_script2/articles/2021/08/21/yjupldlo82izpkc.jpg";
       }
       if (
         title.includes("გირჩი") ||
@@ -50,7 +50,6 @@ function writeToFile(url) {
           url
         );
       } else {
-        // console.log("არ მოიძებნა");
         // Write in Source Json
         writeToSource(
           "formula.json",
