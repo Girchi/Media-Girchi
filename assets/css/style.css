@@ -274,6 +274,10 @@ h6 {
   transition: .4s;
 }
 
+#twitter, #facebook, #instagram, #youtube {
+  transition: .3s;
+}
+
 #twitter:hover {
   color: #1DA1F2;
 }
@@ -284,6 +288,10 @@ h6 {
 
 #instagram:hover {
   color: #bc2a8d;
+}
+
+#youtube:hover {
+  color: #cf3c29;
 }
 
 .navbar .getstarted {
@@ -627,6 +635,7 @@ h6 {
 } */
 .small-img {
   height: 30px;
+  margin-left: 7px;
 }
 
 .card {
@@ -877,6 +886,8 @@ option {
 #footer {
   background: #1a1a1a1f;
   color: #fff;
+  z-index: 4;
+  position: relative;
   font-size: 14px;
   text-align: center;
   padding: 30px 0;
@@ -1061,7 +1072,7 @@ ul li a {
   } */
 
   .card-main {
-    height: 560px;
+    height: 430px;
     margin: 0 auto auto -54px;
     width: 500px;
     padding: 0.5rem;
@@ -1691,7 +1702,7 @@ ul li a {
 }
 .social-links{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .social-links a{
   color: white;
@@ -1727,12 +1738,12 @@ ul li a {
 }
 /* Left section */
 .left-fixed-container {
-  /* position: fixed; */
   background-color: #ffffff;
   border-radius: 8px;
   width: 20%;
+  z-index: 0;
   position: fixed;
-  top: 20%;
+  top: 15%;
   left: 8%;
   height: 88%;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
@@ -1770,13 +1781,13 @@ ul li a {
 }
 /* Right Section */
 .right-fixed-container {
-  /* position: fixed; */
   background-color: #ffffff;
   border-radius: 8px;
+  z-index: 0;
   width: 20%;
   height: 88%;
   position: fixed;
-  top: 20%;
+  top: 15%;
   right: 8%;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   display: flex;

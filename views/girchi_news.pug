@@ -1,61 +1,120 @@
 include parts/head.pug
-body
-  .outerContainer
-    .item
-      img(src='./assets/img/download')
-    .circle
-  // ======= Top Bar =======
-  section#topbar.d-flex.align-items-center
-    .container.d-flex.justify-content-center.justify-content-md-between
-      .contact-info.d-flex.align-items-center
+script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
+
+.outerContainer
+  .item
+    img(src='./assets/img/download')
+  .circle
+// ======= Top Bar =======
+.big-nav
+  section.big-nav--section
+    .container.nav-section
+      .contact-info
         i.bi.bi-envelope-fill
         a(href='mailto:contact@example.com')
           | info@girchi.com
-      .social-links.d-none.d-md-block
-        a.twitter(href='https://twitter.com/girchiparty' target='_blank')
+      .social-links
+        a.twitter(href='https://www.twitter.com/girchiparty' target='_blank')
           i.bi.bi-twitter#twitter
         a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
           i.bi.bi-facebook#facebook
         a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
           i.bi.bi-instagram#instagram
+        a.youtube(href='https://www.youtube.com/channel/UC6o6176a756vk1nZuzAXy5g' target='_blank')
+          i.fab.fa-youtube
 
-  // ======= Header =======
-  header#header.d-flex.align-items-center
-    .container.d-flex.align-items-center.girchi-news--nav
+
+  header.big-nav--header
+    .container.d-flex.align-items-center
       nav#navbar.navbar
         ul
           li
-            a.nav-link.scrollto.active#general(href='/') ზოგადი
+            a.nav-link.active#general(href='/') ზოგადი
           li
-            a.nav-link.scrollto#girchi(href='/girchi_news') გირჩი
+            a.nav-link#girchi(href='/girchi_news') გირჩი
+  //-       //- ul.style_ul
+  //-         //- select.filter
+  //-         //-   option.option(default disabled selected value='default') არიჩიე წყარო
+  //-         //-   option.option(value='Formula') ფორმულა
+  //-         //-   option.option(value='Facebook') Facebook
+  //-         //-   option.option(value='Imedi') იმედი ნიუსი
+  //-         //-   option.option(value='IPN') ინტერპრეს ნიუსი
+  //-         //-   option.option(value='On') On.ge
+  //-         //-   option.option(value='Mtavari') მთავარი
+  //-         //-   option.option(value='Palitra') პალიტრა
+  //-         //-   option.option(value='Tabula') ტაბულა
+.left-fixed-container
+      
+.right-fixed-container
+      hr.left-fixed-container-hr
+      //- p.right-fixed-container-p გაფილტრე სიახლეები
+      ul.right-fixed-container-ul
+        li(onclick='filterPosts("Formula")').fixed-container-list-item 
+          img(src="https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png", alt="")
+          h3 ფორმულა
+        li(onclick='filterPosts("Imedi")').fixed-container-list-item
+          img(src="https://www.imedi.ge/m/i/logo-fb.png", alt="")
+          h3 იმედი ნიუსი
+        li(onclick='filterPosts("IPN")').fixed-container-list-item 
+          img(src="https://www.interpressnews.ge/static/img/logofixed.svg", alt="")
+          h3 ინტერპრეს ნიუსი
+        li(onclick='filterPosts("On")').fixed-container-list-item 
+          img(src="http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png", alt="")
+          h3 On.ge
+        li(onclick='filterPosts("Mtavari")').fixed-container-list-item 
+          img(src="https://www.televizia.org/img/tv_mtavariarxi.png", alt="")
+          h3 მთავარი არხი
+        li(onclick='filterPosts("Palitra")').fixed-container-list-item 
+          img(src="https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg", alt="")
+          h3 პალიტრა
+        li(onclick='filterPosts("Tabula")').fixed-container-list-item 
+          img(src="https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png", alt="")
+          h3 ტაბულა
+        li(onclick='filterPosts("Facebook")').fixed-container-list-item 
+          img(src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png", alt="")
+          h3 Facebook
+.big-main
+  .big-container
+    .big-inside-main
+      h3#main-h3.container სხვა სიახლეები            
+      hr.hrelement.container
+      .main.page#list    
+        .container.news_container.archive
+          each subObject in object
+            .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
+              .card.card-main.flex-column.article
+                .vote-post
+                  //- i.fas.fa-arrow-up.vote.upvote
+                  //- p 0
+                  //- i.fas.fa-arrow-down.vote.downvote
+                img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
+                a.card-body(href=subObject.link target='_blank')
+                  h5.card-title=subObject.title
+                  p(name='title').card-text=subObject.text
+                  p.card-text
+                    small.text-muted=subObject.articleDate
+                .img_font
+                  img.small-img(src=subObject.logo alt='Card image cap')
+                  if (subObject.important===false)
+                    abb(title="მნიშვნელოვანად მონიშვნა")  
+                      button.fas.fa-star.btn-click( name="obj" value=subObject)
+                  else 
+                    abb(title="მნიშვნელოვანი სიახლე")  
+                      i.fas.fa-check.succes
 
 
-.main.page.girchi-news--section
-  h3#main.container სიახლეები გირჩზე
-  hr.hrelement.container
-  .container.news_container.archive
-    each subObject in object
-      .main-card
-        .card.girchi-card.flex-column.article
-          img.image.card-img-top.girchi-news--img(src=subObject.imgUrl alt='Card image cap')
-          a.card-body.girchi-p(href=subObject.link target='_blank')
-            h5.card-title=subObject.title
-            p.card-text=subObject.text
-            p.card-text
-              small.text-muted=subObject.articleDate
-          .img_font
-            img.small-img(src=subObject.logo alt='Card image cap')
-    
 
 // ======= Footer =======
 include parts/footer.pug
 // End footer 
 
 include parts/scripts.pug
+script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
+script(src="../assets/components/browserSide/favorite.js") 
 script(src="../assets/components/browserSide/shortenArticle.js") 
-script(type="module" src="../assets/components/browserSide/clickFavorite.js") 
+script(src="../assets/components/browserSide/filterPosts.js")
+script(type="module" src="../assets/components/browserSide/favorite.js")
 
 script.  
   document.querySelector("#general").className = "nav-link scrollto";
   document.querySelector("#girchi").className = "nav-link scrollto active";
-

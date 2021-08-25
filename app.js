@@ -60,11 +60,11 @@ app.get("/", (req, res) => {
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
 
-  const arr = Object.entries(importantNews)
-  const arrRess = arr.slice(arr.length - 6, arr.length)
-  const slicedObj = Object.fromEntries(arrRess)
+  // const arr = Object.entries(importantNews)
+  // const arrRess = arr.slice(arr.length - 6, arr.length)
+  // const slicedObj = Object.fromEntries(arrRess)
 
-  res.render("index", { object: object, slicedObj });
+  res.render("index", { object: object, importantNews });
 });
 
 const host = "127.0.0.1";
@@ -126,16 +126,18 @@ app.get("/girchi_news", (req, res) => {
   Object.assign(object, response);
   res.render("girchi_news", { object });
 });
-app.get("/important_news", (req, res) => {
-  let object = {};
 
-  let response = JSON.parse(
-    fs.readFileSync(`./assets/data/important.json`, "utf-8")
-  );
 
-  Object.assign(object, response);
-  res.render("important_news", { object });
-});
+// app.get("/important_news", (req, res) => {
+//   let object = {};
+
+//   let response = JSON.parse(
+//     fs.readFileSync(`./assets/data/important.json`, "utf-8")
+//   );
+
+//   Object.assign(object, response);
+//   res.render("important_news", { object });
+// });
 
 // Add news section
 app.post("/add_news", urlencodedParser, (req, res) => {

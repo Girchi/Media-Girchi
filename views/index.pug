@@ -1,10 +1,10 @@
 include parts/head.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
-//- .outerContainer
-//-   .item
-//-     img(src='./assets/img/download')
-//-   .circle
+.outerContainer
+  .item
+    img(src='./assets/img/download')
+  .circle
 // ======= Top Bar =======
 .big-nav
   section.big-nav--section
@@ -20,7 +20,8 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
           i.bi.bi-facebook#facebook
         a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
           i.bi.bi-instagram#instagram
-
+        a.youtube(href='https://www.youtube.com/channel/UC6o6176a756vk1nZuzAXy5g' target='_blank')
+          i.fab.fa-youtube#youtube
 
   header.big-nav--header
     .container.d-flex.align-items-center
@@ -44,8 +45,8 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 .left-fixed-container
       
 .right-fixed-container
-      p.right-fixed-container-p გაფილტრე სიახლეები
       hr.left-fixed-container-hr
+      //- p.right-fixed-container-p გაფილტრე სიახლეები
       ul.right-fixed-container-ul
         li(onclick='filterPosts("Formula")').fixed-container-list-item 
           img(src="https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png", alt="")
@@ -71,6 +72,7 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
         li(onclick='filterPosts("Facebook")').fixed-container-list-item 
           img(src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png", alt="")
           h3 Facebook
+        
 .big-main
   .big-container
     .big-inside-main
@@ -78,7 +80,7 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
         h3#main.container მნიშვნელოვანი სიახლეები
         hr.hrelement.container
         .important-container.container
-          each subObject in slicedObj
+          each subObject in importantNews
             .main-card.main-card--important(value=subObject.source)
               .card.flex-column.article.main-card--important
                 img.image-important(src=subObject.imgUrl alt='Card image cap')
@@ -88,8 +90,8 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
                 p.card-text-important
                   small.text-muted.text-date--important=subObject.articleDate
                   img.small-img--important(src=subObject.logo alt="Source's logo")
-        .important-btn
-          a(href='/important_news') ყველა მნიშვნელოვანი სიახლე
+
+
       h3#main-h3.container სხვა სიახლეები            
       hr.hrelement.container
       .main.page#list    
