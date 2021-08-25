@@ -1738,15 +1738,15 @@ ul li a {
 }
 /* Left section */
 .left-fixed-container {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   border-radius: 8px;
   width: 20%;
   z-index: 0;
   position: fixed;
-  top: 15%;
+  top: 10%;
   left: 8%;
   height: 88%;
-  box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  /* box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px; */
 }
 .fixed-container-list-item {
   cursor: pointer;
@@ -1787,7 +1787,7 @@ ul li a {
   width: 20%;
   height: 88%;
   position: fixed;
-  top: 15%;
+  top: 10%;
   right: 8%;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   display: flex;
@@ -1816,3 +1816,48 @@ ul li a {
   margin-bottom: 25px;
   font-family: "BPG Glaho WEB Caps", sans-serif;
 }
+/* Very important Section */
+.very-important--card{
+  width: 100%;
+  height: 15%;
+  background: #ffffff;
+  border-radius: 10px;
+  padding:  auto 1rem;
+  display: flex;
+  margin-bottom: 1rem;
+} 
+.image-veryImportant{
+  width: 80%;
+  height: 60%;
+}
+.very-important--card a h5{
+  font-size: 10px;
+}
+.very-important--card p small{
+  font-size: 10px;
+}
+.very-important--card p img{
+  width: 10px;
+}
+.left-inside--section{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.right-inside--section{
+  width: 50%;
+  height: 70%;
+  /* background:chocolate */
+}
+.right-inside--section a h5{
+ font-size: 10px;
+ color: black;
+ font-weight: 1000;
+  /* background:chocolate */
+}
+.right-inside--section a p{
+  font-size: 10px;
+   /* background:chocolate */
+ }

@@ -1,10 +1,10 @@
 include parts/head.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
-.outerContainer
-  .item
-    img(src='./assets/img/download')
-  .circle
+//- .outerContainer
+//-   .item
+//-     img(src='./assets/img/download')
+//-   .circle
 // ======= Top Bar =======
 .big-nav
   section.big-nav--section
@@ -43,6 +43,19 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
   //-         //-   option.option(value='Palitra') პალიტრა
   //-         //-   option.option(value='Tabula') ტაბულა
 .left-fixed-container
+  each subObject in importantNews
+            .very-important(value=subObject.source)
+              .very-important--card
+                .left-inside--section
+                  img.image-veryImportant(src=subObject.imgUrl alt='Card image cap')
+                  p.card-text-important
+                      small.text-muted.text-date--important=subObject.articleDate
+                      img.small-img--important(src=subObject.logo alt="Source's logo")
+                .right-inside--section
+                  a.card-body(href=subObject.link target='_blank')
+                    h5=subObject.title
+                    p.card-text=subObject.text
+                  
       
 .right-fixed-container
       hr.left-fixed-container-hr

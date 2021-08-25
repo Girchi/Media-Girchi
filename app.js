@@ -59,12 +59,15 @@ app.get("/", (req, res) => {
   let importantNews = JSON.parse(
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
+  let veryImportantNews = JSON.parse(
+    fs.readFileSync("./assets/data/veryImportant.json", "utf-8")
+  );
 
   // const arr = Object.entries(importantNews)
   // const arrRess = arr.slice(arr.length - 6, arr.length)
   // const slicedObj = Object.fromEntries(arrRess)
 
-  res.render("index", { object: object, importantNews });
+  res.render("index", { object: object, importantNews ,veryImportantNews});
 });
 
 const host = "127.0.0.1";
