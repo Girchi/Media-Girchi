@@ -1046,8 +1046,8 @@ ul li a {
   }
   
   .card {
-    margin: 0 auto;
-    width: 600px;
+    margin: 0 auto auto -73px;
+    width: 500px;
     height: 450px;
   }
 
@@ -1062,8 +1062,8 @@ ul li a {
 
   .card-main {
     height: 560px;
-    margin: 0 auto;
-    width: 600px;
+    margin: 0 auto auto -54px;
+    width: 500px;
     padding: 0.5rem;
   }
 
@@ -1506,7 +1506,27 @@ ul li a {
   }
 }
 
-@media (max-width: 450px) {
+ @media(max-width: 450px) {
+
+  .left-fixed-container {
+    display: none;
+  }
+
+  .big-nav--section {
+    width: 64%;
+  }
+
+  .big-nav--header {
+    width: 64%;
+  }
+
+  .social-links {
+    margin-right: -15px;
+  }
+
+  .contact-info a {
+    margin-left: 0.2rem;
+  }
 
   /* -------------Important section----------------------*/
   .navbar ul li a {
@@ -1563,22 +1583,6 @@ ul li a {
 
   .image {
     width: 100%;
-  }
-
-  /* --------Pagination------------- */
-  .pagination {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    margin: auto 1rem;
-    margin-bottom: 20px;
-  }
-
-  .pagination ul a {
-    font-size: 0.7rem;
-    margin-top: 0.5rem;
   }
 
   /* ----------Girchi news section----------- */
@@ -1728,7 +1732,7 @@ ul li a {
   border-radius: 8px;
   width: 20%;
   position: fixed;
-  top: 10%;
+  top: 20%;
   left: 8%;
   height: 88%;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
@@ -1772,7 +1776,7 @@ ul li a {
   width: 20%;
   height: 88%;
   position: fixed;
-  top: 10%;
+  top: 20%;
   right: 8%;
   box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
   display: flex;
@@ -1798,5 +1802,6 @@ ul li a {
 .right-fixed-container-p{
   color: #505050;
   font-size: 20px;
+  margin-bottom: 25px;
   font-family: "BPG Glaho WEB Caps", sans-serif;
 }
