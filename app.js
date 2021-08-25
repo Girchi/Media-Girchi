@@ -128,17 +128,6 @@ app.get("/girchi_news", (req, res) => {
 });
 
 
-// app.get("/important_news", (req, res) => {
-//   let object = {};
-
-//   let response = JSON.parse(
-//     fs.readFileSync(`./assets/data/important.json`, "utf-8")
-//   );
-
-//   Object.assign(object, response);
-//   res.render("important_news", { object });
-// });
-
 // Add news section
 app.post("/add_news", urlencodedParser, (req, res) => {
   const url = req.body.link;
