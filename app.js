@@ -63,11 +63,24 @@ app.get("/", (req, res) => {
     fs.readFileSync("./assets/data/veryImportant.json", "utf-8")
   );
 
-  // const arr = Object.entries(importantNews)
-  // const arrRess = arr.slice(arr.length - 6, arr.length)
-  // const slicedObj = Object.fromEntries(arrRess)
+  const mostImportantNews = JSON.parse(
+    fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8')
+  );
 
-  res.render("index", { object: object, importantNews ,veryImportantNews});
+  res.render("index", { object: object, importantNews, veryImportantNews, mostImportantNews});
+
+
+  // Get /trusted-guy route
+  app.get('/trusted-guy', (req, res) => {
+    res.render("trusted-user", { object: object, importantNews ,veryImportantNews, mostImportantNews});
+  });
+
+  // write most important post in most-important.json
+  app.get('/pin-post', (req, res) => {
+    const mostImportantNewsRes = req.query.pin;
+    fs.writeFileSync('./assets/additional-data/most-important.json', mostImportantNewsRes);
+    res.render("trusted-user", { object: object, importantNews, veryImportantNews, mostImportantNews });
+  })
 });
 
 const host = "127.0.0.1";
@@ -232,3 +245,18 @@ let hourAndHalf = 5400000;
 // Update the news in every 1 hour
 setInterval(callTheFunctions, oneHour);
 
+
+app.get("/login", (req, res) => {
+  res.render('login');
+});
+
+app.get("/mark-most-important-post", (req, res) => {
+  const password = req.query.password;
+  console.log(password);
+  if(password === 'girchi') {
+    res.redirect('/trusted-guy');
+  } else {
+    res.redirect('/login');
+    // res.sendStatus(403).send("Not Gircheli. Get out");
+  }
+});

@@ -1,0 +1,12 @@
+include parts/head.pug
+include parts/navbar.pug
+
+.login-container
+    form(action="/mark-most-important-post" method='GET') 
+        label.password-label Password
+        br
+        input(required type='password' name='password').password
+        br
+        input.btn.btn-success(type='submit' value='Submit')
+   
+include parts/footer.pug

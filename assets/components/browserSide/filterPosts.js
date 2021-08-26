@@ -16,26 +16,3 @@ function filterPosts(sourceName) {
         }
     }
 }
-
-// container.addEventListener('input', () => {
-//   let value = container.value;
-//   console.log(value);
-
-//   if (value === "Imedi") {
-//     filterPosts('Imedi');
-//   } else if (value === "Formula") {
-//     filterPosts('Formula');
-//   } else if (value === "Facebook") {
-//     filterPosts("Facebook");
-//   } else if (value === "IPN") {
-//     filterPosts('IPN');
-//   } else if (value === "On") {
-//     filterPosts('On');
-//   } else if (value === "Mtavari") {
-//     filterPosts('Mtavari');
-//   } else if (value === "Palitra") {
-//     filterPosts('Palitra');
-//   } else if (value === "Tabula") {
-//     filterPosts('Tabula');
-//   }
-// })

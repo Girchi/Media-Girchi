@@ -1,0 +1,13 @@
+.pin {
+    font-size: 1.35rem;
+    color: grey;
+    margin-left: 450px;
+    margin-top: 5px;
+    transition: .30s;
+    background: none;
+    border: none;
+}
+
+.pin:hover {
+    color: black;
+}
