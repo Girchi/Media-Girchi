@@ -4,6 +4,8 @@ import writeToSource from "../writingData/writeToSource.js";
 import checkFile from "../writingData/checkIfFileIsEmpty.js";
 import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
+const GirchiKeywords = ['გირჩი', 'იაგო ხვიჩია', 'ვახტანგ მეგრელიშვილი', 'სანდრო რაქვიაშვილი'];
+
 function writeToFile(url) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode === 200) {
@@ -13,49 +15,18 @@ function writeToFile(url) {
       const title = siteHeading.find("h1").text();
       const text = siteHeading.find("p").text();
       const imgUrl = siteHeading.find("img").attr("src");
-      if (
-        title.includes("გირჩი") ||
-        title.includes("იაგო ხვიჩია") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("სანდრო რაქვიაშვილი")
-      ) {
-        console.log("მოიძებნა");
+      const imediLogo = "https://www.imedi.ge/m/i/logo@2x.png";
 
-        // Write in Girchi Json
-        writeDataToGirchi(
-          "imedinews.json",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "https://www.imedi.ge/m/i/logo@2x.png",
-          url
-        );
-        // Write in Source  Json
-        writeToSource(
-          "imedinews.json",
-          "Imedi",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "https://www.imedi.ge/m/i/logo@2x.png",
-          url
-        );
+      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+
+      if (isAboutGirchi.length > 0) {
+        // Write in Girchi JSON
+        writeDataToGirchi("imedinews.json", title, dataInfo, text, imgUrl, imediLogo, url);
+        // Write in source's JSON
+        writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, imediLogo, url);
       } else {
-        // console.log("არ მოიძებნა");
-        // Write in Source Json
-        writeToSource(
-          "imedinews.json",
-          "Imedi",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "https://www.imedi.ge/m/i/logo@2x.png",
-          url
-        );
+        // Write in only source's JSON
+        writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, imediLogo, url);
       }
     }
   });
