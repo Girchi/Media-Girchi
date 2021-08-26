@@ -4,6 +4,8 @@ import writeToSource from '../writingData/writeToSource.js';
 import checkFile from '../writingData/checkIfFileIsEmpty.js';
 import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
+const GirchiKeywords = ['გირჩი', 'იაგო ხვიჩია', 'ვახტანგ მეგრელიშვილი', 'სანდრო რაქვიაშვილი'];
+
 function writeToFile(url) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode === 200) {
@@ -13,23 +15,18 @@ function writeToFile(url) {
       const dataInfo = $("time").first().text();
       const text = $("*[itemprop='description']").text();
       const imgUrl = $("*[itemprop='image']").attr("data-src");
+      const logoUrl = "https://www.interpressnews.ge/static/img/logofixed.svg";
 
-      if (
-        title.includes("გირჩი") ||
-        title.includes("იაგო ხვიჩია") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("სანდრო რაქვიაშვილი")
-      ) {
-        console.log("მოიძებნა");
+      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
 
+      if(isAboutGirchi.length > 0) {
         // Write in Girchi Json
-        writeDataToGirchi("ipn.json", title, dataInfo, text, imgUrl, "https://www.interpressnews.ge/static/img/logofixed.svg", url);
+        writeDataToGirchi("ipn.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in Source  Json
-        writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, 'https://www.interpressnews.ge/static/img/logofixed.svg', url);
+        writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
         // Write in Source Json
-        writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, 'https://www.interpressnews.ge/static/img/logofixed.svg', url);
+        writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }
   });

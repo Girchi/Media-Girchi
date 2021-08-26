@@ -4,6 +4,8 @@ import writeToSource from "../writingData/writeToSource.js";
 import checkFile from "../writingData/checkIfFileIsEmpty.js";
 import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
+const GirchiKeywords = ['გირჩი', 'იაგო ხვიჩია', 'ვახტანგ მეგრელიშვილი', 'სანდრო რაქვიაშვილი'];
+
 function writeToFile(url) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode === 200) {
@@ -12,55 +14,22 @@ function writeToFile(url) {
       const title = $(".news__inner__desc__title").text();
       const dataInfo = $(".news__inner__images_created").text();
       const text = newsDiv.find("p").text();
-      let imgUrl = `https://formulanews.ge${$(".news__inner__main__image")
-        .find("img")
-        .attr("src")}`;
-
+      let imgUrl = `https://formulanews.ge${$(".news__inner__main__image").find("img").attr("src")}`;
+      const logoUrl = "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png";
+      
+      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      
       if (imgUrl === "https://formulanews.geundefined") {
         imgUrl = "https://formulanews.ge/uploads_script2/articles/2021/08/21/yjupldlo82izpkc.jpg";
       }
-      if (
-        title.includes("გირჩი") ||
-        title.includes("იაგო ხვიჩია") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("სანდრო რაქვიაშვილი")
-      ) {
-        console.log("მოიძებნა");
-
+      if (isAboutGirchi.length > 0) {
         // Write in Girchi Json
-        writeDataToGirchi(
-          "formula.json",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png",
-          url
-        );
+        writeDataToGirchi("formula.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in Source  Json
-        writeToSource(
-          "formula.json",
-          "Formula",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png",
-          url
-        );
+        writeToSource("formula.json", "Formula", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
         // Write in Source Json
-        writeToSource(
-          "formula.json",
-          "Formula",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png",
-          url
-        );
+        writeToSource("formula.json", "Formula", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }
   });

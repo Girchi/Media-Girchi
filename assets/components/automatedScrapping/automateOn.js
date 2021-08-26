@@ -4,59 +4,28 @@ import writeToSource from "../writingData/writeToSource.js";
 import checkFile from "../writingData/checkIfFileIsEmpty.js";
 import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
+const GirchiKeywords = ['გირჩი', 'იაგო ხვიჩია', 'ვახტანგ მეგრელიშვილი', 'სანდრო რაქვიაშვილი'];
+
 function writeToFile(url) {
   request(url, (error, response, html) => {
     if (!error && response.statusCode === 200) {
       const $ = cheerio.load(html);
-
       const title = $(".article-title").text();
       const dataInfo = $(".date").first().text();
       const text = $(".article-body").text();
       const imgUrl = `https:${$(".global-figure-image  ").attr("src")}`;
+      const logoUrl = "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png";
 
-      if (
-        title.includes("გირჩი") ||
-        title.includes("იაგო ხვიჩია") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("ვახტანგ მეგრელიშვილი") ||
-        title.includes("სანდრო რაქვიაშვილი")
-      ) {
-        console.log("მოიძებნა");
+      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
 
+      if(isAboutGirchi.length > 0) {
         // Write in Girchi Json
-        writeDataToGirchi(
-          "on.json",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png",
-          url
-        );
+        writeDataToGirchi("on.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in Source  Json
-        writeToSource(
-          "on.json",
-          "On",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png",
-          url
-        );
+        writeToSource("on.json", "On", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
-        // console.log("არ მოიძებნა");
         // Write in Source Json
-        writeToSource(
-          "on.json",
-          "On",
-          title,
-          dataInfo,
-          text,
-          imgUrl,
-          "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png",
-          url
-        );
+        writeToSource("on.json", "On", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }
   });

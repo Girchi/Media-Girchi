@@ -15,18 +15,18 @@ function writeToFile(url) {
       const title = siteHeading.find("h1").text();
       const text = siteHeading.find("p").text();
       const imgUrl = siteHeading.find("img").attr("src");
-      const imediLogo = "https://www.imedi.ge/m/i/logo@2x.png";
+      const logoUrl = "https://www.imedi.ge/m/i/logo@2x.png";
 
       let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
 
       if (isAboutGirchi.length > 0) {
         // Write in Girchi JSON
-        writeDataToGirchi("imedinews.json", title, dataInfo, text, imgUrl, imediLogo, url);
+        writeDataToGirchi("imedinews.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in source's JSON
-        writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, imediLogo, url);
+        writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
         // Write in only source's JSON
-        writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, imediLogo, url);
+        writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }
   });
