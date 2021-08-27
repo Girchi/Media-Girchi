@@ -4,7 +4,7 @@
   "description": "Thanks for downloading this template!",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,12 @@
     "url": "^0.11.0"
   },
   "type": "module",
-  "nodemonConfig": { "ext": "js", "ignore": ["*.test.ts", "db/*"], "delay": "2" },
-    "scripts": { "start": "nodemon" }
+  "nodemonConfig": {
+    "ext": "js",
+    "ignore": [
+      "*.test.ts",
+      "db/*"
+    ],
+    "delay": "2"
+  }
 }

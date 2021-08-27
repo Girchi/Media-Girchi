@@ -59,27 +59,26 @@ app.get("/", (req, res) => {
   let importantNews = JSON.parse(
     fs.readFileSync("./assets/data/important.json", "utf-8")
   );
-  let veryImportantNews = JSON.parse(
-    fs.readFileSync("./assets/data/veryImportant.json", "utf-8")
-  );
+  // let veryImportantNews = JSON.parse(
+  //   fs.readFileSync("./assets/data/veryImportant.json", "utf-8")
+  // );
 
   const mostImportantNews = JSON.parse(
     fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8')
   );
 
-  res.render("index", { object: object, importantNews, veryImportantNews, mostImportantNews});
-
+  res.render("index", { object: object, importantNews, mostImportantNews});
 
   // Get /trusted-guy route
   app.get('/trusted-guy', (req, res) => {
-    res.render("trusted-user", { object: object, importantNews ,veryImportantNews, mostImportantNews});
+    res.render("trusted-user", { object: object, importantNews , mostImportantNews});
   });
 
   // write most important post in most-important.json
   app.get('/pin-post', (req, res) => {
     const mostImportantNewsRes = req.query.pin;
     fs.writeFileSync('./assets/additional-data/most-important.json', mostImportantNewsRes);
-    res.render("trusted-user", { object: object, importantNews, veryImportantNews, mostImportantNews });
+    res.render("trusted-user", { object: object, importantNews, mostImportantNews });
   })
 });
 
