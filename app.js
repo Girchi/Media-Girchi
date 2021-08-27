@@ -32,10 +32,10 @@ const server = http.createServer(app);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const io = new Server(server, { 
-  cors: { 
-    origin: "*" 
-  } 
+const io = new Server(server, {
+  cors: {
+    origin: "*"
+  }
 });
 
 app.set("view engine", "pug");
@@ -64,7 +64,7 @@ app.get("/", (req, res) => {
     fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8')
   );
 
-  res.render("index", { object: object, importantNews, mostImportantNews});
+  res.render("index", { object: object, importantNews, mostImportantNews });
 });
 
 const host = "127.0.0.1";
@@ -80,6 +80,7 @@ io.on("connection", (socket) => {
     const importance = checkData.important;
     const important = !importance;
     const filename = checkData.fileName;
+
     if (importance === false) {
       fs.readFile("assets/data/important.json", (err, data) => {
         if (err) throw err;
@@ -124,11 +125,13 @@ app.get("/girchi_news", (req, res) => {
   );
 
   Object.assign(object, response);
-  res.render("girchi_news", { object });
+  res.render("girchi_news", {
+    object
+  });
 });
 
 
-// Add news section
+// Manual Scrapping
 app.post("/add_news", urlencodedParser, (req, res) => {
   const url = req.body.link;
   let source;
@@ -140,14 +143,12 @@ app.post("/add_news", urlencodedParser, (req, res) => {
 
   if (url.includes("https://tabula.ge")) {
     source = "tabula";
-    sourceImgUrl =
-      "https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png";
+    sourceImgUrl = "https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png";
   }
 
   if (url.includes("https://formulanews.ge")) {
     source = "formula";
-    sourceImgUrl =
-      "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png";
+    sourceImgUrl = "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png";
   }
 
   if (url.includes("https://palitranews.ge")) {
@@ -228,12 +229,12 @@ let hourAndHalf = 5400000;
 
 // Update the news in every 1 hour
 setInterval(callTheFunctions, oneHour);
-callTheFunctions()
+
+
 
 app.get("/login", (req, res) => {
   res.render('login');
 });
-
 
 const createTrustedRoute = () => {
   let postSourcesArr = fs.readdirSync("./assets/data");
@@ -262,7 +263,7 @@ const createTrustedRoute = () => {
   // write most important post in most-important.json
   app.get('/pin-post', (req, res) => {
     const mostImportantNewsRes = req.query.pin;
-    console.log(mostImportantNewsRes)
+    
     fs.writeFileSync('./assets/additional-data/most-important.json', mostImportantNewsRes);
     res.redirect("/trusted-guy");
   })

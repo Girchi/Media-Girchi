@@ -2,13 +2,13 @@ include parts/head.pug
 include parts/navbar.pug
 
 .login-container
-    form(action="/mark-most-important-post" method='GET') 
-        label.password-label Password
-        br
-        input(required type='password' name='password').password
-        br
-        input.btn.btn-success(type='submit' value='Submit')
-   
+	form(action="/mark-most-important-post" method='GET') 
+		label.password-label Password
+		br
+		input(required type='password' name='password').password
+		br
+		input.btn.btn-success(type='submit' value='Submit')
+
 include parts/footer.pug
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 script(src="../assets/components/browserSide/loader.js") 
