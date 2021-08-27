@@ -46,8 +46,8 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 .left-fixed-container
       
 .right-fixed-container
-      hr.left-fixed-container-hr
-      //- p.right-fixed-container-p გაფილტრე სიახლეები
+      h4.right-fixed-container-p აირჩიე წყარო
+        .down-line
       ul.right-fixed-container-ul
         li(onclick='filterPosts("Formula")').fixed-container-list-item 
           img(src="https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png", alt="")
@@ -76,7 +76,7 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 .big-main
   .big-container
     .big-inside-main
-      h3#main-h3.container სხვა სიახლეები            
+      h3#main-h3.container სიახლეები გირჩზე           
       hr.hrelement.container
       .main.page#list    
         .container.news_container.archive
@@ -105,7 +105,7 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
 
 // ======= Footer =======
-include parts/footer.pug
+//- include parts/footer.pug
 // End footer 
 
 include parts/scripts.pug

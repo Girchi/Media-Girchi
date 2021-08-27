@@ -119,30 +119,25 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
         .container.news_container.archive
           each subObject in object
             .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
-              .card.card-main.flex-column.article
-                .vote-post
-                  //- i.fas.fa-arrow-up.vote.upvote
-                  //- p 0
-                  //- i.fas.fa-arrow-down.vote.downvote
+              a.card-body(href=subObject.link target='_blank') 
+                h5.card-title=subObject.title 
                 img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-                a.card-body(href=subObject.link target='_blank')
-                  h5.card-title=subObject.title
-                  p(name='title').card-text=subObject.text
-                  p.card-text
-                    small.text-muted=subObject.articleDate
-                .img_font
-                  img.small-img(src=subObject.logo alt='Card image cap')
-                  if (subObject.important===false)
-                    abb(title="მნიშვნელოვანად მონიშვნა")  
-                      button.fas.fa-star.btn-click( name="obj" value=subObject)
-                  else 
-                    abb(title="მნიშვნელოვანი სიახლე")  
-                      i.fas.fa-check.succes
+                p(name='title').card-text=subObject.text
+                p.card-text
+                  small.text-muted=subObject.articleDate
+              .img_font
+                img.small-img(src=subObject.logo alt='Card image cap')
+                if (subObject.important===false)
+                  abb(title="მნიშვნელოვანად მონიშვნა")  
+                    button.fas.fa-star.btn-click( name="obj" value=subObject)
+                else 
+                  abb(title="მნიშვნელოვანი სიახლე")  
+                    i.fas.fa-check.succes
 
 
 
 // ======= Footer =======
-include parts/footer.pug
+//- include parts/footer.pug
 // End footer 
 
 include parts/scripts.pug
