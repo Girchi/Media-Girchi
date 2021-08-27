@@ -1,7 +1,11 @@
 include parts/head.pug
+
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
 include parts/navbar.pug
+
+script.  
+  document.querySelector("#girchi").className = "nav-link scrollto active";
       
 .right-fixed-container
       h4.right-fixed-container-p აირჩიე წყარო
@@ -73,6 +77,3 @@ script(src="../assets/components/browserSide/shortenArticle.js")
 script(src="../assets/components/browserSide/filterPosts.js")
 script(type="module" src="../assets/components/browserSide/favorite.js")
 
-script.  
-  document.querySelector("#general").className = "nav-link scrollto";
-  document.querySelector("#girchi").className = "nav-link scrollto active";

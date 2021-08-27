@@ -3,6 +3,7 @@
     color: grey;
     margin-left: 415px;
     margin-top: 5px;
+    cursor: pointer;
     transition: .30s;
     background: none;
     border: none;

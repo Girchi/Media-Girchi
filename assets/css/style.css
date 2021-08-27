@@ -1253,6 +1253,7 @@ ul li a {
 }
 
 .right-fixed-container ul {
+  
   padding: auto;
 }
 
@@ -1447,6 +1448,13 @@ ul li a {
   /* ----------------------page Nomeration---------- */
   .page-card {
     height: 600px;
+  }
+
+  .right-fixed-container {
+    top: 13%;
+  }
+  .left-fixed-container {
+    top: 16%;
   }
 
   .card {
