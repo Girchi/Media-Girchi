@@ -641,19 +641,41 @@ h6 {
   margin-left: 7px;
 }
 
-.card {
+.news-card {
+  margin-bottom: 1rem;
   margin: 0 auto;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   cursor: pointer;
-  height: 580px;
-  width: 400px;
-  transition: 1s;
+  width: 100%;
   padding: 0.1rem 2rem 1rem 2rem;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 12px;
+  background: #f0f2f5;
+  border-radius: 10px;
+}
+.news-important--smallimg{
+  height: 20px;
 }
 
+.news-card--right{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.news-card--left{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.down{
+  display: flex;
+  margin-top: 1rem;
+  justify-content: space-evenly;
+}
+.down small{
+  font-size: 15px;
+}
 .image {
   height: 230px;
 }
@@ -743,24 +765,14 @@ h6 {
   font-family: "BPG Glaho WEB Caps", sans-serif;
   color: #7a7a7a;
   text-align: center;
-  display: flex;
-  justify-content: center;
+  display: flex;margin-top: 1rem;
+  font-size: 1.2rem;
 }
 
-.main-card--important {
-  padding: 0;
-  width: 350px;
-  margin: 0 auto 100px auto;
-  height: 450px;
-}
-
-.main-card--important:hover {
-  transform: scale(1.01);
-}
 
 .image-important {
   padding-top: 30px;
-  width: 60%;
+  width: 90%;
   height: 200px;
 }
 
@@ -968,9 +980,9 @@ option {
 
 
 .hrelement {
-  border: 1.5px solid;
   margin: 0 auto;
   width: 100%;
+  height: 2px;
   margin-bottom: 3rem;
 }
 
@@ -1158,7 +1170,7 @@ ul li a {
 
   .main-card--important {
     padding: 0;
-    width: 320px;
+    width: 100%;
     height: 420px;
     margin-top: 1rem;
   }
@@ -1958,4 +1970,33 @@ ul li a {
 
 .btn-success {
   margin-top: 15px;
+}
+/* Most Important Section */
+.most-important--card{
+  background:#f0f2f5;;
+  width: 100%;
+  /* padding: 1rem 2rem; */
+  border-radius: 10px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.most-important--card a{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.most-important--card a img{
+  width: 95%;
+  height: 350px;
+}
+.most-important--card a h5{
+  font-size: 15px;
+  margin-left: 1rem;
+  color: #3b3b3b;
+  font-family: "BPG Glaho WEB Caps", sans-serif;
+  height: 100%;
+  margin-top: 1rem;
+
 }

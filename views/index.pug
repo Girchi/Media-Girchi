@@ -89,20 +89,28 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 .big-main
   .big-container
     .big-inside-main
+      .most-important--card
+        a.card-body(href=mostImportantNews.link target='_blank')
+          img(src=mostImportantNews.imgUrl alt='Card image cap')
+          h5=mostImportantNews.title
+        p.card-text-important
+          small.text-muted.text-date--important=mostImportantNews.articleDate
+          img.small-img--important(src=mostImportantNews.logo alt="Source's logo")
       .important-section
         h3#main.container მნიშვნელოვანი სიახლეები
         hr.hrelement.container
-        .important-container.container
+        .important-container
           each subObject in importantNews
-            .main-card.main-card--important(value=subObject.source)
-              .card.flex-column.article.main-card--important
+            .news-card
+              .news-card--left
                 img.image-important(src=subObject.imgUrl alt='Card image cap')
+                .down
+                  small=subObject.articleDate
+                  img.news-important--smallimg(src=subObject.logo alt="Source's logo")
+              .news-card--right
                 a.card-body(href=subObject.link target='_blank')
                   h5.card-title--important-p=subObject.title
                   p.card-text=subObject.text
-                p.card-text-important
-                  small.text-muted.text-date--important=subObject.articleDate
-                  img.small-img--important(src=subObject.logo alt="Source's logo")
 
 
       h3#main-h3.container სხვა სიახლეები            

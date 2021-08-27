@@ -243,8 +243,8 @@ let halfAnHour = 1800000;
 let hourAndHalf = 5400000;
 
 // Update the news in every 1 hour
-setInterval(callTheFunctions, oneHour);
-
+// setInterval(callTheFunctions, oneHour);
+// callTheFunctions()
 
 app.get("/login", (req, res) => {
   res.render('login');
