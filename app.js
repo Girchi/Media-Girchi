@@ -262,6 +262,7 @@ const createTrustedRoute = () => {
   // write most important post in most-important.json
   app.get('/pin-post', (req, res) => {
     const mostImportantNewsRes = req.query.pin;
+    console.log(mostImportantNewsRes)
     fs.writeFileSync('./assets/additional-data/most-important.json', mostImportantNewsRes);
     res.redirect("/trusted-guy");
   })
@@ -273,7 +274,7 @@ app.get("/mark-most-important-post", (req, res) => {
   if(password === 'girchi') {
     createTrustedRoute();
     res.redirect('/trusted-guy');
-  } else {
-    res.redirect('/login');
   }
+  
+  res.redirect('/login');
 });

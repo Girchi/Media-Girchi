@@ -2,36 +2,7 @@ include parts/head.pug
 
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
-.outerContainer
-  .item
-    img(src='./assets/img/download')
-  .circle
-// ======= Top Bar =======
-.big-nav
-  section.big-nav--section
-    .container.nav-section
-      .contact-info
-        i.bi.bi-envelope-fill
-        a(href='mailto:contact@example.com')
-          | info@girchi.com
-      .social-links
-        a.twitter(href='https://twitter.com/girchiparty' target='_blank')
-          i.bi.bi-twitter#twitter
-        a.facebook(href='https://www.facebook.com/GirchiParty/' target='_blank')
-          i.bi.bi-facebook#facebook
-        a.instagram(href='https://www.instagram.com/girchiparty/?hl=en' target='_blank')
-          i.bi.bi-instagram#instagram
-        a.youtube(href='https://www.youtube.com/channel/UC6o6176a756vk1nZuzAXy5g' target='_blank')
-          i.fab.fa-youtube#youtube
-
-  header.big-nav--header
-    .container.d-flex.align-items-center
-      nav#navbar.navbar
-        ul
-          li
-            a.nav-link.active#general(href='/') ზოგადი
-          li
-            a.nav-link#girchi(href='/girchi_news') გირჩი
+include parts/navbar.pug
 
 
 .left-fixed-container
@@ -45,7 +16,6 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
           p.card-text-important
             small.text-muted.text-date--important=subObject.articleDate
             img.small-img--important(src=subObject.logo alt="Source's logo")
-            //- p.card-text=subObject.text
 
 
 .right-fixed-container
@@ -110,13 +80,8 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
         .container.news_container.archive
           each subObject in object
             .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
-<<<<<<< HEAD
-              a.card-body(href=subObject.link target='_blank') 
-                h5.card-title=subObject.title 
-=======
               .card.card-main.flex-column.article
                 .vote-post
->>>>>>> 6e8b2059b9e6c70c6fb45924cf9df173ac840563
                 img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
                 p(name='title').card-text=subObject.text
                 p.card-text

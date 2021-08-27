@@ -1,8 +1,10 @@
-const container = document.querySelector('.filter');
-const cardContainer = document.querySelectorAll('#othernews');
-
+const cardContainer = document.querySelectorAll('.main-card');
 
 function filterPosts(sourceName) {
+    if(typeof sourceName !== "string") { 
+        return; 
+    }
+
     for(let i = 0; i < cardContainer.length; i++) {
         cardContainer[i].classList.remove("hideElement");
         cardContainer[i].classList.remove("showElement");
@@ -13,6 +15,7 @@ function filterPosts(sourceName) {
             cardContainer[i].classList.add("showElement");
         } else {
             cardContainer[i].classList.add("hideElement");
+            console.log(cardContainer[i]);
         }
     }
 }

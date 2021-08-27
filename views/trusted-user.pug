@@ -1,14 +1,10 @@
 include parts/head.pug
 link(rel="stylesheet" href="../assets/css/most-important.css")
 link(rel="stylesheet" href="../assets/css/style.css")
-
 script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 
-.outerContainer
-	.item
-		img(src='./assets/img/download')
-	.circle
-// ======= Top Bar =======
+include parts/navbar.pug
+
 .left-fixed-container
 	each subObject in importantNews
 		.very-important.very-important--card-head(value=subObject.source)
@@ -23,34 +19,49 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 						//- p.card-text=subObject.text
 
 
+.left-fixed-container
+	each subObject in importantNews
+		.very-important.very-important--card-head(value=subObject.source)
+			.very-important--card
+				.left-inside--section
+					a.card-body(href=subObject.link target='_blank')
+						img.image-veryImportant(src=subObject.imgUrl alt='Card image cap')
+					h5=subObject.title
+					p.card-text-important
+						small.text-muted.text-date--important=subObject.articleDate
+						img.small-img--important(src=subObject.logo alt="Source's logo")
+						//- p.card-text=subObject.text
+
+
+
 .right-fixed-container
 	h4.right-fixed-container-p აირჩიე წყარო
 	.down-line
-	ul.right-fixed-container-ul
-		li(onclick='filterPosts("Formula")').fixed-container-list-item.formula-item
-			img(src="https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png" alt="")
-			h3 ფორმულა
-		li(onclick='filterPosts("Imedi")').fixed-container-list-item
-			img(src="https://www.imedi.ge/m/i/logo-fb.png" alt="")
-			h3 იმედი ნიუსი
-		li(onclick='filterPosts("IPN")').fixed-container-list-item 
-			img(src="https://www.interpressnews.ge/static/img/logofixed.svg" alt="")
-			h3 ინტერპრეს ნიუსი
-		li(onclick='filterPosts("On")').fixed-container-list-item 
-			img(src="http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png" alt="")
-			h3 On.ge
-		li(onclick='filterPosts("Mtavari")').fixed-container-list-item 
-			img(src="https://www.televizia.org/img/tv_mtavariarxi.png" alt="")
-			h3 მთავარი არხი
-		li(onclick='filterPosts("Palitra")').fixed-container-list-item 
-			img(src="https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg" alt="")
-			h3 პალიტრა
-		li(onclick='filterPosts("Tabula")').fixed-container-list-item 
-			img(src="https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png" alt="")
-			h3 ტაბულა
-		li(onclick='filterPosts("Facebook")').fixed-container-list-item 
-			img(src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="")
-			h3 Facebook
+		ul.right-fixed-container-ul
+			li(onclick='filterPosts("Formula")').fixed-container-list-item.formula-item
+				img(src="https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png" alt="")
+				h3 ფორმულა
+			li(onclick='filterPosts("Imedi")').fixed-container-list-item
+				img(src="https://www.imedi.ge/m/i/logo-fb.png" alt="")
+				h3 იმედი ნიუსი
+			li(onclick='filterPosts("IPN")').fixed-container-list-item 
+				img(src="https://www.interpressnews.ge/static/img/logofixed.svg" alt="")
+				h3 ინტერპრეს ნიუსი
+			li(onclick='filterPosts("On")').fixed-container-list-item 
+				img(src="http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png" alt="")
+				h3 On.ge
+			li(onclick='filterPosts("Mtavari")').fixed-container-list-item 
+				img(src="https://www.televizia.org/img/tv_mtavariarxi.png" alt="")
+				h3 მთავარი არხი
+			li(onclick='filterPosts("Palitra")').fixed-container-list-item 
+				img(src="https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg" alt="")
+				h3 პალიტრა
+			li(onclick='filterPosts("Tabula")').fixed-container-list-item 
+				img(src="https://upload.wikimedia.org/wikipedia/ka/c/c0/Tabula_logo.png" alt="")
+				h3 ტაბულა
+			li(onclick='filterPosts("Facebook")').fixed-container-list-item 
+				img(src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="")
+				h3 Facebook
 
 .big-main
 	.big-container
@@ -62,6 +73,7 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 				p.card-text-important
 					small.text-muted.text-date--important=mostImportantNews.articleDate
 					img.small-img--important(src=mostImportantNews.logo alt="Source's logo")
+
 			.important-section
 				h3#main.container მნიშვნელოვანი სიახლეები
 				hr.hrelement.container
@@ -69,6 +81,8 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 					each subObject in importantNews
 						.news-card
 							.news-card--left
+								form(method="GET" action="/pin-post")
+									button(type='submit' name='pin' value=subObject).fas.fa-thumbtack.pin-important
 								img.image-important(src=subObject.imgUrl alt='Card image cap')
 								.down
 									small=subObject.articleDate
@@ -79,28 +93,28 @@ script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
 									p.card-text=subObject.text
 
 
-			h3#main-h3.container სხვა სიახლეები            
+			h3#main-h3.container სხვა სიახლეები          
 			hr.hrelement.container
 			.main.page#list    
 				.container.news_container.archive
 					each subObject in object
 						.main-card.card-data#othernews(value=subObject itemprop=subObject.source)
+							form(method="GET" action="/pin-post")
+								button(type='submit' name='pin' value=subObject).fas.fa-thumbtack.pin
 							.card.card-main.flex-column.article
 								.vote-post
 								img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-								a.card-body(href=subObject.link target='_blank')
-									h5.card-title=subObject.title
-									p(name='title').card-text=subObject.text
-									p.card-text
-										small.text-muted=subObject.articleDate
-								.img_font
-									img.small-img(src=subObject.logo alt='Card image cap')
-									if (subObject.important===false)
-										abb(title="მნიშვნელოვანად მონიშვნა")  
-											button.fas.fa-star.btn-click( name="obj" value=subObject)
-									else 
-										abb(title="მნიშვნელოვანი სიახლე")  
-											i.fas.fa-check.succes
+								p(name='title').card-text=subObject.text
+								p.card-text
+									small.text-muted=subObject.articleDate
+							.img_font
+								img.small-img(src=subObject.logo alt='Card image cap')
+								if (subObject.important===false)
+									abb(title="მნიშვნელოვანად მონიშვნა")  
+										button.fas.fa-star.btn-click( name="obj" value=subObject)
+								else 
+									abb(title="მნიშვნელოვანი სიახლე")  
+										i.fas.fa-check.succes
 
 
 
