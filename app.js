@@ -63,8 +63,11 @@ app.get("/", (req, res) => {
   const mostImportantNews = JSON.parse(
     fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8')
   );
+  const veryImportant = JSON.parse(
+    fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
+  );
 
-  res.render("index", { object: object, importantNews, mostImportantNews });
+  res.render("index", { object: object, importantNews, mostImportantNews , veryImportant});
 });
 
 const host = "127.0.0.1";
@@ -123,10 +126,12 @@ app.get("/girchi_news", (req, res) => {
   let response = JSON.parse(
     fs.readFileSync(`./assets/data/girchi.json`, "utf-8")
   );
-
+  const veryImportant = JSON.parse(
+    fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
+  );
   Object.assign(object, response);
   res.render("girchi_news", {
-    object
+    object,veryImportant
   });
 });
 

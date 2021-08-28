@@ -9,7 +9,7 @@ script.
 
 
 .left-fixed-container
-  each subObject in importantNews
+  each subObject in veryImportant
     .very-important.very-important--card-head(value=subObject.source)
       .very-important--card
         .left-inside--section
@@ -56,8 +56,8 @@ include parts/right-fixed-container.pug
         .container.news_container.archive
           each subObject in object
             .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
-              .card.card-main.flex-column.article
-                .vote-post
+              a.card-body(href=subObject.link target='_blank')
+                h5.card-title=subObject.title
                 img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
                 p(name='title').card-text=subObject.text
                 p.card-text

@@ -6,6 +6,19 @@ include parts/navbar.pug
 
 script.  
   document.querySelector("#girchi").className = "nav-link scrollto active";
+  
+.left-fixed-container
+  each subObject in veryImportant
+    .very-important.very-important--card-head(value=subObject.source)
+      .very-important--card
+        .left-inside--section
+          a.card-body(href=subObject.link target='_blank')
+            img.image-veryImportant(src=subObject.imgUrl alt='Card image cap')
+          h5=subObject.title
+          p.card-text-important
+            small.text-muted.text-date--important=subObject.articleDate
+            img.small-img--important(src=subObject.logo alt="Source's logo")
+
 
 .right-fixed-container
   h4.right-fixed-container-p აირჩიე წყარო
@@ -45,22 +58,20 @@ script.
         .container.news_container.archive
           each subObject in object
             .main-card.card-data#othernews(value=subObject itemprop=subObject.source)
-              .card.card-main.flex-column.article
-                .vote-post
+              a.card-body(href=subObject.link target='_blank')
+                h5.card-title=subObject.title
                 img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
-                a.card-body(href=subObject.link target='_blank')
-                  h5.card-title=subObject.title
-                  p(name='title').card-text=subObject.text
-                  p.card-text
-                    small.text-muted=subObject.articleDate
-                .img_font
-                  img.small-img(src=subObject.logo alt='Card image cap')
-                  if (subObject.important===false)
-                    abb(title="მნიშვნელოვანად მონიშვნა")  
-                      button.fas.fa-star.btn-click( name="obj" value=subObject)
-                  else 
-                    abb(title="მნიშვნელოვანი სიახლე")  
-                      i.fas.fa-check.succes
+                p(name='title').card-text=subObject.text
+                p.card-text
+                  small.text-muted=subObject.articleDate
+              .img_font
+                img.small-img(src=subObject.logo alt='Card image cap')
+                if (subObject.important===false)
+                  abb(title="მნიშვნელოვანად მონიშვნა")  
+                    button.fas.fa-star.btn-click( name="obj" value=subObject)
+                else 
+                  abb(title="მნიშვნელოვანი სიახლე")  
+                    i.fas.fa-check.succes
 
 
 
