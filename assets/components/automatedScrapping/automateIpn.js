@@ -42,7 +42,7 @@ export default function automateIpn() {
         checkFile('./assets/data/on.json', writeToFile(`https://www.interpressnews.ge${obj[i].attribs.href}`));
       }
     } else {
-      console.log("Something failed!");
+      console.log("Something has failed!");
     }
   })
 }

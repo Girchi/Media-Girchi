@@ -6,7 +6,6 @@ export default function writeDataToImportants(fileName, title, dataInfo, text, i
     let newsData = JSON.parse(data);
     newsData[dataInfo] = {
       ...newsData[dataInfo],
-      source: "IPN",
       title: title,
       text: text,
       link: url,

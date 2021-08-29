@@ -42,12 +42,15 @@ app.set("view engine", "pug");
 app.use("/assets", express.static("assets"));
 
 let object = {};
+
+
+// Automatically reading JSON files filenames to iterate over them in app.get("/")
+let postSourcesArr = fs.readdirSync("./assets/data");
+
+
 app.get("/", (req, res) => {
   // parseRSSFeed();
-
-  // Automatically reading JSON files filenames to iterate over them in app.get("/")
-  let postSourcesArr = fs.readdirSync("./assets/data");
-
+ 
   postSourcesArr.forEach((source) => {
     let response = JSON.parse(
       fs.readFileSync(`./assets/data/${source}`, "utf-8")
@@ -56,18 +59,11 @@ app.get("/", (req, res) => {
     Object.assign(object, response);
   });
 
-  let importantNews = JSON.parse(
-    fs.readFileSync("./assets/data/important.json", "utf-8")
-  );
+  const importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json", "utf-8"));
+  const mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8'));
+  const veryImportant = JSON.parse(fs.readFileSync('./assets/data/veryImportant.json', 'utf-8'));
 
-  const mostImportantNews = JSON.parse(
-    fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8')
-  );
-  const veryImportant = JSON.parse(
-    fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
-  );
-
-  res.render("index", { object: object, importantNews, mostImportantNews , veryImportant});
+  res.render("index", { object, importantNews, mostImportantNews , veryImportant});
 });
 
 const host = "127.0.0.1";
@@ -116,9 +112,7 @@ io.on("connection", (socket) => {
   });
 });
 
-app.get("/add_news", (req, res) => {
-  res.render("add_news");
-});
+app.get("/add_news", (req, res) => { res.render("add_news") });
 
 app.get("/girchi_news", (req, res) => {
   let object = {};
@@ -130,9 +124,7 @@ app.get("/girchi_news", (req, res) => {
     fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
   );
   Object.assign(object, response);
-  res.render("girchi_news", {
-    object,veryImportant
-  });
+  res.render("girchi_news", { object, veryImportant });
 });
 
 
@@ -235,52 +227,49 @@ let hourAndHalf = 5400000;
 // Update the news in every 1 hour
 setInterval(callTheFunctions, oneHour);
 
+let isLoggedIn = false;
 
 
-app.get("/login", (req, res) => {
-  res.render('login');
+app.get("/login", (req, res) => { res.render('login') });
+
+postSourcesArr.forEach((source) => {
+  let response = JSON.parse(
+    fs.readFileSync(`./assets/data/${source}`, "utf-8")
+  );
+
+  Object.assign(object, response);
 });
 
-const createTrustedRoute = () => {
-  let postSourcesArr = fs.readdirSync("./assets/data");
 
-  postSourcesArr.forEach((source) => {
-    let response = JSON.parse(
-      fs.readFileSync(`./assets/data/${source}`, "utf-8")
-    );
+app.get('/trusted-guy', (req, res) => {
 
-    Object.assign(object, response);
-  });
+  let importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json", "utf-8"));
+  let mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8'));
 
-  let importantNews = JSON.parse(
-    fs.readFileSync("./assets/data/important.json", "utf-8")
-  );
+  if(isLoggedIn) {
+    res.render("trusted-user", { object, importantNews , mostImportantNews });
+  }
+  res.status(403).send("<b>403 Forbidden</b>: You don't have rights to visit this page");
+});
 
-  const mostImportantNews = JSON.parse(
-    fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8')
-  );
-
-  // Get /trusted-guy route
-  app.get('/trusted-guy', (req, res) => {
-    res.render("trusted-user", { object: object, importantNews , mostImportantNews});
-  });
-
+const pinThePost = () => {
   // write most important post in most-important.json
   app.get('/pin-post', (req, res) => {
-    const mostImportantNewsRes = req.query.pin;
-    
-    fs.writeFileSync('./assets/additional-data/most-important.json', mostImportantNewsRes);
+    const mostImportantNewsResponse = req.query.pin;
+
+    fs.writeFileSync('./assets/additional-data/most-important.json', mostImportantNewsResponse);
     res.redirect("/trusted-guy");
   })
 }
 
-app.get("/mark-most-important-post", (req, res) => {
+app.get("/validate-password", (req, res) => {
   const password = req.query.password;
 
   if(password === 'girchi') {
-    createTrustedRoute();
+    isLoggedIn = true;
+    pinThePost();
     res.redirect('/trusted-guy');
-  }
-  
+  } 
+
   res.redirect('/login');
 });

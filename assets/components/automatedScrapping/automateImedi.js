@@ -42,7 +42,7 @@ export default function automateImedi() {
         checkFile('./assets/data/imedinews.json', writeToFile(obj[i].attribs.href));
       }
     } else {
-      console.log("Something failed!");
+      console.log("Something has failed!");
     }
   });
 }

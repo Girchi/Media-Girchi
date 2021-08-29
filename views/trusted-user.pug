@@ -64,6 +64,7 @@ include parts/right-fixed-container.pug
 							form(method="GET" action="/pin-post")
 								button(type='submit' name='pin' value=subObject).fas.fa-thumbtack.pin
 							.card.card-main.flex-column.article
+								h5.card-title=subObject.title
 								.vote-post
 								img.image.card-img-top(src=subObject.imgUrl alt='Card image cap')
 								p(name='title').card-text=subObject.text
