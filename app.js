@@ -126,6 +126,18 @@ app.get("/girchi_news", (req, res) => {
   Object.assign(object, response);
   res.render("girchi_news", { object, veryImportant });
 });
+app.get("/important_news", (req, res) => {
+  let object = {};
+
+  let response = JSON.parse(
+    fs.readFileSync(`./assets/data/important.json`, "utf-8")
+  );
+  const veryImportant = JSON.parse(
+    fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
+  );
+  Object.assign(object, response);
+  res.render("important_news", { object, veryImportant });
+});
 
 
 // Manual Scrapping
