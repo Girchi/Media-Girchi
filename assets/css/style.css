@@ -1536,10 +1536,20 @@ ul li a {
 
 
   .right-fixed-container {
-    margin-top: 9%;
+    margin-top: 6.9;
     width: 20%;
     right: 3%;
   }
+
+  .right-fixed-container h4 {
+    margin-left: 6px;
+    margin-bottom: -6px;
+  }
+
+  .right-fixed-container-ul li {
+    margin-top: .8rem;
+  }
+
 
   /* ----------------------page Nomeration---------- */
   .page-card {

@@ -1,6 +1,8 @@
 import fs from 'fs';
 
-export default function checkFile(path, callback) {
+const defaultCallback = () => { console.log("Def callback"); }
+
+export default function checkFile(path, callback = defaultCallback) {
   fs.readFile(path, (err, data) => {
     if (data.length === 0) {
       fs.writeFile(path, '{}', 'utf-8', (err) => {

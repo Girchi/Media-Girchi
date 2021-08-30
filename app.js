@@ -52,6 +52,7 @@ app.get("/", (req, res) => {
   // parseRSSFeed();
  
   postSourcesArr.forEach((source) => {
+    checkFile(`./assets/data/${source}`);
     let response = JSON.parse(
       fs.readFileSync(`./assets/data/${source}`, "utf-8")
     );
@@ -231,6 +232,8 @@ function callTheFunctions() {
   automateIpn();
 }
 
+callTheFunctions();
+
 // In case if we want to change it, there are hours in milliseconds
 let oneHour = 3600000;
 let halfAnHour = 1800000;
@@ -245,12 +248,12 @@ let isLoggedIn = false;
 app.get("/login", (req, res) => { res.render('login') });
 
 postSourcesArr.forEach((source) => {
-  let response = JSON.parse(
-    fs.readFileSync(`./assets/data/${source}`, "utf-8")
-  );
-
+  checkFile(`./assets/data/${source}`);
+  let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, "utf-8"));
+  
   Object.assign(object, response);
-});
+})
+
 
 
 app.get('/trusted-guy', (req, res) => {

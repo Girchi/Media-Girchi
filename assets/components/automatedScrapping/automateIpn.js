@@ -23,10 +23,10 @@ function writeToFile(url) {
         // Write in Girchi Json
         writeDataToGirchi("ipn.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in Source  Json
-        writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, logoUrl, url);
+        writeToSource("ipn.json", "IPN", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
         // Write in Source Json
-        writeToSource("ipn.json", "ipn", title, dataInfo, text, imgUrl, logoUrl, url);
+        writeToSource("ipn.json", "IPN", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }
   });
@@ -39,7 +39,7 @@ export default function automateIpn() {
       const $ = cheerio.load(html);
       let obj = $("div").children().find('a')
       for (let i = 26; i < 32; i++) {
-        checkFile('./assets/data/on.json', writeToFile(`https://www.interpressnews.ge${obj[i].attribs.href}`));
+        checkFile('./assets/data/ipn.json', writeToFile(`https://www.interpressnews.ge${obj[i].attribs.href}`));
       }
     } else {
       console.log("Something has failed!");
