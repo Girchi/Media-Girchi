@@ -1161,6 +1161,8 @@ ul li a {
   width: 16%;
   z-index: 0;
   position: fixed;
+  overflow: auto;
+  direction: rtl;
   left: 15%;
   height: 80%;
   margin-top: 6%;
