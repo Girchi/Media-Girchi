@@ -27,13 +27,14 @@ import automateMtavari from './assets/components/automatedScrapping/automateMtav
 import automateTabula from './assets/components/automatedScrapping/automateTabula.js';
 import automateIpn from './assets/components/automatedScrapping/automateIpn.js';
 
+
 const app = express();
 const server = http.createServer(app);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const io = new Server(server, {
-  cors: {
+cors: {
     origin: "*"
   }
 });
@@ -43,10 +44,8 @@ app.use("/assets", express.static("assets"));
 
 let object = {};
 
-
 // Automatically reading JSON files filenames to iterate over them in app.get("/")
 let postSourcesArr = fs.readdirSync("./assets/data");
-
 
 app.get("/", (req, res) => {
   // parseRSSFeed();
@@ -72,6 +71,7 @@ const port = 3000;
 server.listen(port, host, () =>
   console.log(`Server running at http://${host}:${port}/\n`)
 );
+
 const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 io.on("connection", (socket) => {
@@ -113,6 +113,7 @@ io.on("connection", (socket) => {
   });
 });
 
+// Manually add the news with it's URL address
 app.get("/add_news", (req, res) => { res.render("add_news") });
 
 app.get("/girchi_news", (req, res) => {
@@ -127,15 +128,19 @@ app.get("/girchi_news", (req, res) => {
   Object.assign(object, response);
   res.render("girchi_news", { object, veryImportant });
 });
+
+
 app.get("/important_news", (req, res) => {
   let object = {};
 
   let response = JSON.parse(
     fs.readFileSync(`./assets/data/important.json`, "utf-8")
   );
+
   const veryImportant = JSON.parse(
     fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
   );
+
   Object.assign(object, response);
   res.render("important_news", { object, veryImportant });
 });
@@ -181,42 +186,42 @@ app.post("/add_news", urlencodedParser, (req, res) => {
     sourceImgUrl = "https://www.interpressnews.ge/static/img/logofixed.svg";
   }
 
-  const accept = req.body.accept;
-  const accept1 = req.body.accept1;
+  const isImportantCheckbox = req.body.accept;
+  const isAboutGirchiCheckbox = req.body.accept1;
 
   switch (source) {
     case "tabula":
-      scrapTabula(url, accept, accept1, sourceImgUrl);
+      scrapTabula(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
 
     case "on":
-      scrapOn(url, accept, accept1, sourceImgUrl);
+      scrapOn(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
 
     case "formula":
-      scrapFormula(url, accept, accept1, sourceImgUrl);
+      scrapFormula(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
 
     case "palitranews":
-      scrapPalitraNews(url, accept, accept1, sourceImgUrl);
+      scrapPalitraNews(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
 
     case "mtavari":
-      scrapMtavari(url, accept, accept1, sourceImgUrl);
+      scrapMtavari(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
 
     case "imedi":
-      scrapImedi(url, accept, accept1, sourceImgUrl);
+      scrapImedi(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
 
     case "ipn":
-      scrapIpn(url, accept, accept1, sourceImgUrl);
+      scrapIpn(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl);
       res.render("add_news");
       break;
   }
@@ -232,18 +237,13 @@ function callTheFunctions() {
   automateIpn();
 }
 
-callTheFunctions();
-
 // In case if we want to change it, there are hours in milliseconds
-let oneHour = 3600000;
-let halfAnHour = 1800000;
-let hourAndHalf = 5400000;
+let oneHour = 3600000, halfAnHour = 1800000, hourAndHalf = 5400000;
 
 // Update the news in every 1 hour
-setInterval(callTheFunctions, oneHour);
+setInterval(callTheFunctions, halfAnHour);
 
 let isLoggedIn = false;
-
 
 app.get("/login", (req, res) => { res.render('login') });
 
@@ -255,7 +255,6 @@ postSourcesArr.forEach((source) => {
 })
 
 
-
 app.get('/trusted-guy', (req, res) => {
 
   let importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json", "utf-8"));
@@ -264,6 +263,7 @@ app.get('/trusted-guy', (req, res) => {
   if(isLoggedIn) {
     res.render("trusted-user", { object, importantNews , mostImportantNews });
   }
+  // If user isn't logged in, he doesn't have an access to the /trusted-guy route
   res.status(403).send("<b>403 Forbidden</b>: You don't have rights to visit this page");
 });
 

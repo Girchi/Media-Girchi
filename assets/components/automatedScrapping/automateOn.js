@@ -16,9 +16,9 @@ function writeToFile(url) {
       const imgUrl = `https:${$(".global-figure-image  ").attr("src")}`;
       const logoUrl = "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png";
 
-      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      let isAboutGirchi = GirchiKeywords.some(keyword => title.includes(keyword));
 
-      if(isAboutGirchi.length > 0) {
+      if(isAboutGirchi) {
         // Write in Girchi Json
         writeDataToGirchi("on.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in Source  Json

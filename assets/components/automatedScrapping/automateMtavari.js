@@ -17,15 +17,12 @@ function writeToFile(url) {
       const imgUrl = newsDiv.find("img").attr("src");
       const logoUrl = "https://www.televizia.org/img/tv_mtavariarxi.png";
 
-      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      let isAboutGirchi = GirchiKeywords.some(keyword => title.includes(keyword));
 
-      if(isAboutGirchi.length > 0) {
-        // Write in Girchi Json
+      if(isAboutGirchi) {
         writeDataToGirchi("mtavari.json", title, dataInfo, text, imgUrl, logoUrl, url);
-        // Write in Source  Json
         writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
-        // Write in Source Json
         writeToSource("mtavari.json", "Mtavari", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }

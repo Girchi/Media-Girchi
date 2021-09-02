@@ -5,7 +5,7 @@ import writeDataToImportants from '../writingData/writeDataToImportants.js';
 import writeToSource from '../writingData/writeToSource.js';
 
 
-export default function scrapIpn(url, accept, accept1, sourceImgUrl) {
+export default function scrapIpn(url, isImportantCheckbox, isAboutGirchiCheckbox, sourceImgUrl) {
   try {
     request(url, (error, response, html) => {
       if (!error && response.statusCode == 200) {
@@ -20,16 +20,16 @@ export default function scrapIpn(url, accept, accept1, sourceImgUrl) {
         const writeImportants = () => writeDataToImportants("ipn.json", title, dataInfo, text, imgUrl, sourceImgUrl, url);
         const writeSource = () => writeToSource("ipn.json", "IPN", title, dataInfo, text, imgUrl, sourceImgUrl, url);
 
-        if (accept === "on" && accept1 === "on") {
+        if (isImportantCheckbox === "on" && isAboutGirchiCheckbox === "on") {
           writeGirchi();
           writeImportants();
           writeSource();
 
-        } else if (accept === "on") {
+        } else if (isImportantCheckbox === "on") {
           writeImportants();
           writeSource();
 
-        } else if (accept1 === "on") {
+        } else if (isAboutGirchiCheckbox === "on") {
           writeGirchi();
           writeSource();
 

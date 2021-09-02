@@ -16,9 +16,9 @@ function writeToFile(url, image) {
       const text = newText.find("p").text();
       const logoUrl = "https://www.tdi.ge/sites/default/files/tv_palitra_1.jpg";
 
-      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      let isAboutGirchi = GirchiKeywords.some(keyword => title.includes(keyword));
 
-      if (isAboutGirchi.length > 0) {
+      if (isAboutGirchi) {
         // Write in Girchi Json
         writeDataToGirchi("palitra.json", title, dataInfo, text, image, logoUrl, url);
         // Write in Source  Json

@@ -17,9 +17,9 @@ function writeToFile(url) {
       const imgUrl = $("*[itemprop='image']").attr("data-src");
       const logoUrl = "https://www.interpressnews.ge/static/img/logofixed.svg";
 
-      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      let isAboutGirchi = GirchiKeywords.some(keyword => title.includes(keyword));
 
-      if(isAboutGirchi.length > 0) {
+      if(isAboutGirchi) {
         // Write in Girchi Json
         writeDataToGirchi("ipn.json", title, dataInfo, text, imgUrl, logoUrl, url);
         // Write in Source  Json

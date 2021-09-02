@@ -17,18 +17,15 @@ function writeToFile(url) {
       let imgUrl = `https://formulanews.ge${$(".news__inner__main__image").find("img").attr("src")}`;
       const logoUrl = "https://upload.wikimedia.org/wikipedia/commons/7/7b/TV_Formula_-_Official_Logo.png";
       
-      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      let isAboutGirchi = GirchiKeywords.some(keyword => title.includes(keyword));
       
       if (imgUrl === "https://formulanews.geundefined") {
         imgUrl = "https://formulanews.ge/uploads_script2/articles/2021/08/21/yjupldlo82izpkc.jpg";
       }
-      if (isAboutGirchi.length > 0) {
-        // Write in Girchi Json
+      if (isAboutGirchi) {
         writeDataToGirchi("formula.json", title, dataInfo, text, imgUrl, logoUrl, url);
-        // Write in Source  Json
         writeToSource("formula.json", "Formula", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
-        // Write in Source Json
         writeToSource("formula.json", "Formula", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }

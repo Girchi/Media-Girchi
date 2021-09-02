@@ -17,15 +17,12 @@ function writeToFile(url) {
       const imgUrl = siteHeading.find("img").attr("src");
       const logoUrl = "https://www.imedi.ge/m/i/logo@2x.png";
 
-      let isAboutGirchi = GirchiKeywords.filter(keyword => title.includes(keyword));
+      let isAboutGirchi = GirchiKeywords.some(keyword => title.includes(keyword));
 
-      if (isAboutGirchi.length > 0) {
-        // Write in Girchi JSON
+      if (isAboutGirchi) {
         writeDataToGirchi("imedinews.json", title, dataInfo, text, imgUrl, logoUrl, url);
-        // Write in source's JSON
         writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, logoUrl, url);
       } else {
-        // Write in only source's JSON
         writeToSource("imedinews.json", "Imedi", title, dataInfo, text, imgUrl, logoUrl, url);
       }
     }
