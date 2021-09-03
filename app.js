@@ -66,7 +66,7 @@ app.get("/", (req, res) => {
   res.render("index", { object, importantNews, mostImportantNews , veryImportant});
 });
 
-const host = "127.0.0.1";
+const host = "0.0.0.0";
 const port = 3000;
 server.listen(port, host, () =>
   console.log(`Server running at http://${host}:${port}/\n`)
