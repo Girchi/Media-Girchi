@@ -141,7 +141,7 @@ app.get("/important_news", (req, res) => {
 app.post("/add_news", urlencodedParser, (req, res) => {
   const url = req.body.link;
   let source, sourceImgUrl;
-  
+
   if (url.includes("https://on.ge")) {
     source = "on";
     sourceImgUrl = "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png";
@@ -278,6 +278,5 @@ app.get("/validate-password", (req, res) => {
     isLoggedIn = true;
     return res.redirect('/trusted-guy');
   } 
-
   return res.redirect('/login');
 });
