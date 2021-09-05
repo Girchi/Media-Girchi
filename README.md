@@ -8,4 +8,4 @@ Girchi News - Node.js app for scrapping the news from the couple of sources
   
  
 ### Clone from GitHub
-  `git clone https://github.com/Girchi/Media-Girchi.git && node app.js`
+  `git clone https://github.com/Girchi/Media-Girchi.git && cd Media-Girchi && node app.js`
