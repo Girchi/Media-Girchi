@@ -1,4 +1,4 @@
-const socket = io("http://127.0.0.1:3000");
+const socket = io("http://0.0.0.0:3000");
 const el = document.querySelectorAll(".fa-star");
 const btn = document.querySelector(".btn-click");
 

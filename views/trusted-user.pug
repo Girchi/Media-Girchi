@@ -1,12 +1,14 @@
 include parts/head.pug
 link(rel="stylesheet" href="../assets/css/most-important.css")
 link(rel="stylesheet" href="../assets/css/style.css")
-script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
+
+//- script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
+
 
 
 include parts/navbar.pug
 	li
-		a.nav-link.active#gircheli(href='/trusted_guy') გირჩელი
+		a.nav-link.active#gircheli(href='/trusted-guy') გირჩელი
 
 
 .left-fixed-container
@@ -86,9 +88,10 @@ include parts/right-fixed-container.pug
 // End footer 
 
 include parts/scripts.pug
-script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
-script(src="../assets/components/browserSide/favorite.js") 
+//- script(src="http://cdn.socket.io/socket.io-3.0.1.min.js")
+//- script(src="../assets/components/browserSide/favorite.js") 
 script(src="../assets/components/browserSide/shortenArticle.js") 
+script(src="../assets/components/browserSide/loader.js") 
 script(src="../assets/components/browserSide/filterPosts.js")
 script(type="module" src="../assets/components/browserSide/favorite.js")
 

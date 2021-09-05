@@ -59,11 +59,10 @@ app.get("/", (req, res) => {
     Object.assign(object, response);
   });
 
-  const importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json", "utf-8"));
-  const mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8'));
-  const veryImportant = JSON.parse(fs.readFileSync('./assets/data/veryImportant.json', 'utf-8'));
+  const importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json"));
+  const mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json'));
 
-  res.render("index", { object, importantNews, mostImportantNews , veryImportant});
+  res.render("index", { object, importantNews, mostImportantNews });
 });
 
 const host = "0.0.0.0";
@@ -119,38 +118,30 @@ app.get("/add_news", (req, res) => { res.render("add_news") });
 app.get("/girchi_news", (req, res) => {
   let object = {};
 
-  let response = JSON.parse(
-    fs.readFileSync(`./assets/data/girchi.json`, "utf-8")
-  );
-  const veryImportant = JSON.parse(
-    fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
-  );
+  let response = JSON.parse(fs.readFileSync(`./assets/data/girchi.json`, "utf-8"));
+  const importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json"));
+
   Object.assign(object, response);
-  res.render("girchi_news", { object, veryImportant });
+  res.render("girchi_news", { object, importantNews });
 });
 
 
 app.get("/important_news", (req, res) => {
   let object = {};
 
-  let response = JSON.parse(
-    fs.readFileSync(`./assets/data/important.json`, "utf-8")
-  );
-
-  const veryImportant = JSON.parse(
-    fs.readFileSync('./assets/data/veryImportant.json', 'utf-8')
-  );
+  let response = JSON.parse(fs.readFileSync(`./assets/data/important.json`, "utf-8"));
+  const importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json"));
 
   Object.assign(object, response);
-  res.render("important_news", { object, veryImportant });
+  res.render("important_news", { object, importantNews });
 });
 
 
 // Manual Scrapping
 app.post("/add_news", urlencodedParser, (req, res) => {
   const url = req.body.link;
-  let source;
-  let sourceImgUrl;
+  let source, sourceImgUrl;
+  
   if (url.includes("https://on.ge")) {
     source = "on";
     sourceImgUrl = "http://gip.ge/wp-content/uploads/2017/10/apple-touch-icon.png";
@@ -247,6 +238,7 @@ let isLoggedIn = false;
 
 app.get("/login", (req, res) => { res.render('login') });
 
+
 postSourcesArr.forEach((source) => {
   checkFile(`./assets/data/${source}`);
   let response = JSON.parse(fs.readFileSync(`./assets/data/${source}`, "utf-8"));
@@ -254,20 +246,7 @@ postSourcesArr.forEach((source) => {
   Object.assign(object, response);
 })
 
-
-app.get('/trusted-guy', (req, res) => {
-
-  let importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json", "utf-8"));
-  let mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8'));
-
-  if(isLoggedIn) {
-    res.render("trusted-user", { object, importantNews , mostImportantNews });
-  }
-  // If user isn't logged in, he doesn't have an access to the /trusted-guy route
-  res.status(403).send("<b>403 Forbidden</b>: You don't have rights to visit this page");
-});
-
-const pinThePost = () => {
+const createPinThePostRoute = () => {
   // write most important post in most-important.json
   app.get('/pin-post', (req, res) => {
     const mostImportantNewsResponse = req.query.pin;
@@ -277,14 +256,28 @@ const pinThePost = () => {
   })
 }
 
+app.get('/trusted-guy', (req, res) => {
+
+  let importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json"));
+  let mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json'));
+
+  if(isLoggedIn) { 
+    createPinThePostRoute(); 
+    return res.render("trusted-user", { object, importantNews, mostImportantNews });
+  }
+
+  // If user isn't logged in, he doesn't have an access to the /trusted-guy route
+  return res.send("<b>403 Forbidden</b>: You don't have rights to visit this page");
+});
+
+
 app.get("/validate-password", (req, res) => {
   const password = req.query.password;
 
   if(password === 'girchi') {
     isLoggedIn = true;
-    pinThePost();
-    res.redirect('/trusted-guy');
+    return res.redirect('/trusted-guy');
   } 
 
-  res.redirect('/login');
+  return res.redirect('/login');
 });

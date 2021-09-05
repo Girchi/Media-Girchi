@@ -1223,6 +1223,7 @@ ul li a {
   color: #505050;
   margin-left: 1rem;
   font-family: "BPG Glaho WEB Caps", sans-serif;
+  text-align: center;
 }
 
 #main,
@@ -1532,6 +1533,15 @@ ul li a {
     left: 3%;
   }
 
+  .card-main {
+    margin: 13px auto auto 87px;
+  }
+
+  .pin {
+    margin-left: 540px;
+    margin-top: 15px;
+  }
+
   .big-inside-main {
     width: 65%;
   }
@@ -1579,7 +1589,7 @@ ul li a {
 
   .card-main {
     height: 430px;
-    margin: 12px auto auto 9px;
+    margin: 13px auto auto 87px;
     width: 430px;
     padding: 0.5rem;
   }
