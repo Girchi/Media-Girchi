@@ -256,15 +256,14 @@ postSourcesArr.forEach((source) => {
 
 
 app.get('/trusted-guy', (req, res) => {
-
   let importantNews = JSON.parse(fs.readFileSync("./assets/data/important.json", "utf-8"));
   let mostImportantNews = JSON.parse(fs.readFileSync('./assets/additional-data/most-important.json', 'utf-8'));
 
   if(isLoggedIn) {
-    res.render("trusted-user", { object, importantNews , mostImportantNews });
+    return res.render("trusted-user", { object, importantNews , mostImportantNews });
   }
   // If user isn't logged in, he doesn't have an access to the /trusted-guy route
-  res.status(403).send("<b>403 Forbidden</b>: You don't have rights to visit this page");
+  return res.status(403).send("<b>403 Forbidden</b>: You don't have rights to visit this page");
 });
 
 const pinThePost = () => {
@@ -283,8 +282,7 @@ app.get("/validate-password", (req, res) => {
   if(password === 'girchi') {
     isLoggedIn = true;
     pinThePost();
-    res.redirect('/trusted-guy');
+    return res.redirect('/trusted-guy');
   } 
-
-  res.redirect('/login');
+  return res.redirect('/login');
 });
