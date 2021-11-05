@@ -231,8 +231,9 @@ function callTheFunctions() {
 // In case if we want to change it, there are hours in milliseconds
 let oneHour = 3600000, halfAnHour = 1800000, hourAndHalf = 5400000;
 
+callTheFunctions();
 // Update the news in every 1 hour
-setInterval(callTheFunctions, halfAnHour);
+// setInterval(callTheFunctions, halfAnHour);
 
 let isLoggedIn = false;
 
