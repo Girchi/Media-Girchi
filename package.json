@@ -4,7 +4,9 @@
   "description": "Thanks for downloading this template!",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "launch": "npm i && npm start"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 # Media-Girchi
-Girchi News - Node.js app for scrapping the news from the couple of sources
+Girchi News - Node.js/Express app for scrapping the news from some sources
 
 ## Installing the app with Docker
   1. `docker pull nikanabakhteveli/media-girchi`
@@ -8,4 +8,4 @@ Girchi News - Node.js app for scrapping the news from the couple of sources
   
  
 ### Clone from GitHub
-  `git clone https://github.com/Girchi/Media-Girchi.git && cd Media-Girchi && node app.js`
+  `git clone https://github.com/Girchi/Media-Girchi.git && cd Media-Girchi && npm run launch`
