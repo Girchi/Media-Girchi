@@ -33,19 +33,22 @@ function writeToFile(url) {
 }
 
 export default function automateFormula() {
-  request("https://formulanews.ge/Category/All", (err, response, html) => {
-    if (!err && response.statusCode === 200) {
-      const $ = cheerio.load(html);
-      let obj = $("#news__box").find(".main__new__slider__desc").find("a");
-
-      for (let i = 0; i < 10; i++) {
-        checkFile(
-          "./assets/data/formula.json",
-          writeToFile(`https://formulanews.ge${obj[i].attribs.href}`)
-        );
+  return new Promise((resolve, reject) => {
+    request("https://formulanews.ge/Category/All", (err, response, html) => {
+      if (!err && response.statusCode === 200) {
+        const $ = cheerio.load(html);
+        let obj = $("#news__box").find(".main__new__slider__desc").find("a");
+        resolve(obj);
+      } else {
+        reject("Something has failed");
       }
-    } else {
-      console.log("Something failed!");
+    });
+  }).then(response => {
+    for (let i = 0; i < 10; i++) {
+      checkFile("./assets/data/formula.json", writeToFile(`https://formulanews.ge${response[i].attribs.href}`));
     }
-  });
+  }).then(() => "done")
+  .catch(error => {
+    console.log(error);
+  }).finally(() => "Scrapping process ended");
 }

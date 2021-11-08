@@ -30,16 +30,22 @@ function writeToFile(url) {
 }
 
 export default function automateImedi() {
-  request("https://imedinews.ge/ge/archive", (err, response, html) => {
-    if (!err && response.statusCode === 200) {
-      const $ = cheerio.load(html);
-      let obj = $(".row").find(".single-item");
-
-      for (let i = 0; i < 10; i++) {
-        checkFile('./assets/data/imedinews.json', writeToFile(obj[i].attribs.href));
+  return new Promise((resolve, reject) => {
+    request("https://imedinews.ge/ge/archive", (err, response, html) => {
+      if (!err && response.statusCode === 200) {
+        const $ = cheerio.load(html);
+        let obj = $(".row").find(".single-item");
+        resolve(obj);
+      } else {
+        reject("Something has failed");
       }
-    } else {
-      console.log("Something has failed!");
+    });
+  }).then(response => {
+    for (let i = 0; i < 10; i++) {
+      checkFile("./assets/data/imedinews.json", writeToFile(response[i].attribs.href));
     }
-  });
+  }).then(() => "done")
+  .catch(error => {
+    console.log(error);
+  }).finally(() => "Scrapping process ended");
 }

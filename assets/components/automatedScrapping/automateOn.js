@@ -4,7 +4,7 @@ import writeToSource from "../writingData/writeToSource.js";
 import checkFile from "../writingData/checkIfFileIsEmpty.js";
 import writeDataToGirchi from "../writingData/writeDataToGirchi.js";
 
-const GirchiKeywords = ['გირჩი', 'იაგო ხვიჩია', 'ვახტანგ მეგრელიშვილი', 'სანდრო რაქვიაშვილი'];
+const GirchiKeywords = ['გირჩი', 'გირჩ', 'გირჩის', 'იაგო ხვიჩია', 'ვახტანგ მეგრელიშვილი', 'სანდრო რაქვიაშვილი'];
 
 function writeToFile(url) {
   request(url, (error, response, html) => {
@@ -32,16 +32,22 @@ function writeToFile(url) {
 }
 
 export default function automateOn() {
-  request("https://on.ge", (err, response, html) => {
-    if (!err && response.statusCode === 200) {
-      const $ = cheerio.load(html);
-      let obj = $(".row").find("section").find("a.overlay-link");
-
-      for (let i = 0; i < 10; i++) {
-        checkFile('./assets/data/on.json', writeToFile(obj[i].attribs.href));
+  return new Promise((resolve, reject) => {
+    request("https://on.ge", (err, response, html) => {
+      if (!err && response.statusCode === 200) {
+        const $ = cheerio.load(html);
+        let obj = $(".row").find("section").find("a.overlay-link");
+        resolve(obj);
+      } else {
+        reject("Something has failed");
       }
-    } else {
-      console.log("Something failed!");
+    });
+  }).then(response => {
+    for (let i = 0; i < 10; i++) {
+      checkFile('./assets/data/on.json', writeToFile(response[i].attribs.href));
     }
-  });
+  }).then(() => "done")
+  .catch(error => {
+    console.log(error);
+  }).finally(() => "Scrapping process ended");
 }
